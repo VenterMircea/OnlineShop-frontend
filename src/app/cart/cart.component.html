@@ -1,0 +1,22 @@
+<div class="container">
+    <div class="order-summary mat-elevation-z2" >
+        <h2 class="line">Produse in cos:</h2>
+        <div *ngFor="let product of products" class='product'>
+            <div> <img src="{{product.image}}" alt="" class='product-image'></div>
+            <div class='product-section'>
+                <a href="#">{{product.name}}</a>
+                <p>Qty:</p>
+                <!-- <mat-select>
+                
+                </mat-select> -->
+                <select name="ralu" id="">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                </select>
+            </div>
+        </div>
+        
+    </div>
+</div>
