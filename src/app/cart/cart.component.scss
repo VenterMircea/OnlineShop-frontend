@@ -10,16 +10,46 @@ a:hover{
     height: 100%;
     background-color: #f6f6f6;
     overflow: auto;
+    display: flex;
+}
+.calculation{
+    width: 20%;
+    height: fit-content;
+    margin: 3rem;
+    padding: 2rem;
+    background-color: white;
+    position: fixed;
+    left: 70%;
+}
+.calculation-body{
+    display: flex;
+    justify-content: space-between;
 }
 .line{
     padding-bottom: 1rem;
     border-bottom: 1px solid rgb(211, 208, 208);
 }
+.margin2{
+    margin-top: 2rem;
+}
 .order-summary{
     width: 60%;
+    height: fit-content;
     margin: 3rem;
     padding: 2rem;
     background-color: white;
+}
+.order-button{
+    margin:0 auto;
+    display:block;
+    margin-top: 2rem;
+    width: 90%;
+    background-color: green;
+    height: 3rem;
+    border: none;
+    border-radius: 2%;
+    font-size: 1.2rem;
+    color: white;
 }
 .product{
     display: flex;
@@ -32,4 +62,12 @@ a:hover{
 .product-section{
     padding: 1rem;
     display: flex;
+    flex-grow: 1;
+}
+.product-name{
+    flex-grow: 1;
+}
+.product-data{
+    padding-left: 2rem;
+    width: 5rem;
 }
