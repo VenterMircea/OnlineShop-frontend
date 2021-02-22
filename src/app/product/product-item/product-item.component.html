@@ -1,0 +1,16 @@
+<div class="product" *ngIf="product">
+  <img
+    src="https://cdn.contentspeed.ro/carpatsport.websales.ro/cs-content/cs-photos/products/original/-bicicleta-fat-bike-carpat-hercules-26-inch-c2619b_4179_27_1595335713.jpg"
+    alt=""
+  />
+  <h2>{{ product.name }}</h2>
+  <star-rating
+    [value]="product.rating"
+    [totalstars]="5"
+    [readonly]="true"
+    checkedcolor="gold"
+    uncheckedcolor="gainsboro"
+    size="24px"
+  ></star-rating>
+  <p>${{ product.price }}</p>
+</div>

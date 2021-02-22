@@ -1,27 +1,27 @@
-<nav class="navbar">
-  <img src="../assets/estore.jpg" alt="" />
-  <div class="search">
-    <input type="text" /><span class="material-icons search-icon">
-      search
-    </span>
-  </div>
-  <div class="nav-options">
-    <a routerLink="/"
-      ><span class="material-icons icons"> perm_contact_calendar </span>
-      <h3>Contact</h3></a
-    >
-    <a routerLink="/"
-      ><span class="material-icons icons"> shopping_cart </span>
-      <h3>
-        Cart
-        <span *ngIf="cart.length > 0">( {{ cart.length }} )</span>
-      </h3></a
-    >
-  </div>
-  <!-- <span class="material-icons"> menu </span> -->
-</nav>
-<div class="horizontal"></div>
+<div class="header">
+  <nav class="navbar">
+    <img src="../assets/estore.jpg" alt="" />
+    <div class="search">
+      <input type="text" /><span class="material-icons search-icon">
+        search
+      </span>
+    </div>
+    <div class="nav-options">
+      <a routerLink="/"
+        ><span class="material-icons icons"> perm_contact_calendar </span>
+        <h3>Contact</h3></a
+      >
+      <a routerLink="/"
+        ><span class="material-icons icons"> shopping_cart </span>
+        <h3>
+          Cart
+          <span *ngIf="cart.length > 0">( {{ cart.length }} )</span>
+        </h3></a
+      >
+    </div>
+  </nav>
+  <div class="horizontal"></div>
+</div>
+<app-product-list></app-product-list>
 
-<!-- <div class="horizontal1"></div>
-<div class="horizontal2"></div> -->
 <router-outlet></router-outlet>

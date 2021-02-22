@@ -1,3 +1,4 @@
+import { ProductItemComponent } from './product/product-item/product-item.component';
 import { Component } from '@angular/core';
 
 @Component({
