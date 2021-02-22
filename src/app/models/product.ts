@@ -5,4 +5,6 @@ export interface Product {
     stock: number;
     description: string;
     price: number;
+    brand: string;
+    rating: number;
 }
