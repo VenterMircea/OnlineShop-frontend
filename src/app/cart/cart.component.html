@@ -1,0 +1,66 @@
+<div class="container">
+  <div class="order-summary mat-elevation-z2">
+    <h2 class="line">Produse in cos:</h2>
+    <div *ngFor="let product of products" class="product line">
+      <div><img src="{{ product.image }}" alt="" class="product-image" /></div>
+      <div class="product-section">
+        <div class="product-name">
+          <h2>
+            <a href="#">{{ product.name }}</a>
+          </h2>
+          <star-rating
+            [value]="product.rating"
+            [totalstars]="5"
+            checkedcolor="gold"
+            uncheckedcolor="gainsboro"
+            size="24px"
+            [readonly]="true"
+          ></star-rating>
+        </div>
+        <div class="product-data">
+          <p>Cantitate:</p>
+          <mat-icon
+            *ngIf="product.qty == 1"
+            class="quantity-buttons"
+            (click)="deleteFromCart(product.id)"
+            >delete_forever</mat-icon
+          >
+          <button
+            *ngIf="product.qty > 1"
+            (click)="modifyQuantity(product.id, -1)"
+            class="quantity-buttons"
+          >
+            -
+          </button>
+          <span class="larger">{{ product.qty }}</span>
+          <button
+            (click)="modifyQuantity(product.id, 1)"
+            class="quantity-buttons"
+          >
+            +
+          </button>
+        </div>
+        <div class="product-data">
+          <h2>{{ product.price }} lei</h2>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="calculation mat-elevation-z2">
+    <h2 class="line">Sumar comanda:</h2>
+    <div class="calculation-body">
+      <p class="space-between">Pret produse:</p>
+      <p>{{ total }} lei</p>
+    </div>
+    <div class="calculation-body line">
+      <p class="space-between">Cost livare:</p>
+      <p>20 lei</p>
+    </div>
+    <div class="calculation-body margin2">
+      <h2 class="space-between">Total:</h2>
+      <h2>{{ products[0].price }} lei</h2>
+    </div>
+    <button class="margin2 order-button">Pasul urmator</button>
+  </div>
+</div>

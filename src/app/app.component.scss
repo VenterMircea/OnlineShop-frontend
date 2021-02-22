@@ -4,6 +4,8 @@
   width: 100%;
   background-color: white;
   z-index: 1;
+  margin: 0;
+  overflow: hidden;
 }
 .navbar {
   width: 100%;
@@ -26,6 +28,9 @@
     width: 200px;
     object-fit: contain;
     height: 60px;
+  }
+  img:focus {
+    outline: none;
   }
   .search {
     display: flex;
@@ -98,4 +103,7 @@
     #61095b,
     #1a4741
   );
+}
+.outlet {
+  margin-top: 90px;
 }
