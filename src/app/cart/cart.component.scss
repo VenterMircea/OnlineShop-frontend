@@ -1,96 +1,97 @@
-a{
-    color: black;
-    text-decoration: none;
+a {
+  color: black;
+  text-decoration: none;
 }
-a:hover{
-    text-decoration: underline;
+a:hover {
+  text-decoration: underline;
 }
-.container{
-    width: 100%;
-    height: 100%;
-    background-color: #f6f6f6;
-    overflow: auto;
-    display: flex;
+.container {
+  width: 100%;
+  // height: 100%;
+  background-color: #f6f6f6;
+  // overflow: auto;
+  display: flex;
+  margin-top: 90px;
 }
-.calculation{
-    width: 20%;
-    height: fit-content;
-    margin: 3rem;
-    padding: 2rem;
-    background-color: white;
-    position: fixed;
-    left: 70%;
+.calculation {
+  width: 20%;
+  height: fit-content;
+  margin: 3rem;
+  padding: 2rem;
+  background-color: white;
+  position: fixed;
+  left: 70%;
 }
-.calculation-body{
-    display: flex;
-    justify-content: space-between;
+.calculation-body {
+  display: flex;
+  justify-content: space-between;
 }
-.line{
-    padding-bottom: 1rem;
-    border-bottom: 1px solid rgb(211, 208, 208);
+.line {
+  padding-bottom: 1rem;
+  border-bottom: 1px solid rgb(211, 208, 208);
 }
-.margin2{
-    margin-top: 2rem;
+.margin2 {
+  margin-top: 2rem;
 }
-.order-summary{
-    width: 60%;
-    height: fit-content;
-    margin: 3rem;
-    padding: 2rem;
-    background-color: white;
+.order-summary {
+  width: 60%;
+  height: fit-content;
+  margin: 3rem;
+  padding: 2rem;
+  background-color: white;
 }
-.order-button{
-    margin:0 auto;
-    display:block;
-    margin-top: 2rem;
-    width: 90%;
-    background-color: #56c465;
-    height: 3rem;
-    border: 1px solid #56c465;
-    border-radius: 2%;
-    font-size: 1.2rem;
-    color: white;
+.order-button {
+  margin: 0 auto;
+  display: block;
+  margin-top: 2rem;
+  width: 90%;
+  background-color: #56c465;
+  height: 3rem;
+  border: 1px solid #56c465;
+  border-radius: 2%;
+  font-size: 1.2rem;
+  color: white;
 }
-.order-button:hover{
-    cursor: pointer;
-    border: 2px solid #56c465;
+.order-button:hover {
+  cursor: pointer;
+  border: 2px solid #56c465;
 }
-.order-button:active:focus{
-    outline: 1px solid #56c465;
+.order-button:active:focus {
+  outline: 1px solid #56c465;
 }
-.product{
-    display: flex;
+.product {
+  display: flex;
 }
-.product-image{
-    max-width: 4rem;
-    max-height: 4rem;
-    padding: 1rem;
+.product-image {
+  max-width: 4rem;
+  max-height: 4rem;
+  padding: 1rem;
 }
-.product-section{
-    padding: 1rem;
-    display: flex;
-    flex-grow: 1;
+.product-section {
+  padding: 1rem;
+  display: flex;
+  flex-grow: 1;
 }
-.product-name{
-    flex-grow: 1;
+.product-name {
+  flex-grow: 1;
 }
-.product-data{
-    padding-left: 2rem;
-    width: 5rem;
+.product-data {
+  padding-left: 2rem;
+  width: 5rem;
 }
-.quantity-buttons{
-    background-color: white;
-    border: none;
-    vertical-align: middle;
-    font-size: 1.6rem;
+.quantity-buttons {
+  background-color: white;
+  border: none;
+  vertical-align: middle;
+  font-size: 1.6rem;
 }
-.quantity-buttons:hover{
-    cursor: pointer;
+.quantity-buttons:hover {
+  cursor: pointer;
 }
-mat-icon{
-    vertical-align: middle;
+mat-icon {
+  vertical-align: middle;
 }
-.larger{
-    font-size: 1.4rem;
-    vertical-align: middle;
+.larger {
+  font-size: 1.4rem;
+  vertical-align: middle;
 }

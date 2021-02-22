@@ -1,3 +1,12 @@
+.header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background-color: white;
+  z-index: 1;
+  margin: 0;
+  overflow: hidden;
+}
 .navbar {
   width: 100%;
   height: 60px;
@@ -7,6 +16,7 @@
   justify-content: center;
   margin-top: 10px;
   margin-bottom: 5px;
+
   h3 {
     margin-bottom: 0;
     margin-left: 5px;
@@ -18,6 +28,9 @@
     width: 200px;
     object-fit: contain;
     height: 60px;
+  }
+  img:focus {
+    outline: none;
   }
   .search {
     display: flex;
@@ -58,6 +71,7 @@
 .horizontal {
   width: 100%;
   height: 20px;
+
   background-image: linear-gradient(
     to right,
     #5fd4d2 30%,
@@ -89,4 +103,7 @@
     #61095b,
     #1a4741
   );
+}
+.outlet {
+  margin-top: 90px;
 }
