@@ -1,3 +1,4 @@
+import { ProductDetailsComponent } from './product/product-details/product-details.component';
 import { ProductListComponent } from './product/product-list/product-list.component';
 import { ProductItemComponent } from './product/product-item/product-item.component';
 import { MaterialModule } from './../modules/material/material.module';
@@ -9,6 +10,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RatingModule } from 'ng-starrating';
 import { CartComponent } from './cart/cart.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -16,6 +18,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     CartComponent,
     ProductItemComponent,
     ProductListComponent,
+    ProductDetailsComponent,
   ],
   imports: [
     BrowserModule,
@@ -25,6 +28,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     FormsModule,
     ReactiveFormsModule,
     RatingModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
