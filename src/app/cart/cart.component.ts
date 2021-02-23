@@ -29,6 +29,8 @@ export class CartComponent implements OnInit {
       if (val.id === id) val.qty = val.qty + diff;
     });
     this.computeTotal();
+    localStorage.setItem('cart', JSON.stringify(this.products));
+    this.cartService.update();
   }
   computeTotal() {
     this.total = 0;
@@ -38,10 +40,4 @@ export class CartComponent implements OnInit {
     });
     console.log('total:', this.total);
   }
-  // onRate($event:{oldValue:number, newValue:number, starRating:any}) {
-  //   alert(`Old Value:${$event.oldValue},
-  //     New Value: ${$event.newValue},
-  //     Checked Color: ${$event.starRating.checkedcolor},
-  //     Unchecked Color: ${$event.starRating.uncheckedcolor}`);
-  // }
 }
