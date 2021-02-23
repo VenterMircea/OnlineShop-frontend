@@ -19,7 +19,8 @@ export class ProductDetailsComponent implements OnInit {
   cart: any[] = [];
 
   addToCart() {
-    this.cart.push({ ...this.product, qty: 1 });
+    const ind = this.cart.findIndex((x) => x.id == this.product.id);
+    ind < 0 ? this.cart.push({ ...this.product }) : this.cart[ind].qty++;
     console.log(this.cart);
     localStorage.setItem('cart', JSON.stringify(this.cart));
     this.cartService.update();
