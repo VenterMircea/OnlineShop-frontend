@@ -1,3 +1,4 @@
+import { ProductService } from './../../../services/product.service';
 import { Component, OnInit, AfterViewInit, ElementRef } from '@angular/core';
 
 @Component({
@@ -6,29 +7,18 @@ import { Component, OnInit, AfterViewInit, ElementRef } from '@angular/core';
   styleUrls: ['./product-list.component.scss'],
 })
 export class ProductListComponent implements OnInit, AfterViewInit {
-  constructor(private elementRef: ElementRef) {}
-  products = [
-    { name: 'bike', price: 5, rating: 3.2 },
-    { name: 'bike', price: 5, rating: 4 },
-    { name: 'bike', price: 5, rating: 3.5 },
-    { name: 'bike', price: 5, rating: 3.5 },
-    { name: 'bike', price: 5, rating: 3.5 },
-    { name: 'bike', price: 5, rating: 3.5 },
-    { name: 'bike', price: 5, rating: 3.5 },
-    { name: 'bike', price: 5, rating: 3.5 },
-    { name: 'bike', price: 5, rating: 3.5 },
-    { name: 'bike', price: 5, rating: 3.5 },
-    { name: 'bike', price: 5, rating: 3.5 },
-    { name: 'bike', price: 5, rating: 3.5 },
-    { name: 'bike', price: 5, rating: 3.5 },
-    { name: 'bike', price: 5, rating: 3.5 },
-    { name: 'bike', price: 5, rating: 3.5 },
-    { name: 'bike', price: 5, rating: 3.5 },
-    { name: 'bike', price: 5, rating: 3.5 },
-    { name: 'bike', price: 5, rating: 3.5 },
-  ];
+  constructor(
+    private elementRef: ElementRef,
+    private productServ: ProductService
+  ) {}
 
-  ngOnInit() {}
+  products: any;
+
+  ngOnInit() {
+    this.productServ
+      .getProducts()
+      .subscribe((products) => (this.products = products));
+  }
   ngAfterViewInit() {
     this.elementRef.nativeElement.ownerDocument.body.style.backgroundColor =
       '#fafbfc';

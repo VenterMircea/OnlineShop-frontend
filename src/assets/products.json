@@ -1,0 +1,31 @@
+[
+  { "id": 1, "name": "bike", "price": 5, "rating": 3.2 },
+  {
+    "id": 12,
+    "name": "Cort",
+    "price": 7,
+    "rating": 4,
+    "img": "https://i.dedeman.ro/media/catalog/product/cache/dedeman/image/9df78eab33525d08d6e5fb8d27136e95/7/0/7055982.jpg"
+  },
+  {
+    "id": 13,
+    "name": "Fotoliu Balansoar",
+    "price": 8,
+    "rating": 3.5,
+    "img": "https://s13emagst.akamaized.net/products/27114/27113861/images/res_bed133ea3f5f6a9d708d73566e8b70d6.jpg"
+  },
+  { "id": 14, "name": "bike", "price": 12, "rating": 3.5, "img": "" },
+  { "id": 15, "name": "bike", "price": 95, "rating": 3.5, "img": "" },
+  { "id": 16, "name": "bike", "price": 15, "rating": 3.5, "img": "" },
+  { "id": 17, "name": "bike", "price": 70, "rating": 3.5, "img": "" },
+  { "id": 18, "name": "bike", "price": 83, "rating": 3.5, "img": "" },
+  { "id": 19, "name": "bike", "price": 54, "rating": 3.5, "img": "" },
+  { "id": 11, "name": "bike", "price": 42, "rating": 3.5, "img": "" },
+  { "id": 21, "name": "bike", "price": 5, "rating": 3.5, "img": "" },
+  { "id": 31, "name": "bike", "price": 5, "rating": 3.5, "img": "" },
+  { "id": 41, "name": "bike", "price": 5, "rating": 3.5, "img": "" },
+  { "id": 51, "name": "bike", "price": 5, "rating": 3.5, "img": "" },
+  { "id": 61, "name": "bike", "price": 5, "rating": 3.5, "img": "" },
+  { "id": 71, "name": "bike", "price": 5, "rating": 3.5, "img": "" },
+  { "id": 81, "name": "bike", "price": 5, "rating": 3.5, "img": "" }
+]
