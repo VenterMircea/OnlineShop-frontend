@@ -1,3 +1,38 @@
 .details {
-  margin-top: 90px;
+  margin-top: 120px;
+
+  text-align: center;
+  .product-information {
+    display: flex;
+    justify-content: space-between;
+    width: 80%;
+    margin: 0 auto;
+    text-align: center;
+    img {
+      width: 550px;
+    }
+    p {
+      display: flex;
+    }
+    .add-to-cart {
+      p {
+        font-size: 40px;
+        font-weight: 500;
+        margin-bottom: 20px;
+      }
+      button {
+        height: 50px;
+        width: 250px;
+        background-image: linear-gradient(to right, #5fd4d2, #634fbd 40%);
+        text-align: start;
+        border: none;
+        color: white;
+        font-size: 20px;
+        border-radius: 5px;
+        .shopping {
+          margin-right: 70px;
+        }
+      }
+    }
+  }
 }

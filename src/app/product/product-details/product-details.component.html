@@ -1,3 +1,24 @@
-<p *ngIf="product" class="details">
-  {{ product.name }}
-</p>
+<div class="details" *ngIf="product">
+  <h1>{{ product.name }}</h1>
+  <div class="product-information">
+    <img [src]="product.img" />
+    <p>
+      Rating:
+      <star-rating
+        [value]="product.rating"
+        [totalstars]="5"
+        [readonly]="true"
+        checkedcolor="gold"
+        uncheckedcolor="gainsboro"
+        size="24px"
+      ></star-rating
+      >({{ product.rating }}/5)
+    </p>
+    <div class="add-to-cart">
+      <p>${{ product.price }}</p>
+      <button (click)="addToCart()">
+        <span class="material-icons shopping"> shopping_cart </span> Add to cart
+      </button>
+    </div>
+  </div>
+</div>
