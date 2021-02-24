@@ -27,6 +27,7 @@ export class CartComponent implements OnInit {
   modifyQuantity(id: number, diff: number) {
     this.products.forEach((val) => {
       if (val.id === id) val.qty = val.qty + diff;
+      localStorage.setItem('cart', JSON.stringify(this.products));
     });
     this.computeTotal();
   }

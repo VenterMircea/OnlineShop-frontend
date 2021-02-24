@@ -1,7 +1,9 @@
+import { ProductDetailsDialogComponent } from './../product-details-dialog/product-details-dialog.component';
 import { CartService } from './../../../services/cart.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ProductService } from 'src/services/product.service';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-product-details',
@@ -12,7 +14,8 @@ export class ProductDetailsComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private productServ: ProductService,
-    private cartService: CartService
+    private cartService: CartService,
+    public dialog: MatDialog
   ) {}
   products!: any[];
   product!: any;
@@ -24,6 +27,7 @@ export class ProductDetailsComponent implements OnInit {
     console.log(this.cart);
     localStorage.setItem('cart', JSON.stringify(this.cart));
     this.cartService.update();
+    this.dialog.open(ProductDetailsDialogComponent, { data: this.product });
   }
 
   ngOnInit() {

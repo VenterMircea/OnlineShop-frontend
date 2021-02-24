@@ -1,0 +1,28 @@
+.modal {
+  text-align: center;
+
+  h2 {
+    color: #634fbd;
+  }
+  .product-modal {
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+    a {
+      text-decoration: none;
+      font-size: 15px;
+      cursor: pointer;
+      margin: 10px;
+      color: black;
+      font-weight: 500;
+      height: 20px;
+      padding: 5px;
+    }
+    #continue {
+      background-color: #5fd4d2;
+    }
+    #checkout-cart {
+      background-color: #634fbd;
+    }
+  }
+}

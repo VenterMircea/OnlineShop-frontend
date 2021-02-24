@@ -15,9 +15,11 @@
     width: 12rem;
     height: 12rem;
     margin: 0 auto;
-
   }
 }
 .product:hover {
   @include mat-elevation(10);
+}
+.product:focus {
+  outline: none;
 }
