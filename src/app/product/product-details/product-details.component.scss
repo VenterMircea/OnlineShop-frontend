@@ -1,9 +1,11 @@
 .details {
   margin-top: 120px;
-  h1{
+  border-bottom: 3px solid #4cb5cf;
+  margin-bottom: 15px;
+  h1 {
     font-size: 40px;
     font-weight: 500;
-    padding: 20px 0 ;
+    padding: 20px 0;
   }
   text-align: center;
   .product-information {
@@ -12,12 +14,22 @@
     width: 80%;
     margin: 0 auto;
     text-align: center;
+    .rating-description {
+      text-align: center;
+      p {
+        display: flex;
+        width: 60%;
+        margin: 0 auto;
+      }
+      .product-description {
+        margin: 30px auto;
+        width: 60%;
+      }
+    }
     img {
       width: 550px;
     }
-    p {
-      display: flex;
-    }
+
     .add-to-cart {
       p {
         font-size: 40px;
@@ -49,11 +61,11 @@
   margin-top: 100px;
   width: 80%;
   margin: 20px auto;
-  i{
+  i {
     width: 200px;
     margin: 16px;
   }
 }
-.margin{
+.margin {
   margin-left: 120px;
 }
