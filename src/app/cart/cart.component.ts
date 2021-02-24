@@ -12,6 +12,7 @@ export class CartComponent implements OnInit {
   products!: any[];
   total = 0;
   selected = 'option1';
+
   constructor(private cartService: CartService) {}
 
   ngOnInit(): void {
@@ -27,13 +28,13 @@ export class CartComponent implements OnInit {
   modifyQuantity(id: number, diff: number) {
     this.products.forEach((val) => {
       if (val.id === id) val.qty = val.qty + diff;
+      localStorage.setItem('cart', JSON.stringify(this.products));
     });
     this.computeTotal();
     localStorage.setItem('cart', JSON.stringify(this.products));
     this.cartService.update();
   }
   computeTotal() {
-    this.total = 0;
     this.products.forEach((val: any) => {
       this.total += val.price * val.qty;
     });

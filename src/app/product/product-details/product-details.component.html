@@ -2,18 +2,21 @@
   <h1>{{ product.name }}</h1>
   <div class="product-information">
     <img [src]="product.image" />
-    <p>
-      Rating:
-      <star-rating
-        [value]="product.rating"
-        [totalstars]="5"
-        [readonly]="true"
-        checkedcolor="gold"
-        uncheckedcolor="gainsboro"
-        size="24px"
-      ></star-rating
-      >({{ product.rating }}/5)
-    </p>
+    <div class="rating-description">
+      <p>
+        Rating:
+        <star-rating
+          [value]="product.rating"
+          [totalstars]="5"
+          [readonly]="true"
+          checkedcolor="gold"
+          uncheckedcolor="gainsboro"
+          size="24px"
+        ></star-rating
+        >({{ product.rating }}/5)
+      </p>
+      <p class="product-description">{{ product.description }}</p>
+    </div>
     <div class="add-to-cart">
       <p>{{ product.price }} lei</p>
       <button (click)="addToCart()">
@@ -24,7 +27,10 @@
 </div>
 <h2 class="margin">Produse vizualizate recent:</h2>
 <div class="product-list">
-  <app-product-item *ngFor="let product of displayHistory" [product]="product"></app-product-item>
+  <app-product-item
+    *ngFor="let product of displayHistory"
+    [product]="product"
+  ></app-product-item>
   <i aria-hidden="true"></i>
   <i aria-hidden="true"></i>
   <i aria-hidden="true"></i>

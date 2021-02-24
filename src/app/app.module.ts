@@ -1,3 +1,4 @@
+import { ProductDetailsDialogComponent } from './product/product-details-dialog/product-details-dialog.component';
 import { ProductDetailsComponent } from './product/product-details/product-details.component';
 import { ProductListComponent } from './product/product-list/product-list.component';
 import { ProductItemComponent } from './product/product-item/product-item.component';
@@ -19,7 +20,9 @@ import { HttpClientModule } from '@angular/common/http';
     ProductItemComponent,
     ProductListComponent,
     ProductDetailsComponent,
+    ProductDetailsDialogComponent,
   ],
+  entryComponents: [ProductDetailsDialogComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
