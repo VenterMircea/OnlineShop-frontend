@@ -30,19 +30,13 @@ export class CartComponent implements OnInit {
       localStorage.setItem('cart', JSON.stringify(this.products));
     });
     this.computeTotal();
+    localStorage.setItem('cart', JSON.stringify(this.products));
+    this.cartService.update();
   }
   computeTotal() {
     this.total = 0;
     this.products.forEach((val: any) => {
       this.total += val.price * val.qty;
-      console.log('price: ', val.price, 'qty: ', val.qty);
     });
-    console.log('total:', this.total);
   }
-  // onRate($event:{oldValue:number, newValue:number, starRating:any}) {
-  //   alert(`Old Value:${$event.oldValue},
-  //     New Value: ${$event.newValue},
-  //     Checked Color: ${$event.starRating.checkedcolor},
-  //     Unchecked Color: ${$event.starRating.uncheckedcolor}`);
-  // }
 }
