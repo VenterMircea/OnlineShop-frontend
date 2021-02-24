@@ -15,10 +15,18 @@
       >({{ product.rating }}/5)
     </p>
     <div class="add-to-cart">
-      <p>${{ product.price }}</p>
+      <p>{{ product.price }} lei</p>
       <button (click)="addToCart()">
         <span class="material-icons shopping"> shopping_cart </span> Add to cart
       </button>
     </div>
   </div>
+</div>
+<h2 class="margin">Produse vizualizate recent:</h2>
+<div class="product-list">
+  <app-product-item *ngFor="let product of displayHistory" [product]="product"></app-product-item>
+  <i aria-hidden="true"></i>
+  <i aria-hidden="true"></i>
+  <i aria-hidden="true"></i>
+  <i aria-hidden="true"></i>
 </div>

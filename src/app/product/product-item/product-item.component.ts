@@ -12,6 +12,5 @@ export class ProductItemComponent implements OnInit {
   rating = 3;
 
   ngOnInit() {
-    console.log(this.product);
   }
 }
