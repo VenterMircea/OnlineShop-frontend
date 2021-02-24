@@ -35,8 +35,10 @@ export class CartComponent implements OnInit {
     this.cartService.update();
   }
   computeTotal() {
+    this.total=0;
     this.products.forEach((val: any) => {
       this.total += val.price * val.qty;
     });
+    this.total=parseFloat(this.total.toFixed(2));
   }
 }
