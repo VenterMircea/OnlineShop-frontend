@@ -48,7 +48,7 @@ export class ProductDetailsComponent implements OnInit {
         this.displayHistory.length - 5,
         this.displayHistory.length
       );
-      if(this.history.length>5)this.history=this.history.slice(this.history.length-5, this.history.length);
+      if(this.history.length>6)this.history=this.history.slice(this.history.length-5, this.history.length);
       localStorage.setItem('history', JSON.stringify(this.history));
     });
     this.cart = JSON.parse(localStorage.getItem('cart') || '[]');
