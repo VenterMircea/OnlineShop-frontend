@@ -1,5 +1,6 @@
+import { SearchService } from './../services/search.service';
 import { CartService } from './../services/cart.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, TemplateRef } from '@angular/core';
 import { Subscription } from 'rxjs';
 
 @Component({
@@ -7,11 +8,21 @@ import { Subscription } from 'rxjs';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })
-export class AppComponent {
+export class AppComponent{
   title = 'online-store';
   cart: any = [];
+  searchTerm='';
+  qty=0;
   subscrption = this.cartService.currentCart.subscribe(
-    (cart) => (this.cart = cart)
+    (cart) => {
+    this.cart = cart
+    this.qty=this.cart.reduce((acc:any, val:any)=>acc+val.qty,0)
+  }
   );
-  constructor(private cartService: CartService) {}
+  constructor(private cartService: CartService, private searchService: SearchService) {}
+  
+  changeSerachTerm(event:any){
+    this.searchTerm=event.target.value;
+    this.searchService.changeTerm(this.searchTerm);
+  }
 }
