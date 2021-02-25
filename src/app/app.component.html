@@ -2,7 +2,7 @@
   <nav class="navbar">
     <img src="../assets/estore.jpg" alt="" routerLink="/" />
     <div class="search">
-      <input type="text" /><span class="material-icons search-icon">
+      <input type="text" (keyup)='changeSerachTerm($event)'/><span class="material-icons search-icon">
         search
       </span>
     </div>
@@ -15,13 +15,12 @@
         ><span class="material-icons icons"> shopping_cart </span>
         <h3>
           Cart
-          <span *ngIf="cart.length > 0">( {{ cart.length }} )</span>
+          <span *ngIf="cart.length > 0">( {{ qty }} )</span>
         </h3></a
       >
     </div>
   </nav>
   <div class="horizontal"></div>
 </div>
-<!-- <app-product-list></app-product-list> -->
 
 <router-outlet></router-outlet>

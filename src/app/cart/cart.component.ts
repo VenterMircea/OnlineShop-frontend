@@ -1,6 +1,6 @@
 import { CartService } from './../../services/cart.service';
 import { Product } from './../models/product';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit, ElementRef } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 
 @Component({
@@ -8,16 +8,20 @@ import { FormControl, Validators } from '@angular/forms';
   templateUrl: './cart.component.html',
   styleUrls: ['./cart.component.scss'],
 })
-export class CartComponent implements OnInit {
+export class CartComponent implements OnInit, AfterViewInit {
   products!: any[];
   total = 0;
   selected = 'option1';
 
-  constructor(private cartService: CartService) {}
+  constructor(private cartService: CartService, private elementRef: ElementRef,) {}
 
   ngOnInit(): void {
     this.products = JSON.parse(localStorage.getItem('cart') || '[]');
     this.computeTotal();
+  }
+  ngAfterViewInit() {
+    this.elementRef.nativeElement.ownerDocument.body.style.backgroundColor =
+      '#fafbfc';
   }
   deleteFromCart(id: any) {
     this.products = this.products.filter((product) => product.id !== id);
