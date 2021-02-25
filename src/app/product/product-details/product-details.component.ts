@@ -28,7 +28,6 @@ export class ProductDetailsComponent implements OnInit {
   history: any[] = [];
   displayHistory: any[] = [];
   id: any;
-  private sub: any;
 
   addToCart() {
     const ind = this.cart.findIndex((x) => x.id == this.product.id);
@@ -70,6 +69,5 @@ export class ProductDetailsComponent implements OnInit {
       }
       localStorage.setItem('history', JSON.stringify(this.history));
     });
-    this.cart = JSON.parse(localStorage.getItem('cart') || '[]');
   }
 }

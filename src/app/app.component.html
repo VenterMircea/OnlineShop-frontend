@@ -2,9 +2,11 @@
   <nav class="navbar">
     <img src="../assets/estore.jpg" alt="" routerLink="/" />
     <div class="search">
-      <input type="text" /><span class="material-icons search-icon">
-        search
-      </span>
+      <input
+        type="text"
+        [(ngModel)]="searchValue"
+        (ngModelChange)="searchUpdate()"
+      /><span class="material-icons search-icon"> search </span>
     </div>
     <div class="nav-options">
       <a routerLink="/"
