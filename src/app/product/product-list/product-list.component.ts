@@ -1,4 +1,3 @@
-import { Subscription } from 'rxjs';
 import { SearchService } from './../../../services/search.service';
 import { ProductService } from './../../../services/product.service';
 import {
@@ -6,7 +5,7 @@ import {
   OnInit,
   AfterViewInit,
   ElementRef,
-  AfterViewChecked,
+  OnChanges,
 } from '@angular/core';
 
 @Component({
@@ -15,7 +14,6 @@ import {
   styleUrls: ['./product-list.component.scss'],
 })
 export class ProductListComponent implements OnInit, AfterViewInit {
-  subscription!: Subscription;
   constructor(
     private elementRef: ElementRef,
     private productServ: ProductService,
@@ -23,16 +21,20 @@ export class ProductListComponent implements OnInit, AfterViewInit {
   ) {}
 
   products: any;
-  searchValue = '';
+  filtred: any;
+  searchTerm = '';
 
   ngOnInit() {
-    this.productServ
-      .getProducts()
-      .subscribe((products) => (this.products = products));
-    this.subscription = this.searchService.currentSearch.subscribe((val) => {
-      if (this.products) {
-        this.products = this.products.filter((prod: any) =>
-          prod.name.toUpperCase().includes(val.toUpperCase())
+    this.productServ.getProducts().subscribe((products) => {
+      this.products = products;
+      this.filtred = products;
+    });
+    this.searchService.currentSearchTerm.subscribe((term) => {
+      this.searchTerm = term;
+      this.filtred = this.products;
+      if (this.filtred) {
+        this.filtred = this.products.filter((val: any) =>
+          val.name.toLowerCase().includes(this.searchTerm.toLowerCase().trim())
         );
       }
     });

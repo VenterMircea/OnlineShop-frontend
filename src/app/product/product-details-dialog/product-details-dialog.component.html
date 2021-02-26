@@ -1,7 +1,7 @@
 <div class="modal">
   <h1>This product was successfully added to your cart</h1>
   <div class="product-modal">
-    <a mat-dialog-close id="continue"> < Continue Shopping</a>
+    <a mat-dialog-close id="continue" routerLink="/"> < Continue Shopping</a>
     <app-product-item [product]="data"></app-product-item>
     <a routerLink="/cart" mat-dialog-close id="checkout-cart"
       >CheckOut Cart ></a
