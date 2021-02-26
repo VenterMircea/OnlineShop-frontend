@@ -30,6 +30,7 @@ export class ProductDetailsComponent implements OnInit {
   id: any;
 
   addToCart() {
+    this.cart = JSON.parse(localStorage.getItem('cart') || '[]');
     const ind = this.cart.findIndex((x) => x.id == this.product.id);
     ind < 0 ? this.cart.push({ ...this.product }) : this.cart[ind].qty++;
     localStorage.setItem('cart', JSON.stringify(this.cart));
