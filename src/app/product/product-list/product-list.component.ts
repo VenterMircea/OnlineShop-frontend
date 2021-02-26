@@ -25,16 +25,18 @@ export class ProductListComponent implements OnInit, AfterViewInit {
   searchTerm = '';
 
   ngOnInit() {
-    this.productServ
-      .getProducts()
-      .subscribe((products) => {this.products = products; this.filtred=products});
+    this.productServ.getProducts().subscribe((products) => {
+      this.products = products;
+      this.filtred = products;
+    });
     this.searchService.currentSearchTerm.subscribe((term) => {
       this.searchTerm = term;
-      this.filtred=this.products;
-      if (this.filtred)
+      this.filtred = this.products;
+      if (this.filtred) {
         this.filtred = this.products.filter((val: any) =>
           val.name.toLowerCase().includes(this.searchTerm.toLowerCase().trim())
         );
+      }
     });
   }
   ngAfterViewInit() {
