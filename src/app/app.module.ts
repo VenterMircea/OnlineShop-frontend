@@ -1,3 +1,4 @@
+import { FilterProductPipe } from './pipes/filter-product.pipe';
 import { ProductDetailsDialogComponent } from './product/product-details-dialog/product-details-dialog.component';
 import { ProductDetailsComponent } from './product/product-details/product-details.component';
 import { ProductListComponent } from './product/product-list/product-list.component';
@@ -21,6 +22,7 @@ import { HttpClientModule } from '@angular/common/http';
     ProductListComponent,
     ProductDetailsComponent,
     ProductDetailsDialogComponent,
+    FilterProductPipe,
   ],
   entryComponents: [ProductDetailsDialogComponent],
   imports: [
