@@ -1,3 +1,4 @@
+import { Subscription } from 'rxjs';
 import { SearchService } from './../../../services/search.service';
 import { ProductService } from './../../../services/product.service';
 import {
@@ -5,7 +6,7 @@ import {
   OnInit,
   AfterViewInit,
   ElementRef,
-  OnChanges,
+  OnDestroy,
 } from '@angular/core';
 
 @Component({
@@ -13,7 +14,7 @@ import {
   templateUrl: './product-list.component.html',
   styleUrls: ['./product-list.component.scss'],
 })
-export class ProductListComponent implements OnInit, AfterViewInit {
+export class ProductListComponent implements OnInit, AfterViewInit, OnDestroy {
   constructor(
     private elementRef: ElementRef,
     private productServ: ProductService,
@@ -21,26 +22,25 @@ export class ProductListComponent implements OnInit, AfterViewInit {
   ) {}
 
   products: any;
-  filtred: any;
+  subscription!: Subscription;
   searchTerm = '';
 
   ngOnInit() {
     this.productServ.getProducts().subscribe((products) => {
       this.products = products;
-      this.filtred = products;
     });
-    this.searchService.currentSearchTerm.subscribe((term) => {
-      this.searchTerm = term;
-      this.filtred = this.products;
-      if (this.filtred) {
-        this.filtred = this.products.filter((val: any) =>
-          val.name.toLowerCase().includes(this.searchTerm.toLowerCase().trim())
-        );
+    this.subscription = this.searchService.currentSearchTerm.subscribe(
+      (term) => {
+        this.searchTerm = term;
       }
-    });
+    );
   }
   ngAfterViewInit() {
     this.elementRef.nativeElement.ownerDocument.body.style.backgroundColor =
       '#fafbfc';
+  }
+
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
   }
 }
