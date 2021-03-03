@@ -27,7 +27,8 @@ export class ProductListComponent implements OnInit, AfterViewInit {
   ngOnInit() {
     this.productServ.getProducts().subscribe((products) => {
       this.products = products;
-      this.filtred = products;
+      this.products.forEach((element:any) => element.qty=1);
+      this.filtred = this.products;
     });
     this.searchService.currentSearchTerm.subscribe((term) => {
       this.searchTerm = term;
