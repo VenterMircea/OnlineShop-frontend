@@ -21,13 +21,14 @@ export class ProductListComponent implements OnInit, AfterViewInit, OnDestroy {
     private searchService: SearchService
   ) {}
 
-  products: any;
+  products: any[] = [];
   subscription!: Subscription;
   searchTerm = '';
 
   ngOnInit() {
     this.productServ.getProducts().subscribe((products) => {
-      this.products = products;
+      this.products = products.content;
+      console.log(products);
     });
     this.subscription = this.searchService.currentSearchTerm.subscribe(
       (term) => {
