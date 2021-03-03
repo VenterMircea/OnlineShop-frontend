@@ -8,6 +8,7 @@ export class ProductService {
   constructor(private http: HttpClient) {}
 
   getProducts() {
-    return this.http.get<any>('../assets/products.json');
+    //return this.http.get<any>('../assets/products.json');
+    return this.http.get<any>('http://3.120.32.114:8080/products/findAll'); 
   }
 }
