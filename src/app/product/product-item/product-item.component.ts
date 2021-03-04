@@ -11,6 +11,5 @@ export class ProductItemComponent implements OnInit {
   @Input() product: any;
   rating = 3;
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 }

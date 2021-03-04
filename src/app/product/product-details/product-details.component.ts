@@ -41,10 +41,8 @@ export class ProductDetailsComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.productServ.getProducts().subscribe((products) => {
-      this.products = products;
-      this.products.forEach((element: any) => (element.qty = 1));
-
+    this.productServ.getProduct().subscribe((products) => {
+      this.products = products.content;
       const id = this.route.snapshot.params.id;
       console.log(this.route.params.subscribe());
       const ind = this.products.findIndex((x) => x.id == id);
