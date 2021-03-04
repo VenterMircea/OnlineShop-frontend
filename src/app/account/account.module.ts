@@ -1,3 +1,4 @@
+import { MaterialModule } from '../../modules/material/material.module';
 import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
 import { LayoutComponent } from './layout/layout.component';
@@ -10,7 +11,8 @@ import { AccountRoutingModule } from './account-routing.module';
     imports: [
         CommonModule,
         ReactiveFormsModule,
-        AccountRoutingModule
+        AccountRoutingModule,
+        MaterialModule
     ],
     declarations: [
         LayoutComponent,
