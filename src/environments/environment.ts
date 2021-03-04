@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  apiUrl: "http://3.120.32.114:8080/users/findAll",
+  apiUrl: "http://3.120.32.114:8080",
 };
 
 /*
