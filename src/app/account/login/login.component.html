@@ -11,7 +11,7 @@
             </div>
             <span class='spacer'></span>
             <div class="form-group inputs">
-                <input type="password" formControlName="password" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" placeholder="parola"/>
+                <input [type]="hide? 'password' : 'text'" formControlName="password" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" placeholder="parola"/>
                 <mat-icon (click)="hide=!hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
                 <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
                     <div *ngIf="f.password.errors.required">Password is required</div>
