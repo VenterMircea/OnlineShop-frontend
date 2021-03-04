@@ -15,6 +15,7 @@ export class AppComponent {
   qty = 0;
   subscrption = this.cartService.currentCart.subscribe((cart) => {
     this.cart = cart;
+    console.log(cart);
     this.qty = this.cart.reduce((acc: any, val: any) => acc + val.qty, 0);
   });
   constructor(

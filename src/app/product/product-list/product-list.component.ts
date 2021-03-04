@@ -8,6 +8,7 @@ import {
   ElementRef,
   OnDestroy,
 } from '@angular/core';
+import { ViewportScroller } from '@angular/common';
 
 @Component({
   selector: 'app-product-list',
@@ -18,16 +19,38 @@ export class ProductListComponent implements OnInit, AfterViewInit, OnDestroy {
   constructor(
     private elementRef: ElementRef,
     private productServ: ProductService,
-    private searchService: SearchService
+    private searchService: SearchService,
+    private scroll: ViewportScroller
   ) {}
 
-  products: any;
+  products: any[] = [];
   subscription!: Subscription;
   searchTerm = '';
+  pageNumber = 0;
+
+  decreasePageNo() {
+    this.pageNumber--;
+    this.productServ.getProducts(this.pageNumber).subscribe((products) => {
+      this.products = products.content;
+      console.log(products);
+    });
+    console.log(this.pageNumber);
+    this.scroll.scrollToPosition([0, 0]);
+  }
+  increasePageNo() {
+    this.pageNumber++;
+    this.productServ.getProducts(this.pageNumber).subscribe((products) => {
+      this.products = products.content;
+      console.log(products);
+    });
+    console.log(this.pageNumber);
+    this.scroll.scrollToPosition([0, 0]);
+  }
 
   ngOnInit() {
-    this.productServ.getProducts().subscribe((products) => {
-      this.products = products;
+    this.productServ.getProducts(this.pageNumber).subscribe((products) => {
+      this.products = products.content;
+      console.log(products);
     });
     this.subscription = this.searchService.currentSearchTerm.subscribe(
       (term) => {

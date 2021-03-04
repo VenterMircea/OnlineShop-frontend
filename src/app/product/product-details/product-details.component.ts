@@ -27,24 +27,23 @@ export class ProductDetailsComponent implements OnInit {
   cart: any[] = [];
   history: any[] = [];
   displayHistory: any[] = [];
-  id: any;
+  id = this.route.snapshot.params.id;
 
   addToCart() {
     this.cart = JSON.parse(localStorage.getItem('cart') || '[]');
     const ind = this.cart.findIndex((x) => x.id == this.product.id);
-    ind < 0 ? this.cart.push({ ...this.product }) : this.cart[ind].qty++;
+    ind < 0
+      ? this.cart.push({ ...this.product, qty: 1 })
+      : this.cart[ind].qty++;
     localStorage.setItem('cart', JSON.stringify(this.cart));
     this.cartService.update();
     this.dialog.open(ProductDetailsDialogComponent, { data: this.product });
   }
 
   ngOnInit() {
-    this.productServ.getProducts().subscribe((products) => {
-      this.products = products;
-      const id = this.route.snapshot.params.id;
-      console.log(this.route.params.subscribe());
-      const ind = this.products.findIndex((x) => x.id == id);
-      this.product = this.products[ind];
+    this.productServ.getProduct(this.id).subscribe((product) => {
+      this.product = product;
+      console.log(product);
       this.history = JSON.parse(localStorage.getItem('history') || '[]');
       this.displayHistory = this.history.filter(
         (val) => val.id !== this.product.id
