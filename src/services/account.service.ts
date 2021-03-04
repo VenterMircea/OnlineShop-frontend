@@ -45,21 +45,6 @@ export class AccountService {
             lastName: '',
             token: '',
         })
-      );
-  }
-
-  logout() {
-    // remove user from local storage and set current user to null
-    localStorage.removeItem('user');
-    this.userSubject.next({
-      id: '',
-      username: '',
-      password: '',
-      firstName: '',
-      lastName: '',
-      token: '',
-    });
-    this.router.navigate(['/account/login']);
   }
 
   register(user: User) {
