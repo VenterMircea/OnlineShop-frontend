@@ -32,15 +32,17 @@ export class ProductDetailsComponent implements OnInit {
   addToCart() {
     this.cart = JSON.parse(localStorage.getItem('cart') || '[]');
     const ind = this.cart.findIndex((x) => x.id == this.product.id);
-    ind < 0 ? this.cart.push({ ...this.product }) : this.cart[ind].qty++;
+    ind < 0
+      ? this.cart.push({ ...this.product, qty: 1 })
+      : this.cart[ind].qty++;
     localStorage.setItem('cart', JSON.stringify(this.cart));
     this.cartService.update();
     this.dialog.open(ProductDetailsDialogComponent, { data: this.product });
   }
 
   ngOnInit() {
-    this.productServ.getProducts().subscribe((products) => {
-      this.products = products;
+    this.productServ.getProduct().subscribe((products) => {
+      this.products = products.content;
       const id = this.route.snapshot.params.id;
       console.log(this.route.params.subscribe());
       const ind = this.products.findIndex((x) => x.id == id);

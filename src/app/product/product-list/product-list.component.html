@@ -9,3 +9,11 @@
   <i aria-hidden="true"></i>
   <i aria-hidden="true"></i>
 </div>
+<div class="page-controls">
+  <button (click)="decreasePageNo()" *ngIf="pageNumber > 0">
+    < Previous Page</button
+  >Page:
+  {{ pageNumber + 1 }}
+  <button (click)="increasePageNo()">Next Page ></button>
+</div>
+<div class="footer"></div>

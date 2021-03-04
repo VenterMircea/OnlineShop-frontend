@@ -6,7 +6,7 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class CartService {
   private cartSource = new BehaviorSubject(
-    JSON.parse(localStorage.getItem('cart') || '{}')
+    JSON.parse(localStorage.getItem('cart') || '[]')
   );
   currentCart = this.cartSource.asObservable();
   constructor() {}
