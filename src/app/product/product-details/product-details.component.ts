@@ -43,7 +43,6 @@ export class ProductDetailsComponent implements OnInit {
   ngOnInit() {
     this.productServ.getProduct(this.id).subscribe((product) => {
       this.product = product;
-      console.log(product);
       this.history = JSON.parse(localStorage.getItem('history') || '[]');
       this.displayHistory = this.history.filter(
         (val) => val.id !== this.product.id

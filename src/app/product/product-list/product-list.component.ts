@@ -32,16 +32,14 @@ export class ProductListComponent implements OnInit, AfterViewInit, OnDestroy {
     this.pageNumber--;
     this.productServ.getProducts(this.pageNumber).subscribe((products) => {
       this.products = products.content;
-      console.log(products);
     });
-    console.log(this.pageNumber);
+
     this.scroll.scrollToPosition([0, 0]);
   }
   increasePageNo() {
     this.pageNumber++;
     this.productServ.getProducts(this.pageNumber).subscribe((products) => {
       this.products = products.content;
-      console.log(products);
     });
     console.log(this.pageNumber);
     this.scroll.scrollToPosition([0, 0]);
@@ -50,7 +48,6 @@ export class ProductListComponent implements OnInit, AfterViewInit, OnDestroy {
   ngOnInit() {
     this.productServ.getProducts(this.pageNumber).subscribe((products) => {
       this.products = products.content;
-      console.log(products);
     });
     this.subscription = this.searchService.currentSearchTerm.subscribe(
       (term) => {
