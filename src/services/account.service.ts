@@ -9,22 +9,22 @@ import { User } from '../app/models/user';
 
 @Injectable({ providedIn: 'root' })
 export class AccountService {
-    private userSubject!: BehaviorSubject<any>;
-    public user: Observable<any>;
-    private aux!: User;
+  private userSubject!: BehaviorSubject<any>;
+  public user: Observable<any>;
+  private aux!: User;
 
-    constructor(
-        private router: Router,
-        private http: HttpClient
-    ) { 
-        if(localStorage.getItem('user')) this.userSubject = new BehaviorSubject<User>(JSON.parse(localStorage.getItem('user')||''));
-            else this.userSubject = new BehaviorSubject<any>(null)
-        this.user = this.userSubject.asObservable();
-    }
+  constructor(private router: Router, private http: HttpClient) {
+    if (localStorage.getItem('user'))
+      this.userSubject = new BehaviorSubject<User>(
+        JSON.parse(localStorage.getItem('user') || '')
+      );
+    else this.userSubject = new BehaviorSubject<any>(null);
+    this.user = this.userSubject.asObservable();
+  }
 
-    public get userValue(): User {
-        return this.userSubject.value;
-    }
+  public get userValue(): User {
+    return this.userSubject.value;
+  }
 
     login(username: any, password: any) {
         return this.http.post<User>(`${environment.apiUrl}/login`, { "username":username, "password": password })
@@ -45,20 +45,34 @@ export class AccountService {
             lastName: '',
             token: '',
         })
-        this.router.navigate(['/account/login']);
-    }
+      );
+  }
 
-    register(user: User) {
-        return this.http.post(`${environment.apiUrl}/users/register`, user);
-    }
+  logout() {
+    // remove user from local storage and set current user to null
+    localStorage.removeItem('user');
+    this.userSubject.next({
+      id: '',
+      username: '',
+      password: '',
+      firstName: '',
+      lastName: '',
+      token: '',
+    });
+    this.router.navigate(['/account/login']);
+  }
 
-    getAll() {
-        return this.http.get<User[]>(`${environment.apiUrl}/users/findAll`);
-    }
+  register(user: User) {
+    return this.http.post(`${environment.apiUrl}/users/register`, user);
+  }
 
-    getById(id: string) {
-        return this.http.get<User>(`${environment.apiUrl}/users/${id}`);
-    }
+  getAll() {
+    return this.http.get<User[]>(`${environment.apiUrl}/users/findAll`);
+  }
+
+  getById(id: string) {
+    return this.http.get<User>(`${environment.apiUrl}/users/${id}`);
+  }
 
     update(id:any, params:any) {
         return this.http.put(`${environment.apiUrl}/users/${id}`, params)

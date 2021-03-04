@@ -27,7 +27,7 @@ export class ProductDetailsComponent implements OnInit {
   cart: any[] = [];
   history: any[] = [];
   displayHistory: any[] = [];
-  id: any;
+  id = this.route.snapshot.params.id;
 
   addToCart() {
     this.cart = JSON.parse(localStorage.getItem('cart') || '[]');
@@ -41,12 +41,8 @@ export class ProductDetailsComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.productServ.getProduct().subscribe((products) => {
-      this.products = products.content;
-      const id = this.route.snapshot.params.id;
-      console.log(this.route.params.subscribe());
-      const ind = this.products.findIndex((x) => x.id == id);
-      this.product = this.products[ind];
+    this.productServ.getProduct(this.id).subscribe((product) => {
+      this.product = product;
       this.history = JSON.parse(localStorage.getItem('history') || '[]');
       this.displayHistory = this.history.filter(
         (val) => val.id !== this.product.id
