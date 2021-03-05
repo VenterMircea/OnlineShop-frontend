@@ -10,6 +10,20 @@
   <i aria-hidden="true"></i>
 </div>
 <div class="page-controls">
+  <label for="pageSize">Products: </label>
+  <select
+    name="pageSize"
+    id="pageSize"
+    title="The number of products per page"
+    (change)="selectChangeHandler($event)"
+  >
+    <option value="10">10</option>
+    <option value="20">20</option>
+    <option value="50">50</option>
+  </select>
+  <button (click)="firstPage()" *ngIf="pageNumber > 0" title="Go to first page">
+    <<
+  </button>
   <button
     (click)="decreasePageNo()"
     *ngIf="pageNumber > 0"
@@ -18,6 +32,19 @@
     < Previous
   </button>
   Page: <span>{{ pageNumber + 1 }} </span> of {{ totalPages }}
-  <button (click)="increasePageNo()" title="Go to next page">Next ></button>
+  <button
+    (click)="increasePageNo()"
+    *ngIf="pageNumber + 1 < totalPages"
+    title="Go to next page"
+  >
+    Next >
+  </button>
+  <button
+    (click)="lastPage()"
+    *ngIf="pageNumber + 1 < totalPages"
+    title="Go to last page"
+  >
+    >>
+  </button>
 </div>
 <div class="footer"></div>

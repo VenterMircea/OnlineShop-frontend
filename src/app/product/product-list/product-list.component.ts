@@ -28,26 +28,59 @@ export class ProductListComponent implements OnInit, AfterViewInit, OnDestroy {
   searchTerm = '';
   pageNumber = 0;
   totalPages = 0;
+  pageSize = 10;
+
+  firstPage() {
+    this.pageNumber = 0;
+    this.productServ.getProducts(this.pageNumber, this.pageSize).subscribe((products) => {
+      this.products = products.content;
+      this.totalPages = products.totalPages
+    });
+    this.scroll.scrollToPosition([0, 0]);
+  }
 
   decreasePageNo() {
     this.pageNumber--;
-    this.productServ.getProducts(this.pageNumber).subscribe((products) => {
+    this.productServ.getProducts(this.pageNumber, this.pageSize).subscribe((products) => {
       this.products = products.content;
+      this.totalPages = products.totalPages
     });
-
     this.scroll.scrollToPosition([0, 0]);
   }
+
+
   increasePageNo() {
     this.pageNumber++;
-    this.productServ.getProducts(this.pageNumber).subscribe((products) => {
+    this.productServ.getProducts(this.pageNumber, this.pageSize).subscribe((products) => {
       this.products = products.content;
+      this.totalPages = products.totalPages
     });
-    console.log(this.pageNumber);
+    console.log(this.pageNumber, this.totalPages);
+    this.scroll.scrollToPosition([0, 0]);
+  }
+  lastPage() {
+    this.pageNumber = this.totalPages - 1;
+    this.productServ.getProducts(this.pageNumber, this.pageSize).subscribe((products) => {
+      this.products = products.content;
+      this.totalPages = products.totalPages
+    });
+    console.log(this.pageNumber, this.totalPages);
+    this.scroll.scrollToPosition([0, 0]);
+  }
+
+  selectChangeHandler(event: any) {
+    this.pageSize = event.target.value
+    this.pageNumber = 0
+    this.productServ.getProducts(this.pageNumber, this.pageSize).subscribe((products) => {
+      this.products = products.content;
+      this.totalPages = products.totalPages
+      console.log(this.pageSize)
+    });
     this.scroll.scrollToPosition([0, 0]);
   }
 
   ngOnInit() {
-    this.productServ.getProducts(this.pageNumber).subscribe((products) => {
+    this.productServ.getProducts(this.pageNumber, this.pageSize).subscribe((products) => {
       this.products = products.content;
       this.totalPages = products.totalPages
       console.log(products);
@@ -58,6 +91,7 @@ export class ProductListComponent implements OnInit, AfterViewInit, OnDestroy {
       }
     );
   }
+
   ngAfterViewInit() {
     this.elementRef.nativeElement.ownerDocument.body.style.backgroundColor =
       '#fafbfc';
