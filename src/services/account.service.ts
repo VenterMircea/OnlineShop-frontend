@@ -27,12 +27,13 @@ export class AccountService {
   }
 
   login(username: any, password: any) {
-    // return this.http.post<User>(`${environment.apiUrl}/users/authenticate`, { username, password })
     return this.http
-      .post<User>(`postBeUrl`, { username, password })
+      .post<User>(`${environment.apiUrl}/login`, {
+        username: username,
+        password: password,
+      })
       .pipe(
         map((user) => {
-          // store user details and jwt token in local storage to keep user logged in between page refreshes
           localStorage.setItem('user', JSON.stringify(user));
           this.userSubject.next(user);
           return user;
@@ -41,7 +42,6 @@ export class AccountService {
   }
 
   logout() {
-    // remove user from local storage and set current user to null
     localStorage.removeItem('user');
     this.userSubject.next({
       id: '',
@@ -51,7 +51,6 @@ export class AccountService {
       lastName: '',
       token: '',
     });
-    this.router.navigate(['/account/login']);
   }
 
   register(user: User) {
@@ -69,20 +68,15 @@ export class AccountService {
   update(id: any, params: any) {
     return this.http.put(`${environment.apiUrl}/users/${id}`, params).pipe(
       map((x) => {
-        // update stored user if the logged in user updated their own record
         if (id == this.userValue.id) {
-          // update local storage
           const user = { ...this.userValue, ...params };
           localStorage.setItem('user', JSON.stringify(user));
-
-          // publish updated user to subscribers
           this.userSubject.next(user);
         }
         return x;
       })
     );
   }
-
   delete(id: string) {
     return this.http.delete(`${environment.apiUrl}/users/${id}`).pipe(
       map((x) => {
@@ -97,4 +91,6 @@ export class AccountService {
   createUser(user: any) {
     return this.http.post('http://3.120.32.114:8080/users', user);
   }
+
+  // publish updated user to subscribers
 }

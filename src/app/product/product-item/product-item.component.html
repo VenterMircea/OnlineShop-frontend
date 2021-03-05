@@ -1,6 +1,6 @@
 <div class="product" *ngIf="product" [routerLink]="['/products/', product.id]">
-  <img [src]="product.image" alt="" />
-  <h2>{{ product.name.substring(0, 30) }}</h2>
+  <img src="{{ product.image }}" alt="" />
+  <h2>{{ product.name.substring(0, 30) | titlecase }}</h2>
   <star-rating
     [value]="product.rating"
     [totalstars]="5"

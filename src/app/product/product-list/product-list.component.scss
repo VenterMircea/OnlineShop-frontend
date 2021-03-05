@@ -15,6 +15,14 @@ i {
   margin-bottom: 100px;
   margin-top: -100px;
 }
+.page-controls > button {
+  background-color: transparent;
+  border: none;
+  color: #0000ff;
+}
+.page-controls > span {
+  color: #0000ff;
+}
 .footer {
   height: 100px;
 }
