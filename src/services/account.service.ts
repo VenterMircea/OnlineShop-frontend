@@ -94,4 +94,7 @@ export class AccountService {
       })
     );
   }
+  createUser(user: any) {
+    return this.http.post('http://3.120.32.114:8080/users', user);
+  }
 }
