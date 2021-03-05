@@ -1,7 +1,8 @@
+import { AccountService } from './../../services/account.service';
 import { CartService } from './../../services/cart.service';
 import { Product } from './../models/product';
 import { Component, OnInit, AfterViewInit, ElementRef } from '@angular/core';
-import { FormControl, Validators } from '@angular/forms';
+
 
 @Component({
   selector: 'app-cart',
@@ -12,12 +13,14 @@ export class CartComponent implements OnInit, AfterViewInit {
   products!: any[];
   total = 0;
   selected = 'option1';
+  user: any;
 
-  constructor(private cartService: CartService, private elementRef: ElementRef,) {}
+  constructor(private cartService: CartService, private elementRef: ElementRef, private accountService: AccountService) {}
 
   ngOnInit(): void {
     this.products = JSON.parse(localStorage.getItem('cart') || '[]');
     this.computeTotal();
+    this.user=this.accountService.userValue;
   }
   ngAfterViewInit() {
     this.elementRef.nativeElement.ownerDocument.body.style.backgroundColor =
