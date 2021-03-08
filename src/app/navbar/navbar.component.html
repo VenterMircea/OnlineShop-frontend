@@ -14,9 +14,8 @@
         ><span class="material-icons"> account_circle </span>
         <h3>Sign In</h3></a
       >
-      <div *ngIf="userLogged" class="user-dropdown">
+      <div class="user-dropdown" *ngIf="userLogged">
         <a
-          routerLink="/"
           cdkOverlayOrigin
           #trigger="cdkOverlayOrigin"
           (click)="userOptions = !userOptions"
@@ -38,8 +37,13 @@
                 {{ user.firstName }} {{ user.lastName }}
               </h3>
             </li>
-            <li><a routerLink="/account/details">View details</a></li>
-            <button class="signout-btn">Sign Out</button>
+
+            <li>
+              <a routerLink="/account/details" class="view-user-details">
+                > View my details</a
+              >
+            </li>
+            <button class="signout-btn" (click)="signout()">Sign Out</button>
           </ul>
         </ng-template>
       </div>

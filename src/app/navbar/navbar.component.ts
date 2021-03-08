@@ -30,6 +30,13 @@ export class NavbarComponent implements OnInit {
     this.searchTerm = event.target.value;
     this.searchService.changeTerm(this.searchTerm);
   }
+  signout() {
+    localStorage.removeItem('user');
+    this.userOptions = false;
+    localStorage.hasOwnProperty('user')
+      ? (this.userLogged = true)
+      : (this.userLogged = false);
+  }
   ngOnInit() {
     localStorage.hasOwnProperty('user')
       ? (this.userLogged = true)
