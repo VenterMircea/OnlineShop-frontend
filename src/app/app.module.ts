@@ -14,6 +14,9 @@ import { CartComponent } from './cart/cart.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { AlertComponent } from './alert/alert.component';
+import { HashLocationStrategy, LocationStrategy } from '@angular/common';
+import { NavbarComponent } from './navbar/navbar.component';
+import { OverlayModule } from '@angular/cdk/overlay';
 
 @NgModule({
   declarations: [
@@ -25,6 +28,7 @@ import { AlertComponent } from './alert/alert.component';
     ProductDetailsDialogComponent,
     FilterProductPipe,
     AlertComponent,
+    NavbarComponent,
   ],
   entryComponents: [ProductDetailsDialogComponent],
   imports: [
@@ -36,8 +40,9 @@ import { AlertComponent } from './alert/alert.component';
     ReactiveFormsModule,
     RatingModule,
     HttpClientModule,
+    OverlayModule,
   ],
-  providers: [],
+  providers: [{ provide: LocationStrategy, useClass: HashLocationStrategy }],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
