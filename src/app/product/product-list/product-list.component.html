@@ -18,6 +18,12 @@
     < Previous
   </button>
   Page: <span>{{ pageNumber + 1 }} </span> of {{ totalPages }}
-  <button (click)="increasePageNo()" title="Go to next page">Next ></button>
+  <button
+    (click)="increasePageNo()"
+    title="Go to next page"
+    *ngIf="pageNumber + 1 < totalPages"
+  >
+    Next >
+  </button>
 </div>
 <div class="footer"></div>

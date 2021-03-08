@@ -1,3 +1,4 @@
+import { ProductService } from 'src/services/product.service';
 import { SearchService } from './../services/search.service';
 import { CartService } from './../services/cart.service';
 import { Component, OnInit, TemplateRef } from '@angular/core';
@@ -19,7 +20,8 @@ export class AppComponent {
   });
   constructor(
     private cartService: CartService,
-    private searchService: SearchService
+    private searchService: SearchService,
+    private productServ: ProductService
   ) {}
 
   changeSearchTerm(event: any) {

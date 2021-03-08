@@ -21,7 +21,7 @@ export class ProductListComponent implements OnInit, AfterViewInit, OnDestroy {
     private productServ: ProductService,
     private searchService: SearchService,
     private scroll: ViewportScroller
-  ) { }
+  ) {}
 
   products: any[] = [];
   subscription!: Subscription;
@@ -49,7 +49,7 @@ export class ProductListComponent implements OnInit, AfterViewInit, OnDestroy {
   ngOnInit() {
     this.productServ.getProducts(this.pageNumber).subscribe((products) => {
       this.products = products.content;
-      this.totalPages = products.totalPages
+      this.totalPages = products.totalPages;
       console.log(products);
     });
     this.subscription = this.searchService.currentSearchTerm.subscribe(
