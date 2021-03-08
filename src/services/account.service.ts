@@ -27,10 +27,12 @@ export class AccountService {
   }
 
     login(username: any, password: any) {
-        return this.http.post<any>(`${environment.apiUrl}/login`, { "username":username, "password": password })
+        return this.http.post<any>(`${environment.apiUrl}/login`, { "username":username, "password": password }, {observe: 'response' as 'body'})
             .pipe(map(user => {
-                localStorage.setItem('user', JSON.stringify(user));
-                this.userSubject.next(user);
+                let userM=user.body;
+                userM.token='eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI2MDM2NDgyNzNlZDg1ODMyYjQ0MGViOTksbHJvemllcjIiLCJpc3MiOiJldS5hY2Nlc2Eub25saW5lc3RvcmUiLCJpYXQiOjE2MTUxOTgzMDgsImV4cCI6MTYxNTgwMzEwOH0.QjX0FhOV-H0MlbnOuy0FIuL4NOAmILKUttzQ2j1v06q4qFIB9dp-evtdZOqFkW5vBIdmud65mrEjm-TdKmLxhg';
+                localStorage.setItem('user', JSON.stringify(userM));
+                this.userSubject.next(user.body);
                 return user;
             }));
     }

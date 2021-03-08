@@ -44,13 +44,14 @@ export class LoginComponent implements OnInit {
         this.accountService.login(this.f.username.value, this.f.password.value)
             .pipe(first())
             .subscribe(
-                response => {
+                (response: Response) => {
 
-                    const keys = response.headers.keys();
-                    const headers = keys.map((key: any) =>
-                        `${key}: ${response.headers.get(key)}`);
+                    // const keys = response.headers.keys();
+                    // const headers = keys.map((key: any) =>
+                    //     `${key}: ${response.headers.get(key)}`);
 
-                    console.table(headers);
+                    // console.table(headers);
+                    console.log(typeof(response) );
                     //this.router.navigate([this.returnUrl]);
                     console.log('resp: ', response);
                 },
