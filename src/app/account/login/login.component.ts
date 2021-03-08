@@ -45,15 +45,7 @@ export class LoginComponent implements OnInit {
             .pipe(first())
             .subscribe(
                 (response: Response) => {
-
-                    // const keys = response.headers.keys();
-                    // const headers = keys.map((key: any) =>
-                    //     `${key}: ${response.headers.get(key)}`);
-
-                    // console.table(headers);
-                    console.log(typeof(response) );
                     //this.router.navigate([this.returnUrl]);
-                    console.log('resp: ', response);
                 },
                 error => {
                     this.alertService.error(error);
