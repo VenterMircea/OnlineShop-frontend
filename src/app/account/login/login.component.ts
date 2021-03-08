@@ -29,7 +29,8 @@ export class LoginComponent implements OnInit {
             username: ['', Validators.required],
             password: ['', Validators.required]
         });
-        this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
+        this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/order';
+        //this.returnUrl =  '/order';
     }
 
     get f() { return this.form.controls; }
@@ -45,7 +46,7 @@ export class LoginComponent implements OnInit {
             .pipe(first())
             .subscribe(
                 (response: Response) => {
-                    //this.router.navigate([this.returnUrl]);
+                    this.router.navigate([this.returnUrl]);
                 },
                 error => {
                     this.alertService.error(error);

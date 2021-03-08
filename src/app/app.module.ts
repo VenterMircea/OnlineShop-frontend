@@ -1,4 +1,5 @@
 import { FilterProductPipe } from './pipes/filter-product.pipe';
+import { AppInterceptorInterceptor } from './interceptors/app-interceptor.interceptor';
 import { ProductDetailsDialogComponent } from './product/product-details-dialog/product-details-dialog.component';
 import { ProductDetailsComponent } from './product/product-details/product-details.component';
 import { ProductListComponent } from './product/product-list/product-list.component';
@@ -12,8 +13,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RatingModule } from 'ng-starrating';
 import { CartComponent } from './cart/cart.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
 import { AlertComponent } from './alert/alert.component';
+import { OrderComponent } from './order/order.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +27,7 @@ import { AlertComponent } from './alert/alert.component';
     ProductDetailsDialogComponent,
     FilterProductPipe,
     AlertComponent,
+    OrderComponent,
   ],
   entryComponents: [ProductDetailsDialogComponent],
   imports: [
@@ -37,7 +40,9 @@ import { AlertComponent } from './alert/alert.component';
     RatingModule,
     HttpClientModule,
   ],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: AppInterceptorInterceptor, multi: true },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

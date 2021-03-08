@@ -2,7 +2,6 @@ import { SearchService } from './../services/search.service';
 import { CartService } from './../services/cart.service';
 import { Component, OnInit, TemplateRef } from '@angular/core';
 import { Subscription } from 'rxjs';
-
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
