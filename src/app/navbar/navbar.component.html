@@ -1,0 +1,57 @@
+<div class="header">
+  <nav class="navbar">
+    <img src="../assets/estore.jpg" alt="" routerLink="/" />
+
+    <div class="search">
+      <input type="text" (keyup)="changeSearchTerm($event)" /><span
+        class="material-icons search-icon"
+      >
+        search
+      </span>
+    </div>
+    <div class="nav-options">
+      <a routerLink="/account/login" *ngIf="!userLogged"
+        ><span class="material-icons"> account_circle </span>
+        <h3>Sign In</h3></a
+      >
+      <div *ngIf="userLogged" class="user-dropdown">
+        <a
+          routerLink="/"
+          cdkOverlayOrigin
+          #trigger="cdkOverlayOrigin"
+          (click)="userOptions = !userOptions"
+          ><span class="material-icons"> account_circle </span>
+          <h3>My account</h3></a
+        >
+
+        <ng-template
+          cdkConnectedOverlay
+          [cdkConnectedOverlayOrigin]="trigger"
+          [cdkConnectedOverlayOpen]="userOptions"
+        >
+          <ul class="example-list">
+            <li>
+              <h3>Hello,</h3>
+            </li>
+            <li>
+              <h3 class="user-name">
+                {{ user.firstName }} {{ user.lastName }}
+              </h3>
+            </li>
+            <li><a routerLink="/account/details">View details</a></li>
+            <button class="signout-btn">Sign Out</button>
+          </ul>
+        </ng-template>
+      </div>
+
+      <a routerLink="/cart"
+        ><span class="material-icons icons"> shopping_cart </span>
+        <h3>
+          Cart
+          <span *ngIf="cart.length > 0">( {{ qty }} )</span>
+        </h3></a
+      >
+    </div>
+  </nav>
+  <div class="horizontal"></div>
+</div>

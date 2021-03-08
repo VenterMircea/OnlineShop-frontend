@@ -11,21 +11,4 @@ import { Subscription } from 'rxjs';
 })
 export class AppComponent {
   title = 'online-store';
-  cart: any = [];
-  searchTerm = '';
-  qty = 0;
-  subscrption = this.cartService.currentCart.subscribe((cart) => {
-    this.cart = cart;
-    this.qty = this.cart.reduce((acc: any, val: any) => acc + val.qty, 0);
-  });
-  constructor(
-    private cartService: CartService,
-    private searchService: SearchService,
-    private productServ: ProductService
-  ) {}
-
-  changeSearchTerm(event: any) {
-    this.searchTerm = event.target.value;
-    this.searchService.changeTerm(this.searchTerm);
-  }
 }

@@ -28,14 +28,17 @@ export class AccountService {
 
   login(username: any, password: any) {
     return this.http
-      .post<User>(`${environment.apiUrl}/login`, {
-        username: username,
-        password: password,
-      })
+      .post<any>(
+        `${environment.apiUrl}/login`,
+        { username: username, password: password },
+        { observe: 'response' as 'body' }
+      )
       .pipe(
         map((user) => {
-          localStorage.setItem('user', JSON.stringify(user));
-          this.userSubject.next(user);
+          let userM = user.body;
+          userM.token = user.headers.get('Authorization');
+          localStorage.setItem('user', JSON.stringify(userM));
+          this.userSubject.next(user.body);
           return user;
         })
       );

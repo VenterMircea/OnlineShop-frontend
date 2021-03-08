@@ -1,14 +1,17 @@
 .product-list {
   display: flex;
   flex-wrap: wrap;
+  font-size: 1.1 em;
   justify-content: space-between;
-
-  width: 80%;
   margin: 120px auto;
+  width: 80%;
 }
 i {
   width: 200px;
   margin: 16px;
+}
+label {
+  margin-right: 3px;
 }
 .page-controls {
   text-align: center;

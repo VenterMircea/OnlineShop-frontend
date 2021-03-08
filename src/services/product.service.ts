@@ -6,15 +6,18 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root',
 })
 export class ProductService {
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
-  getProducts(pageNo: any) {
+  getProducts(pageNo: any, pageSize: any) {
     //return this.http.get<any>('../assets/products.json');
     return this.http.get<any>(
-      `http://3.120.32.114:8080/products/findAll?pageNo=${pageNo}`
+      `http://3.120.32.114:8080/products/findAll?pageNo=${pageNo}&pageSize=${pageSize}`
     );
   }
   getProduct(id: any) {
     return this.http.get<any>(`http://3.120.32.114:8080/products/${id}`);
+  }
+  getPageSize(size: any) {
+    return this.http.get<any>(`http://3.120.32.114:8080/products/${size}`);
   }
 }
