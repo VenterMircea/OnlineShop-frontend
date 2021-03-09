@@ -15,14 +15,19 @@
   <select
     name="pageSize"
     id="pageSize"
+    class="pageSize"
     title="The number of products per page"
-    (change)="selectChangeHandler($event)"
+    (change)="selectPageSizeHandler($event)"
   >
-    <option value="10">10</option>
-    <option value="20">20</option>
-    <option value="50">50</option>
+    <option *ngFor="let pageSize of pageSizeSelector" value="{{ pageSize }}">
+      {{ pageSize }}
+    </option>
   </select>
-  <button (click)="firstPage()" *ngIf="pageNumber > 0" title="Go to first page">
+  <button
+    (click)="showFirstPage()"
+    *ngIf="pageNumber > 0"
+    title="Go to first page"
+  >
     <<
   </button>
   <button
@@ -32,7 +37,19 @@
   >
     < Previous
   </button>
-  Page: <span>{{ pageNumber + 1 }} </span> of {{ totalPages }}
+  Page:
+  <button
+    *ngFor="let pageNo of multiplePages"
+    [style.color]="pageNumber === pageNo - 1 ? 'black' : null"
+    [style.text-decoration]="pageNumber === pageNo - 1 ? 'underline' : null"
+    (click)="showPageNo(pageNo - 1)"
+    title="Go to page"
+  >
+    {{ pageNo }}
+  </button>
+  <span *ngIf="pageNumber + numberOfMultiplePages <= totalPages">...</span>
+  of
+  {{ totalPages }}
   <button
     (click)="increasePageNo()"
     *ngIf="pageNumber + 1 < totalPages"
@@ -41,7 +58,7 @@
     Next >
   </button>
   <button
-    (click)="lastPage()"
+    (click)="showLastPage()"
     *ngIf="pageNumber + 1 < totalPages"
     title="Go to last page"
   >

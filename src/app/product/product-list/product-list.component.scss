@@ -6,26 +6,45 @@
   margin: 120px auto;
   width: 80%;
 }
+
 i {
   width: 200px;
   margin: 16px;
 }
+
 label {
   margin-right: 3px;
 }
+
+.pageSize {
+  cursor: pointer;
+}
+
 .page-controls {
   text-align: center;
   margin-bottom: 100px;
   margin-top: -100px;
 }
+
 .page-controls > button {
   background-color: transparent;
   border: none;
   color: #0000ff;
 }
+
+.page-controls > button:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.page-controls > button:active {
+  color: red;
+}
+
 .page-controls > span {
   color: #0000ff;
 }
+
 .footer {
   height: 100px;
 }
