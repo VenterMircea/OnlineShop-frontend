@@ -39,7 +39,7 @@ export class OrderComponent implements OnInit, AfterViewInit {
     order['orderValue'] = this.orderValue;
     order['orderedProducts'] = this.orderObject;
     order['userId'] = this.user.id;
-    //this.orderService.postOrder(order).subscribe();
+    this.orderService.postOrder(order).subscribe();
     setTimeout(() => {
       this.router.navigate(['/']);
     }, 3000);
