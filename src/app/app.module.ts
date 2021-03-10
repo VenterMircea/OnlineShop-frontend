@@ -1,4 +1,5 @@
 import { FilterProductPipe } from './pipes/filter-product.pipe';
+import { AppInterceptorInterceptor } from './interceptors/app-interceptor.interceptor';
 import { ProductDetailsDialogComponent } from './product/product-details-dialog/product-details-dialog.component';
 import { ProductDetailsComponent } from './product/product-details/product-details.component';
 import { ProductListComponent } from './product/product-list/product-list.component';
@@ -12,8 +13,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RatingModule } from 'ng-starrating';
 import { CartComponent } from './cart/cart.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
 import { AlertComponent } from './alert/alert.component';
+import { OrderComponent } from './order/order.component';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { NavbarComponent } from './navbar/navbar.component';
 import { OverlayModule } from '@angular/cdk/overlay';
@@ -28,6 +30,7 @@ import { OverlayModule } from '@angular/cdk/overlay';
     ProductDetailsDialogComponent,
     FilterProductPipe,
     AlertComponent,
+    OrderComponent,
     NavbarComponent,
   ],
   entryComponents: [ProductDetailsDialogComponent],
@@ -42,7 +45,10 @@ import { OverlayModule } from '@angular/cdk/overlay';
     HttpClientModule,
     OverlayModule,
   ],
-  providers: [{ provide: LocationStrategy, useClass: HashLocationStrategy }],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: AppInterceptorInterceptor, multi: true },
+    { provide: LocationStrategy, useClass: HashLocationStrategy }
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
