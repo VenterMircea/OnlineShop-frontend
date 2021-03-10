@@ -1,0 +1,112 @@
+<app-navbar></app-navbar>
+<div class="user-details">
+  <div class="user-name">
+    <div class="user-img">
+      <p class="user-logo">{{ userLogo }}</p>
+    </div>
+    <h2>{{ newUser.firstName }} {{ newUser.lastName }}</h2>
+    <ul>
+      <li
+        [ngClass]="{ active: detailsOption == 1 }"
+        (click)="detailsOption = 1"
+      >
+        Account info
+      </li>
+      <li
+        [ngClass]="{ active: detailsOption == 2 }"
+        (click)="detailsOption = 2"
+      >
+        Address
+      </li>
+    </ul>
+  </div>
+  <div class="user-information" *ngIf="detailsOption == 1">
+    <div class="user-account-info">
+      <form #nameForm="ngForm">
+        <label>First Name</label><br />
+        <input
+          type="text"
+          name="firstname"
+          [disabled]="accountName"
+          [(ngModel)]="user.firstName"
+          required
+        /><br />
+        <label>Last Name</label><br />
+        <input
+          type="text"
+          name="lastname"
+          [disabled]="accountName"
+          [(ngModel)]="user.lastName"
+          required
+        /><br />
+        <label>Email</label><br />
+        <input
+          type="text"
+          name="email"
+          [disabled]="accountName"
+          [(ngModel)]="user.email"
+          required
+        /><br />
+        <label>Username</label><br />
+        <input
+          type="text"
+          name="username"
+          [disabled]="accountName"
+          [(ngModel)]="user.username"
+          required
+        /><br />
+        <button [disabled]="!nameForm.valid">Submit</button>
+      </form>
+      <button (click)="enableNameForm()" title="edit" class="edit-btn">
+        <span class="material-icons"> mode_edit </span>
+      </button>
+    </div>
+    <div class="user-account-password">
+      <div>
+        <h3>Password</h3>
+        <label>New Password</label><br />
+        <input type="password" /><br />
+        <label>Repeat Password</label><br />
+        <input type="password" /><br />
+        <button>Submit</button>
+      </div>
+      <button title="edit" class="edit-btn">
+        <span class="material-icons"> mode_edit </span>
+      </button>
+    </div>
+  </div>
+  <div class="details-address" *ngIf="detailsOption == 2">
+    <form #addressForm="ngForm">
+      <label for="phone">Phone Number</label><br />
+      <input type="number" name="phone" [(ngModel)]="user.telephone" /><br />
+      <label for="address">Address</label><br />
+      <input
+        type="text"
+        name="address"
+        [(ngModel)]="user.addressEntity.address"
+      /><br />
+      <label for="city">City</label><br />
+      <input
+        type="text"
+        name="city"
+        [ngModel]="user.addressEntity.city"
+      /><br />
+      <label for="county">County</label><br />
+      <input
+        type="text"
+        name="county"
+        [(ngModel)]="user.addressEntity.county"
+      /><br />
+      <label for="postal">Postal Code</label><br />
+      <input
+        type="text"
+        name="postal"
+        [(ngModel)]="user.addressEntity.postalCode"
+      /><br />
+      <button>Submit</button>
+    </form>
+    <button title="edit" class="edit-btn">
+      <span class="material-icons"> mode_edit </span>
+    </button>
+  </div>
+</div>
