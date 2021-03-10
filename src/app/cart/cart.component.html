@@ -7,7 +7,7 @@
       <div class="product-section">
         <div class="product-name">
           <h2>
-            <a [routerLink]="['/products/', product.id]">{{ product.name }}</a>
+            <a [routerLink]="['/products/', product.id]">{{ product.name.substring(0,50) | titlecase }}</a>
           </h2>
           <star-rating
             [value]="product.rating"
@@ -63,7 +63,8 @@
     </div>
     <button
       class="margin2 order-button"
-      [routerLink]="user ? '' : '../account/login'"
+      [disabled]="products.length==0"
+      [routerLink]="user ? '/order' : '../account/login'"
     >
       Pasul urmator
     </button>
