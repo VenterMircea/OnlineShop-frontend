@@ -1,65 +1,105 @@
 <app-navbar></app-navbar>
-<div *ngIf="products.length!=0" class='main'>
-  <div class='container mat-elevation-z2'>
-        <div class='mat-elevation-z3 flex list' [ngClass]="{'current': section===1}" (click)="section=1">
-            <h2> Sumar comanda </h2>
-            <div *ngFor='let product of products' class='space-between'>
-                <div>
-                    <img src={{product.image}}/>
-                    <span>{{product.name.slice(0,30) | titlecase }}</span>
-                </div>
-                <div>
-                    <span class='price'> {{product.qty}} buc </span>
-                    <span class='price'> {{product.price*product.qty}} lei </span>
-                </div>
-            </div>
-            <div></div>
-            <div class='actions  distance-top'>
-                <mat-icon ></mat-icon>
-                <button [routerLink]="'/cart'">Modifica</button>
-                <mat-icon (click)="changeSection(2, $event)" [style.visibility]="section==1 ? 'visible' : 'hidden'">forward</mat-icon>
-             </div>
+<div *ngIf="products.length != 0" class="main">
+  <div class="container mat-elevation-z2">
+    <div
+      class="mat-elevation-z3 flex list"
+      [ngClass]="{ current: section === 1 }"
+      (click)="section = 1"
+    >
+      <h2>Sumar comanda</h2>
+      <div *ngFor="let product of products" class="space-between">
+        <div>
+          <img src="{{ product.image }}" />
+          <span>{{ product.name.slice(0, 30) | titlecase }}</span>
         </div>
-        <div class='mat-elevation-z3 flex' [ngClass]="{'current': section===2}" (click)="section=2">
-            <h2>Livrare si facturare</h2>
-            <div class="flex-container">
-                <div>
-                    <div class='price'>Nume:</div>
-                    <div class='price'>Adresa de livrare:</div>
-                    <div class='price'>Telefon contact:</div>
-                </div>
-                <div>
-                    <div>{{user.firstName}} {{user.lastName}}</div>
-                    <div *ngIf="user.address!=null">{{user.address.address}}, {{user.address.city}}</div>
-                    <div *ngIf="user.address==null"> - </div>
-                    <div>{{user.telephone}}</div>
-                </div>
-            </div>
-            <div class='actions'>
-                <mat-icon class="reverse" (click)="changeSection(1, $event)" [style.visibility]="section==2 ? 'visible' : 'hidden'">forward</mat-icon>
-                <button [routerLink]="'/account/details'">Modifica</button>
-                <mat-icon (click)="changeSection(3, $event)" [style.visibility]="section==2 ? 'visible' : 'hidden'">forward</mat-icon>
-             </div>
+        <div>
+          <span class="price"> {{ product.qty }} buc </span>
+          <span class="price"> {{ product.price * product.qty }} lei </span>
         </div>
-        <div class='mat-elevation-z3 flex' [ngClass]="{'current': section===3}" (click)="section=3">
-            <h2>Confirma comanda</h2>
-            <div class="space-between"> <span class='price distance'>Total produse: </span><p>{{orderValue}} lei</p> </div>
-            <div class="space-between"> <span class='price distance'>Cost livrare: </span><span>20 lei</span> </div>
-            <h2></h2>
-            <div class="space-between"> <span class='price distance bigger'>Total de plata: </span><span class='bigger'>{{orderValue+20}} lei</span></div>
-            <div class='actions'>
-                <mat-icon class="reverse" (click)="changeSection(2, $event)" [style.visibility]="section==3 ? 'visible' : 'hidden'">forward</mat-icon>
-                <button (click)="placeOrder(); confirm=true">Trimite comanda</button>
-                <mat-icon ></mat-icon>
-             </div>
-        </div>
+      </div>
+      <div></div>
+      <div class="actions distance-top">
+        <mat-icon></mat-icon>
+        <button [routerLink]="'/cart'">Modifica</button>
+        <mat-icon
+          (click)="changeSection(2, $event)"
+          [style.visibility]="section == 1 ? 'visible' : 'hidden'"
+          >forward</mat-icon
+        >
+      </div>
     </div>
-    <div class='confirm' *ngIf="confirm==true">
-        <mat-icon>check_circle_outline</mat-icon>
-        <h3>Comanda ta a fost integistrata.</h3>
-        <h2>Iti multumim.</h2>
+    <div
+      class="mat-elevation-z3 flex"
+      [ngClass]="{ current: section === 2 }"
+      (click)="section = 2"
+    >
+      <h2>Livrare si facturare</h2>
+      <div class="flex-container">
+        <div>
+          <div class="price">Nume:</div>
+          <div class="price">Adresa de livrare:</div>
+          <div class="price">Telefon contact:</div>
+        </div>
+        <div>
+          <div>{{ user.firstName }} {{ user.lastName }}</div>
+          <div *ngIf="user.addressEntity != null">
+            {{ user.addressEntity.address }}, {{ user.addressEntity.city }}
+          </div>
+          <div *ngIf="user.addressEntity == null">-</div>
+          <div>{{ user.telephone }}</div>
+        </div>
+      </div>
+      <div class="actions">
+        <mat-icon
+          class="reverse"
+          (click)="changeSection(1, $event)"
+          [style.visibility]="section == 2 ? 'visible' : 'hidden'"
+          >forward</mat-icon
+        >
+        <button [routerLink]="'/account/details'">Modifica</button>
+        <mat-icon
+          (click)="changeSection(3, $event)"
+          [style.visibility]="section == 2 ? 'visible' : 'hidden'"
+          >forward</mat-icon
+        >
+      </div>
     </div>
+    <div
+      class="mat-elevation-z3 flex"
+      [ngClass]="{ current: section === 3 }"
+      (click)="section = 3"
+    >
+      <h2>Confirma comanda</h2>
+      <div class="space-between">
+        <span class="price distance">Total produse: </span>
+        <p>{{ orderValue }} lei</p>
+      </div>
+      <div class="space-between">
+        <span class="price distance">Cost livrare: </span><span>20 lei</span>
+      </div>
+      <h2></h2>
+      <div class="space-between">
+        <span class="price distance bigger">Total de plata: </span
+        ><span class="bigger">{{ orderValue + 20 }} lei</span>
+      </div>
+      <div class="actions">
+        <mat-icon
+          class="reverse"
+          (click)="changeSection(2, $event)"
+          [style.visibility]="section == 3 ? 'visible' : 'hidden'"
+          >forward</mat-icon
+        >
+        <button (click)="placeOrder(); confirm = true">Trimite comanda</button>
+        <mat-icon></mat-icon>
+      </div>
+    </div>
+  </div>
+  <div class="confirm" *ngIf="confirm == true">
+    <mat-icon>check_circle_outline</mat-icon>
+    <h3>Comanda ta a fost integistrata.</h3>
+    <h2>Iti multumim.</h2>
+  </div>
 </div>
-<div class="main container" *ngIf="products.length==0">
-    Nu aveti produse in cos
+<div class="main container" *ngIf="products.length == 0">
+  Nu aveti produse in cos
 </div>

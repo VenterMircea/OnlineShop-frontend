@@ -14,8 +14,8 @@ export class OrderComponent implements OnInit, AfterViewInit {
   products!: any;
   orderValue = 0;
   orderObject = Object();
-  section=1;
-  confirm=false;
+  section = 1;
+  confirm = false;
   constructor(
     private orderService: OrderService,
     private router: Router,
@@ -24,7 +24,7 @@ export class OrderComponent implements OnInit, AfterViewInit {
 
   ngOnInit(): void {
     this.products = JSON.parse(localStorage.getItem('cart') || '[]');
-    this.user = JSON.parse(localStorage.getItem('user') || '');
+    this.user = JSON.parse(localStorage.getItem('user') || '{}');
     this.products.forEach((val: any) => {
       this.orderValue += val.price * val.qty;
     });
@@ -49,8 +49,8 @@ export class OrderComponent implements OnInit, AfterViewInit {
     this.elementRef.nativeElement.ownerDocument.body.style.backgroundColor =
       '#fafbfc';
   }
-  changeSection(sect: any, event: any){
-    this.section=sect; 
-    event.stopPropagation(); 
+  changeSection(sect: any, event: any) {
+    this.section = sect;
+    event.stopPropagation();
   }
 }
