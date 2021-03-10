@@ -3,26 +3,28 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { first } from 'rxjs/operators';
 
-import { AccountService} from '../../../services/account.service';
+import { AccountService } from '../../../services/account.service';
 import { AlertService } from '../../../services/alert.service';
 
-@Component({ templateUrl: 'login.component.html',     
-             styleUrls: ['./login.component.scss'], })
+@Component({
+  templateUrl: 'login.component.html',
+  styleUrls: ['./login.component.scss'],
+})
 export class LoginComponent implements OnInit {
-    form!: FormGroup;
-    loading = false;
-    submitted = false;
-    returnUrl!: string;
-    hide=true;
+  form!: FormGroup;
+  loading = false;
+  submitted = false;
+  returnUrl!: string;
+  hide = true;
 
-    constructor(
-        private formBuilder: FormBuilder,
-        private route: ActivatedRoute,
-        private router: Router,
-        private accountService: AccountService,
-        private alertService: AlertService,
-        private elementRef: ElementRef
-    ) { }
+  constructor(
+    private formBuilder: FormBuilder,
+    private route: ActivatedRoute,
+    private router: Router,
+    private accountService: AccountService,
+    private alertService: AlertService,
+    private elementRef: ElementRef
+  ) {}
 
     ngOnInit() {
         this.form = this.formBuilder.group({
@@ -33,7 +35,9 @@ export class LoginComponent implements OnInit {
         //this.returnUrl =  '/order';
     }
 
-    get f() { return this.form.controls; }
+  get f() {
+    return this.form.controls;
+  }
 
     onSubmit() {
         this.submitted = true;
@@ -53,8 +57,8 @@ export class LoginComponent implements OnInit {
                     this.loading = false;
                 });
     }
-    ngAfterViewInit() {
-      this.elementRef.nativeElement.ownerDocument.body.style.backgroundColor =
-        '#fafbfc';
-    }
+  ngAfterViewInit() {
+    this.elementRef.nativeElement.ownerDocument.body.style.backgroundColor =
+      '#fafbfc';
+  }
 }

@@ -26,27 +26,34 @@ export class AccountService {
     return this.userSubject.value;
   }
 
-    login(username: any, password: any) {
-        return this.http.post<any>(`${environment.apiUrl}/login`, { "username":username, "password": password }, {observe: 'response' as 'body'})
-            .pipe(map(user => {
-                let userM=user.body;
-                userM.token= user.headers.get('Authorization');
-                localStorage.setItem('user', JSON.stringify(userM));
-                this.userSubject.next(user.body);
-                return user;
-            }));
-    }
-
-    logout() {
-        localStorage.removeItem('user');
-        this.userSubject.next({
-            id: '',
-            username: '',
-            password: '',
-            firstName: '',
-            lastName: '',
-            token: '',
+  login(username: any, password: any) {
+    return this.http
+      .post<any>(
+        `${environment.apiUrl}/login`,
+        { username: username, password: password },
+        { observe: 'response' as 'body' }
+      )
+      .pipe(
+        map((user) => {
+          let userM = user.body;
+          userM.token = user.headers.get('Authorization');
+          localStorage.setItem('user', JSON.stringify(userM));
+          this.userSubject.next(user.body);
+          return user;
         })
+      );
+  }
+
+  logout() {
+    localStorage.removeItem('user');
+    this.userSubject.next({
+      id: '',
+      username: '',
+      password: '',
+      firstName: '',
+      lastName: '',
+      token: '',
+    });
   }
 
   register(user: User) {
@@ -61,25 +68,32 @@ export class AccountService {
     return this.http.get<User>(`${environment.apiUrl}/users/${id}`);
   }
 
-    update(id:any, params:any) {
-        return this.http.put(`${environment.apiUrl}/users/${id}`, params)
-            .pipe(map(x => {
-                if (id == this.userValue.id) {
-                    const user = { ...this.userValue, ...params };
-                    localStorage.setItem('user', JSON.stringify(user));
-                    this.userSubject.next(user);
-                }
-                return x;
-            }));
-    }
+  update(id: any, params: any) {
+    return this.http.put(`${environment.apiUrl}/users/${id}`, params).pipe(
+      map((x) => {
+        if (id == this.userValue.id) {
+          const user = { ...this.userValue, ...params };
+          localStorage.setItem('user', JSON.stringify(user));
+          this.userSubject.next(user);
+        }
+        return x;
+      })
+    );
+  }
+  delete(id: string) {
+    return this.http.delete(`${environment.apiUrl}/users/${id}`).pipe(
+      map((x) => {
+        // auto logout if the logged in user deleted their own record
+        if (id == this.userValue.id) {
+          this.logout();
+        }
+        return x;
+      })
+    );
+  }
+  createUser(user: any) {
+    return this.http.post('http://3.120.32.114:8080/users', user);
+  }
 
-    delete(id: string) {
-        return this.http.delete(`${environment.apiUrl}/users/${id}`)
-            .pipe(map(x => {
-                if (id == this.userValue.id) {
-                    this.logout();
-                }
-                return x;
-            }));
-    }
+  // publish updated user to subscribers
 }

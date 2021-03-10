@@ -1,3 +1,4 @@
+<app-navbar></app-navbar>
 <div class="container">
   <div class="order-summary mat-elevation-z2">
     <h2 class="line">Produse in cos:</h2>
@@ -60,6 +61,11 @@
       <h2 class="space-between">Total:</h2>
       <h2>{{ total + 20 }} lei</h2>
     </div>
-    <button class="margin2 order-button" [routerLink]="user? '/order' : '../account/login'">Pasul urmator</button>
+    <button
+      class="margin2 order-button"
+      [routerLink]="user ? '/order' : '../account/login'"
+    >
+      Pasul urmator
+    </button>
   </div>
 </div>

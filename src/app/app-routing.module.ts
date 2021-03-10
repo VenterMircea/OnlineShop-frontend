@@ -1,6 +1,7 @@
 import { OrderComponent } from './order/order.component';
 import { ProductDetailsComponent } from './product/product-details/product-details.component';
 import { ProductListComponent } from './product/product-list/product-list.component';
+
 import { CartComponent } from './cart/cart.component';
 import { NgModule, Component } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';

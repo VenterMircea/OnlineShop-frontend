@@ -1,17 +1,67 @@
 <div class="register">
-  <h1>Register</h1>
-  <label for="title">Title</label>
-  <select name="title">
-    <option disabled selected value>gender</option>
-    <option>Mr</option>
-    <option>Mrs</option></select
-  ><br />
-  <label for="firstName">First Name</label>
-  <input type="text" name="firstName" /><br />
-  <label for="lastName">Last Name</label>
-  <input type="text" name="lastName" /><br />
-  <label for="email">E-mail</label>
-  <input type="text" name="email" /><br />
-  <label for="password">Password</label>
-  <input type="text" name="password" /><br />
+  <img src="../../../assets/estore.jpg" alt="" />
+  <form>
+    <h1>Register</h1>
+    <hr />
+    <div *ngIf="option === 1">
+      <label for="title">Gender</label>
+      <select name="title" [(ngModel)]="user.sex">
+        <!-- <option disabled selected value>gender</option> -->
+        <option>F</option>
+        <option>M</option>
+        <option>Other</option></select
+      ><br />
+      <label for="firstName">First Name</label><br />
+      <input type="text" name="firstName" [(ngModel)]="user.firstName" /><br />
+      <label for="lastName">Last Name</label><br />
+      <input type="text" name="lastName" [(ngModel)]="user.lastName" /><br />
+      <label for="email">E-mail</label><br />
+      <input type="text" name="email" [(ngModel)]="user.email" /><br />
+      <button class="register-button next" (click)="optionIncrease()">
+        Next
+      </button>
+    </div>
+    <div *ngIf="option === 2">
+      <label for="username">Username</label><br />
+      <input type="text" name="username" [(ngModel)]="user.username" /><br />
+      <label for="password">Password</label><br />
+      <input type="text" name="password" [(ngModel)]="user.password" /><br />
+      <label for="repeat-password">Repeat Password</label><br />
+      <input type="text" name="repeat-password" /><br />
+      <button class="register-button first-btn" (click)="optionDecrease()">
+        Previous</button
+      ><br />
+      <hr />
+      <button class="register-button" (click)="optionIncrease()">Next</button>
+    </div>
+    <div *ngIf="option === 3">
+      <label for="phone">Phone Number</label><br />
+      <input type="text" name="phone" [(ngModel)]="user.telephone" /><br />
+      <label for="address">Address</label><br />
+      <input
+        type="text"
+        name="address"
+        [(ngModel)]="user.address.address"
+      /><br />
+      <label for="county">County</label><br />
+      <input
+        type="text"
+        name="county"
+        [(ngModel)]="user.address.county"
+      /><br />
+      <label for="city">City</label><br />
+      <input type="text" name="city" [(ngModel)]="user.address.city" /><br />
+      <label for="postal-code">Postal Code</label>
+      <input
+        type="text"
+        name="postal-code"
+        [(ngModel)]="user.address.postalCode"
+      /><br />
+      <button class="register-button first-btn" (click)="optionDecrease()">
+        Previous</button
+      ><br />
+      <hr />
+      <button class="register-button" (click)="submit()">Register</button>
+    </div>
+  </form>
 </div>

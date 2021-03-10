@@ -16,6 +16,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
 import { AlertComponent } from './alert/alert.component';
 import { OrderComponent } from './order/order.component';
+import { HashLocationStrategy, LocationStrategy } from '@angular/common';
+import { NavbarComponent } from './navbar/navbar.component';
+import { OverlayModule } from '@angular/cdk/overlay';
 
 @NgModule({
   declarations: [
@@ -28,6 +31,7 @@ import { OrderComponent } from './order/order.component';
     FilterProductPipe,
     AlertComponent,
     OrderComponent,
+    NavbarComponent,
   ],
   entryComponents: [ProductDetailsDialogComponent],
   imports: [
@@ -39,9 +43,11 @@ import { OrderComponent } from './order/order.component';
     ReactiveFormsModule,
     RatingModule,
     HttpClientModule,
+    OverlayModule,
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AppInterceptorInterceptor, multi: true },
+    { provide: LocationStrategy, useClass: HashLocationStrategy }
   ],
   bootstrap: [AppComponent],
 })
