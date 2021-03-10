@@ -14,7 +14,6 @@ import { RatingModule } from 'ng-starrating';
 import { CartComponent } from './cart/cart.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
-import { AlertComponent } from './alert/alert.component';
 import { OrderComponent } from './order/order.component';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { NavbarComponent } from './navbar/navbar.component';
@@ -29,7 +28,6 @@ import { OverlayModule } from '@angular/cdk/overlay';
     ProductDetailsComponent,
     ProductDetailsDialogComponent,
     FilterProductPipe,
-    AlertComponent,
     OrderComponent,
     NavbarComponent,
   ],

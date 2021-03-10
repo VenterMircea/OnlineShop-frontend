@@ -4,7 +4,6 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { first } from 'rxjs/operators';
 
 import { AccountService } from '../../../services/account.service';
-import { AlertService } from '../../../services/alert.service';
 
 @Component({
   templateUrl: 'login.component.html',
@@ -22,7 +21,6 @@ export class LoginComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private accountService: AccountService,
-    private alertService: AlertService,
     private elementRef: ElementRef
   ) {}
 
@@ -41,7 +39,6 @@ export class LoginComponent implements OnInit {
 
     onSubmit() {
         this.submitted = true;
-        this.alertService.clear();
         if (this.form.invalid) {
             return;
         }
@@ -53,8 +50,7 @@ export class LoginComponent implements OnInit {
                     this.router.navigate([this.returnUrl]);
                 },
                 error => {
-                    this.alertService.error(error);
-                    this.loading = false;
+                    console.log(error);
                 });
     }
   ngAfterViewInit() {
