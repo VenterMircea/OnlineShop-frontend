@@ -1,30 +1,47 @@
-<div class="container mat-elevation-z2" >
-    <img src="../../../assets/estore.jpg" alt="logo">
-    <h2>Autentificare</h2>
-    <div >
-        <form [formGroup]="form" (ngSubmit)="onSubmit()">
-            <div class="form-group inputs">
-                <input type="text" formControlName="username" [ngClass]="{ 'is-invalid': submitted && f.username.errors }" placeholder="nume utilizator"/>
-                <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
-                    <div *ngIf="f.username.errors.required">Username is required</div>
-                </div>
-            </div>
-            <span class='spacer'></span>
-            <div class="form-group inputs">
-                <input [type]="hide? 'password' : 'text'" formControlName="password" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" placeholder="parola"/>
-                <mat-icon (click)="hide=!hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-                <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
-                    <div *ngIf="f.password.errors.required">Password is required</div>
-                </div>
-            </div>
-            <div class="form-group">
-                <button [disabled]="loading" class="btn btn-primary">
-                    <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
-                    Login
-                </button>
-                <h4> sau </h4>
-                <button routerLink="../register" class="btn btn-link">Creaza cont</button>
-            </div>
-        </form>
-    </div>
+<div class="container mat-elevation-z2">
+  <img src="../../../assets/estore.jpg" alt="logo" routerLink="/" />
+  <h2>Autentificare</h2>
+  <div>
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+      <div class="form-group inputs">
+        <input
+          type="text"
+          formControlName="username"
+          [ngClass]="{ 'is-invalid': submitted && f.username.errors }"
+          placeholder="nume utilizator"
+        />
+        <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
+          <div *ngIf="f.username.errors.required">Username is required</div>
+        </div>
+      </div>
+      <span class="spacer"></span>
+      <div class="form-group inputs">
+        <input
+          [type]="hide ? 'password' : 'text'"
+          formControlName="password"
+          [ngClass]="{ 'is-invalid': submitted && f.password.errors }"
+          placeholder="parola"
+        />
+        <mat-icon (click)="hide = !hide">{{
+          hide ? "visibility_off" : "visibility"
+        }}</mat-icon>
+        <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+          <div *ngIf="f.password.errors.required">Password is required</div>
+        </div>
+      </div>
+      <div class="form-group">
+        <button [disabled]="loading" class="btn btn-primary">
+          <span
+            *ngIf="loading"
+            class="spinner-border spinner-border-sm mr-1"
+          ></span>
+          Login
+        </button>
+        <h4>sau</h4>
+        <button routerLink="../register" class="btn btn-link">
+          Creaza cont
+        </button>
+      </div>
+    </form>
+  </div>
 </div>

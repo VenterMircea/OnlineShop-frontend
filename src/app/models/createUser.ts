@@ -7,7 +7,7 @@ export class CreateUser {
     public sex: string,
     public telephone: string,
     public username: string,
-    public address: {
+    public addressEntity: {
       address: string;
       city: string;
       county: string;

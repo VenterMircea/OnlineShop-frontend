@@ -1,7 +1,7 @@
+import { Router } from '@angular/router';
 import { ProductService } from './../../services/product.service';
 import { SearchService } from './../../services/search.service';
 import { CartService } from './../../services/cart.service';
-
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -23,7 +23,8 @@ export class NavbarComponent implements OnInit {
   constructor(
     private cartService: CartService,
     private searchService: SearchService,
-    private productServ: ProductService
+    private productServ: ProductService,
+    private router: Router
   ) {}
 
   changeSearchTerm(event: any) {
@@ -36,6 +37,7 @@ export class NavbarComponent implements OnInit {
     localStorage.hasOwnProperty('user')
       ? (this.userLogged = true)
       : (this.userLogged = false);
+    this.router.navigate(['/']);
   }
   ngOnInit() {
     localStorage.hasOwnProperty('user')
