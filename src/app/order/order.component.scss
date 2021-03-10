@@ -1,4 +1,7 @@
 @import "~@angular/material/theming";
+.main{
+    position: relative;
+}
 .container{
     margin: 25vh 1rem 1rem 1rem;
     padding: 1rem;
@@ -100,5 +103,22 @@
     .container{
         display: flex;
         flex-direction: column;
+    }
+}
+.confirm{
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 100;
+    padding: 3rem;
+    min-width: 40%;
+    text-align: center;
+    background-color: white;
+    border-radius: 2%;
+    border: 2px solid #56c465;
+    .mat-icon{
+        font-size: 3rem;
+        color: #56c465;
     }
 }

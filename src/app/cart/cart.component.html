@@ -63,6 +63,7 @@
     </div>
     <button
       class="margin2 order-button"
+      [disabled]="products.length==0"
       [routerLink]="user ? '/order' : '../account/login'"
     >
       Pasul urmator

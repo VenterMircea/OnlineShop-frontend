@@ -2,6 +2,7 @@ import { element } from 'protractor';
 import { CartService } from './../../services/cart.service';
 import { OrderService } from './../../services/order.service';
 import { Component, ElementRef, OnInit, AfterViewInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-order',
@@ -14,9 +15,10 @@ export class OrderComponent implements OnInit, AfterViewInit {
   orderValue = 0;
   orderObject = Object();
   section=1;
+  confirm=false;
   constructor(
     private orderService: OrderService,
-    private cartService: CartService,
+    private router: Router,
     private elementRef: ElementRef
   ) {}
 
@@ -37,7 +39,10 @@ export class OrderComponent implements OnInit, AfterViewInit {
     order['orderValue'] = this.orderValue;
     order['orderedProducts'] = this.orderObject;
     order['userId'] = this.user.id;
-    this.orderService.postOrder(order).subscribe();
+    //this.orderService.postOrder(order).subscribe();
+    setTimeout(() => {
+      this.router.navigate(['/']);
+    }, 3000);
     localStorage.removeItem('cart');
   }
   ngAfterViewInit() {
