@@ -11,6 +11,6 @@ export class OrderService {
   constructor( private http: HttpClient) { }
   postOrder(order: any): Observable<any>{
     return this.http
-      .post<any>(`${environment.apiUrl}/order`, order);
+      .post<any>(`${environment.apiUrl}/orders`, order);
   }
 }

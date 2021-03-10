@@ -12,7 +12,7 @@ export class LayoutComponent implements AfterViewInit {
         private elementRef: ElementRef,
     ) {
         if (this.accountService.userValue) {
-            this.router.navigate(['/']);
+           // this.router.navigate(['/']);
         }
     }
     ngAfterViewInit() {

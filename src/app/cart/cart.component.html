@@ -6,7 +6,7 @@
       <div class="product-section">
         <div class="product-name">
           <h2>
-            <a [routerLink]="['/products/', product.id]">{{ product.name }}</a>
+            <a [routerLink]="['/products/', product.id]">{{ product.name.substring(0,50) | titlecase }}</a>
           </h2>
           <star-rating
             [value]="product.rating"
@@ -60,6 +60,6 @@
       <h2 class="space-between">Total:</h2>
       <h2>{{ total + 20 }} lei</h2>
     </div>
-    <button class="margin2 order-button" [routerLink]="user? '' : '../account/login'">Pasul urmator</button>
+    <button class="margin2 order-button" [routerLink]="user? '/order' : '../account/login'">Pasul urmator</button>
   </div>
 </div>

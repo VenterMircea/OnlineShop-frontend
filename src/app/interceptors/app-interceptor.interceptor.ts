@@ -15,13 +15,13 @@ export class AppInterceptorInterceptor implements HttpInterceptor {
     request: HttpRequest<unknown>,
     next: HttpHandler
   ): Observable<HttpEvent<unknown>> {
-    if (request.url.includes('/login') || request.url.includes('/cart') || request.url.includes('/register') || request.url.includes(''))
+    if (request.url.includes('/orders') || request.url.includes('/details')) {
+      const token = JSON.parse(localStorage.getItem('user') || '').token;
+      const req = request.clone({
+        headers: request.headers.set('Authorization', `Bearer ${token}`),
+      });
+      return next.handle(req);
+    }
     return next.handle(request);
-    else {const token=JSON.parse(localStorage.getItem('user')||'').token;
-    const req = request.clone({
-      headers: request.headers.set('Authorization', `Bearer ${token}`)
-    })
-    return next.handle(req);
   }
-  } 
 }
