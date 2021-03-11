@@ -96,4 +96,7 @@ export class AccountService {
   }
 
   // publish updated user to subscribers
+  userUpdate(id: any, updatedUser: any) {
+    return this.http.put(`http://3.120.32.114:8080/users/${id}`, updatedUser);
+  }
 }

@@ -96,7 +96,9 @@
       ><br />
       <hr />
       <button
-        class="register-button"
+        [ngClass]="
+          !registerForm.valid ? 'register-user-disabled' : 'register-button'
+        "
         type="submit"
         [disabled]="!registerForm.valid"
       >
@@ -104,4 +106,9 @@
       </button>
     </div>
   </form>
+  <div class="confirm" *ngIf="success == 1">
+    <mat-icon>check_circle_outline</mat-icon>
+    <h3>User created successfuly</h3>
+    <h2>Redirecting to sign in page</h2>
+  </div>
 </div>

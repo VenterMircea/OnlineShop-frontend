@@ -32,7 +32,7 @@ export class RegisterComponent implements OnInit, OnDestroy {
         this.success = 1;
         this.interval = setInterval(() => {
           this.router.navigate(['/account/login']);
-        }, 1000);
+        }, 2000);
       },
       (err) => {
         this.success = 2;

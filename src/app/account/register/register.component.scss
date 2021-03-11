@@ -19,6 +19,13 @@
     border: none;
     font-size: 1.2rem;
   }
+  .register-user-disabled {
+    width: 250px;
+    margin: 5px auto;
+    border-radius: 3%;
+    border: none;
+    font-size: 1.2rem;
+  }
   .first-btn {
     margin-top: 20px;
     background-image: linear-gradient(to right, #5fd4d2, #634fbd 40%);
@@ -32,5 +39,22 @@
     height: 25px;
     border: 0;
     @include mat-elevation(2);
+  }
+}
+.confirm {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 100;
+  padding: 3rem;
+  min-width: 40%;
+  text-align: center;
+  background-color: white;
+  border-radius: 2%;
+  border: 2px solid #56c465;
+  .mat-icon {
+    font-size: 3rem;
+    color: #56c465;
   }
 }
