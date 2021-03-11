@@ -55,7 +55,18 @@
           [(ngModel)]="user.username"
           required
         /><br />
-        <button [disabled]="!nameForm.valid" (click)="submitName()">
+        <button
+          class="submit-details"
+          [disabled]="!nameForm.valid || accountName"
+          (click)="submitName()"
+          [ngClass]="
+            accountName
+              ? 'submit-details'
+              : !nameForm.valid
+              ? 'submit-details'
+              : 'submit-details-btn'
+          "
+        >
           Submit
         </button>
       </form>
@@ -80,9 +91,13 @@
           [disabled]="accountPassword"
         /><br />
         <p class="password-error" *ngIf="!passwordMatch">
-          passwords don't match or invalid
+          *invalid or passwords don't match
         </p>
-        <button (click)="submitPassword()" [disabled]="accountPassword">
+        <button
+          (click)="submitPassword()"
+          [disabled]="accountPassword"
+          [ngClass]="accountPassword ? 'submit-details' : 'submit-details-btn'"
+        >
           Submit
         </button>
       </div>
@@ -136,6 +151,13 @@
       <button
         (click)="submitAddress()"
         [disabled]="accountAddress || !addressForm.valid"
+        [ngClass]="
+          accountAddress
+            ? 'submit-details'
+            : !addressForm.valid
+            ? 'submit-details'
+            : 'submit-details-btn'
+        "
       >
         Submit
       </button>
@@ -143,5 +165,9 @@
     <button title="edit" class="edit-btn" (click)="enableAddressForm()">
       <span class="material-icons"> mode_edit </span>
     </button>
+  </div>
+  <div class="confirm" *ngIf="confirm">
+    <mat-icon>check_circle_outline</mat-icon>
+    <h2>User updated successfuly</h2>
   </div>
 </div>
