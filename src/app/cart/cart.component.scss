@@ -37,24 +37,42 @@ a:hover {
   padding: 2rem;
   background-color: white;
 }
-.order-button {
+.order-button,
+.back-button {
   margin: 0 auto;
   display: block;
   margin-top: 2rem;
   width: 90%;
   background-color: #56c465;
-  height: 3rem;
+  min-height: 2.5rem;
+  max-height: fit-content;
   border: 1px solid #56c465;
-  border-radius: 2%;
+  border-radius: 4px;
   font-size: 1.2rem;
   color: white;
+  box-shadow: inset 1px 6px 12px #90ee90, inset -1px -4px 5px #006400,
+    1px 2px 1px black;
+  text-shadow: 1px 1px 1px black;
+}
+.back-button {
+  background-color: #3540e0;
+  border: 1px solid #3540e0;
+  box-shadow: inset 1px 6px 12px #add8e6, inset -1px -4px 5px #00008b,
+    1px 2px 1px black;
 }
 .order-button:hover {
   cursor: pointer;
   border: 2px solid #56c465;
 }
+.back-button:hover {
+  cursor: pointer;
+  border: 2px solid #464fce;
+}
 .order-button:active:focus {
   outline: 1px solid #56c465;
+}
+.back-button:active:focus {
+  outline: 1px solid #3540e0;
 }
 .product,
 .poduct-wraper {
@@ -68,15 +86,15 @@ a:hover {
 .product-section {
   padding: 1rem;
   display: flex;
-  flex-grow: 1;
+  flex-grow: 3;
 }
 .product-name {
   flex-grow: 2;
-  max-width: 55%;
+  max-width: 75%;
 }
 .product-data {
   padding-left: 2rem;
-  width: 7rem;
+  min-width: 7rem;
 }
 .quantity-buttons {
   background-color: white;
@@ -104,6 +122,12 @@ mat-icon {
   .calculation {
     margin: 3rem 2rem 3rem 1rem;
   }
+  .container {
+    width: 900px;
+  }
+  .product-name {
+    max-width: 90%;
+  }
 }
 @media only screen and (max-width: 992px) {
   .calculation {
@@ -112,6 +136,7 @@ mat-icon {
   .calculation,
   .order-summary {
     max-width: 90vmin;
+    min-width: 90%;
     margin: 1rem;
     left: auto;
   }
@@ -130,12 +155,14 @@ mat-icon {
   .product-line {
     margin: auto;
   }
+  .product-section {
+    min-width: 90%;
+  }
   .poduct-wraper {
     flex-direction: column;
+    min-width: fit-content;
   }
-  :host(.app-navbar) {
-    input {
-      display: none;
-    }
+  .product-data {
+    margin-bottom: 10px;
   }
 }
