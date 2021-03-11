@@ -10,7 +10,7 @@
       <div *ngFor="let product of products" class="space-between">
         <div>
           <img src="{{ product.image }}" />
-          <span>{{ product.name.slice(0, 30) | titlecase }}</span>
+          <span>{{ product.name.slice(0, 40) | titlecase }}</span>
         </div>
         <div>
           <span class="price"> {{ product.qty }} buc </span>

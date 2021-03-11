@@ -29,8 +29,6 @@ export class LoginComponent implements OnInit {
             username: ['', Validators.required],
             password: ['', Validators.required]
         });
-        this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/order';
-        //this.returnUrl =  '/order';
     }
 
   get f() {
@@ -47,7 +45,7 @@ export class LoginComponent implements OnInit {
             .pipe(first())
             .subscribe(
                 (response: Response) => {
-                    this.router.navigate([this.returnUrl]);
+                    this.backToPreviousPage();
                 },
                 error => {
                     console.log(error);
@@ -56,5 +54,10 @@ export class LoginComponent implements OnInit {
   ngAfterViewInit() {
     this.elementRef.nativeElement.ownerDocument.body.style.backgroundColor =
       '#fafbfc';
+  }
+  backToPreviousPage() {
+    const { redirect } = window.history.state;
+    if(redirect=='/cart') this.router.navigateByUrl('/order');
+    else this.router.navigateByUrl(redirect || '/homepage');
   }
 }
