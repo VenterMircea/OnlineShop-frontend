@@ -2,6 +2,7 @@ import { AccountService } from './../../services/account.service';
 import { CartService } from './../../services/cart.service';
 import { Product } from './../models/product';
 import { Component, OnInit, AfterViewInit, ElementRef } from '@angular/core';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -15,7 +16,7 @@ export class CartComponent implements OnInit, AfterViewInit {
   selected = 'option1';
   user: any;
 
-  constructor(private cartService: CartService, private elementRef: ElementRef, private accountService: AccountService) {}
+  constructor(private cartService: CartService, private elementRef: ElementRef, private accountService: AccountService, private router: Router) {}
 
   ngOnInit(): void {
     this.products = JSON.parse(localStorage.getItem('cart') || '[]');
@@ -47,5 +48,10 @@ export class CartComponent implements OnInit, AfterViewInit {
       this.total += val.price * val.qty;
     });
     this.total=parseFloat(this.total.toFixed(2));
+  }
+  changeRoute(){
+    if(!this.user)
+    this.router.navigate(['account/login'], { state: { redirect: this.router.url } });
+    else this.router.navigate(['order']);
   }
 }

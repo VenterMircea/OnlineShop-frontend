@@ -10,7 +10,7 @@
       </span>
     </div>
     <div class="nav-options">
-      <a routerLink="/account/login" *ngIf="!userLogged"
+      <a (click)="goToLogin()" *ngIf="!userLogged"
         ><span class="material-icons"> account_circle </span>
         <h3>Sign In</h3></a
       >
