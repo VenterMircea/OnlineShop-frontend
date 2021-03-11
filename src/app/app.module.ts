@@ -1,3 +1,4 @@
+import { UserDetailsComponent } from './user-details/user-details.component';
 import { FilterProductPipe } from './pipes/filter-product.pipe';
 import { AppInterceptorInterceptor } from './interceptors/app-interceptor.interceptor';
 import { ProductDetailsDialogComponent } from './product/product-details-dialog/product-details-dialog.component';
@@ -30,6 +31,7 @@ import { OverlayModule } from '@angular/cdk/overlay';
     FilterProductPipe,
     OrderComponent,
     NavbarComponent,
+    UserDetailsComponent,
   ],
   entryComponents: [ProductDetailsDialogComponent],
   imports: [
@@ -48,5 +50,6 @@ import { OverlayModule } from '@angular/cdk/overlay';
     { provide: LocationStrategy, useClass: HashLocationStrategy }
   ],
   bootstrap: [AppComponent],
+  exports: [NavbarComponent],
 })
 export class AppModule {}

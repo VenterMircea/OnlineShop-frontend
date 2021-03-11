@@ -39,7 +39,7 @@ export class ProductListComponent implements OnInit, AfterViewInit, OnDestroy {
     this.productServ.getProducts(this.pageNumber, this.pageSize).subscribe((products) => {
       this.products = products.content;
       this.totalPages = products.totalPages;
-      this.showMultiplePages(this.multiplePages, this.pageNumber);
+      this.showMultiplePages(this.pageNumber);
     });
     this.scroll.scrollToPosition([0, 0]);
   }
@@ -77,7 +77,7 @@ export class ProductListComponent implements OnInit, AfterViewInit, OnDestroy {
     this.callForProducts();
   }
 
-  showMultiplePages([], pageNo: number): void {
+  showMultiplePages(pageNo: number): void {
 
     let viewPages = this.totalPages - this.numberOfMultiplePages;
 
@@ -113,7 +113,7 @@ export class ProductListComponent implements OnInit, AfterViewInit, OnDestroy {
     this.productServ.getProducts(this.pageNumber, this.pageSize).subscribe((products) => {
       this.products = products.content;
       this.totalPages = products.totalPages;
-      this.showMultiplePages(this.multiplePages, this.pageNumber);
+      this.showMultiplePages(this.pageNumber);
       this.scroll.scrollToPosition([0, 0]);
       console.log(products);
     });

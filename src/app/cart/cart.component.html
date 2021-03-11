@@ -14,34 +14,37 @@
             [totalstars]="5"
             checkedcolor="gold"
             uncheckedcolor="gainsboro"
-            size="24px"
+            size="18px"
             [readonly]="true"
           ></star-rating>
         </div>
-        <div class="product-data">
-          <p>Cantitate:</p>
-          <mat-icon
-            class="quantity-buttons"
-            (click)="deleteFromCart(product.id)"
-            >delete_forever</mat-icon
-          >
-          <button
-            *ngIf="product.qty > 1"
-            (click)="modifyQuantity(product.id, -1)"
-            class="quantity-buttons"
-          >
-            -
-          </button>
-          <span class="larger">{{ product.qty }}</span>
-          <button
-            (click)="modifyQuantity(product.id, 1)"
-            class="quantity-buttons"
-          >
-            +
-          </button>
-        </div>
-        <div class="product-data">
-          <h2>{{ product.price }} lei</h2>
+        <div class="poduct-wraper">
+          <div class="product-data">
+            <p>Cantitate:</p>
+            <mat-icon
+              class="quantity-buttons"
+              (click)="deleteFromCart(product.id)"
+              >delete_forever</mat-icon
+            >
+            <button
+              *ngIf="product.qty > 1"
+              (click)="modifyQuantity(product.id, -1)"
+              class="quantity-buttons"
+            >
+              -
+            </button>
+            <span class="larger">{{ product.qty }}</span>
+            <button
+              (click)="modifyQuantity(product.id, 1)"
+              class="quantity-buttons"
+            >
+              +
+            </button>
+          </div>
+          <div class="product-data">
+            <p>Pret:</p>
+            <h2>{{ (product.price * product.qty).toFixed(2) }} lei</h2>
+          </div>
         </div>
       </div>
     </div>

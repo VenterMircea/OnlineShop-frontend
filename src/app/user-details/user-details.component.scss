@@ -1,0 +1,83 @@
+.user-details {
+  width: 50%;
+  margin: 200px auto 0 auto;
+  background-color: white;
+  display: flex;
+  border: 2px solid;
+  border-image-slice: 1;
+  border-image-source: linear-gradient(
+    to right,
+    #5fd4d2,
+    #e65353,
+    #4cb5cf,
+    #ffc663,
+    #56c465,
+    #634fbd
+  );
+  border-radius: 5px;
+  padding-top: 40px;
+  padding-bottom: 40px;
+  .user-name {
+    border-right: 1px solid black;
+
+    text-align: center;
+    width: 200px;
+    h2 {
+      margin-top: 30px;
+    }
+    ul {
+      list-style-type: none;
+      padding-left: 0;
+      li {
+        cursor: pointer;
+      }
+      li:hover {
+        background-color: #e0d7bc;
+      }
+    }
+    .user-img {
+      width: 80px;
+      height: 80px;
+      background-color: #634fbd;
+      text-align: center;
+      border-radius: 50%;
+      margin: 0 auto;
+
+      .user-logo {
+        color: white;
+        font-size: 40px;
+        margin: auto;
+        padding-top: 30px;
+      }
+    }
+  }
+  .user-information {
+    display: flex;
+    flex-grow: 1;
+    .user-account-info {
+      display: flex;
+      width: 50%;
+      border-right: 1px solid;
+      justify-content: space-around;
+    }
+    .user-account-password {
+      display: flex;
+      justify-content: space-around;
+      width: 50%;
+    }
+  }
+  .details-address {
+    display: flex;
+    justify-content: center;
+    width: 60%;
+  }
+}
+.edit-btn {
+  background-color: white;
+  border: none;
+  height: 30px;
+}
+.active {
+  background-color: #b5a988;
+  color: white;
+}

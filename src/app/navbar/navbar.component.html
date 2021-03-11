@@ -1,6 +1,6 @@
 <div class="header">
   <nav class="navbar">
-    <img src="../assets/estore.jpg" alt="" routerLink="/" />
+    <img src="../assets/estore.jpg" alt="" title="Home" routerLink="/" />
 
     <div class="search">
       <input type="text" (keyup)="changeSearchTerm($event)" /><span
@@ -20,7 +20,7 @@
           #trigger="cdkOverlayOrigin"
           (click)="userOptions = !userOptions"
           ><span class="material-icons"> account_circle </span>
-          <h3>My account</h3></a
+          <h3>{{ user.firstName }}</h3></a
         >
 
         <ng-template

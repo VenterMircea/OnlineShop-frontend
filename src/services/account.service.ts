@@ -14,9 +14,9 @@ export class AccountService {
   private aux!: User;
 
   constructor(private router: Router, private http: HttpClient) {
-    if (localStorage.getItem('user'))
+    if (localStorage.hasOwnProperty('user'))
       this.userSubject = new BehaviorSubject<User>(
-        JSON.parse(localStorage.getItem('user') || '')
+        JSON.parse(localStorage.getItem('user') || '{}')
       );
     else this.userSubject = new BehaviorSubject<any>(null);
     this.user = this.userSubject.asObservable();
