@@ -1,3 +1,4 @@
+import { AccountService } from './../../services/account.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -9,13 +10,45 @@ export class UserDetailsComponent implements OnInit {
   user: any;
   newUser: any;
   userLogo: any;
-  constructor() {}
+  constructor(private accountService: AccountService) {}
   accountName = true;
   accountPassword = true;
+  accountAddress = true;
   detailsOption = 1;
+  newPassword = '';
+  repeatPassword = '';
+  passwordMatch = true;
 
   enableNameForm() {
     this.accountName = false;
+  }
+  enablePasswordForm() {
+    this.accountPassword = false;
+  }
+  enableAddressForm() {
+    this.accountAddress = false;
+  }
+  submitName() {
+    if (this.user.password == '') {
+      this.user.password = this.newUser.password;
+    }
+    this.accountService.userUpdate(this.user.id, this.user).subscribe();
+    console.log(this.user);
+  }
+  submitPassword() {
+    if (this.newPassword == this.repeatPassword && this.newPassword != '') {
+      this.user.password = this.newPassword;
+      this.accountService.userUpdate(this.user.id, this.user).subscribe();
+    } else {
+      this.passwordMatch = false;
+    }
+  }
+  submitAddress() {
+    if (this.user.password == '') {
+      this.user.password = this.newUser.password;
+    }
+    this.accountService.userUpdate(this.user.id, this.user).subscribe();
+    console.log(this.user);
   }
 
   ngOnInit() {
@@ -25,6 +58,7 @@ export class UserDetailsComponent implements OnInit {
       this.newUser.lastName.charAt(0).toUpperCase();
     console.log(this.user);
     this.user = { ...this.newUser, password: '' };
+    delete this.user.token;
     console.log(this.newUser);
   }
 }

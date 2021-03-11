@@ -16,7 +16,7 @@ export class AppInterceptorInterceptor implements HttpInterceptor {
     next: HttpHandler
   ): Observable<HttpEvent<unknown>> {
     if (request.url.includes('/orders') || request.url.includes('/details')) {
-      const token = JSON.parse(localStorage.getItem('user') || '').token;
+      const token = JSON.parse(localStorage.getItem('user') || '{}').token;
       const req = request.clone({
         headers: request.headers.set('Authorization', `Bearer ${token}`),
       });

@@ -55,7 +55,9 @@
           [(ngModel)]="user.username"
           required
         /><br />
-        <button [disabled]="!nameForm.valid">Submit</button>
+        <button [disabled]="!nameForm.valid" (click)="submitName()">
+          Submit
+        </button>
       </form>
       <button (click)="enableNameForm()" title="edit" class="edit-btn">
         <span class="material-icons"> mode_edit </span>
@@ -65,12 +67,26 @@
       <div>
         <h3>Password</h3>
         <label>New Password</label><br />
-        <input type="password" /><br />
+        <input
+          type="password"
+          name="password"
+          [(ngModel)]="newPassword"
+          [disabled]="accountPassword"
+        /><br />
         <label>Repeat Password</label><br />
-        <input type="password" /><br />
-        <button>Submit</button>
+        <input
+          type="password"
+          [(ngModel)]="repeatPassword"
+          [disabled]="accountPassword"
+        /><br />
+        <p class="password-error" *ngIf="!passwordMatch">
+          passwords don't match or invalid
+        </p>
+        <button (click)="submitPassword()" [disabled]="accountPassword">
+          Submit
+        </button>
       </div>
-      <button title="edit" class="edit-btn">
+      <button title="edit" class="edit-btn" (click)="enablePasswordForm()">
         <span class="material-icons"> mode_edit </span>
       </button>
     </div>
@@ -78,34 +94,53 @@
   <div class="details-address" *ngIf="detailsOption == 2">
     <form #addressForm="ngForm">
       <label for="phone">Phone Number</label><br />
-      <input type="number" name="phone" [(ngModel)]="user.telephone" /><br />
+      <input
+        type="number"
+        name="phone"
+        [(ngModel)]="user.telephone"
+        [disabled]="accountAddress"
+        required
+      /><br />
       <label for="address">Address</label><br />
       <input
         type="text"
         name="address"
         [(ngModel)]="user.addressEntity.address"
+        [disabled]="accountAddress"
+        required
       /><br />
       <label for="city">City</label><br />
       <input
         type="text"
         name="city"
         [ngModel]="user.addressEntity.city"
+        [disabled]="accountAddress"
+        required
       /><br />
       <label for="county">County</label><br />
       <input
         type="text"
         name="county"
         [(ngModel)]="user.addressEntity.county"
+        [disabled]="accountAddress"
+        required
       /><br />
       <label for="postal">Postal Code</label><br />
       <input
         type="text"
         name="postal"
         [(ngModel)]="user.addressEntity.postalCode"
+        [disabled]="accountAddress"
+        required
       /><br />
-      <button>Submit</button>
+      <button
+        (click)="submitAddress()"
+        [disabled]="accountAddress || !addressForm.valid"
+      >
+        Submit
+      </button>
     </form>
-    <button title="edit" class="edit-btn">
+    <button title="edit" class="edit-btn" (click)="enableAddressForm()">
       <span class="material-icons"> mode_edit </span>
     </button>
   </div>
