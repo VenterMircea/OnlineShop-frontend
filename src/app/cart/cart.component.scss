@@ -6,18 +6,18 @@ a:hover {
   text-decoration: underline;
 }
 .container {
-  width: 100%;
+  max-width: 100%;
   display: flex;
   margin-top: 90px;
 }
 .calculation {
-  width: 20%;
   height: fit-content;
-  margin: 3rem;
+  margin: 3rem 3rem 3rem 1.5rem;
   padding: 2rem;
   background-color: white;
   position: fixed;
   left: 70%;
+  min-width: 20%;
 }
 .calculation-body {
   display: flex;
@@ -31,9 +31,9 @@ a:hover {
   margin-top: 2rem;
 }
 .order-summary {
-  width: 60%;
+  max-width: 60%;
   height: fit-content;
-  margin: 3rem;
+  margin: 3rem 1.5rem 3rem 3rem;
   padding: 2rem;
   background-color: white;
 }
@@ -56,7 +56,8 @@ a:hover {
 .order-button:active:focus {
   outline: 1px solid #56c465;
 }
-.product {
+.product,
+.poduct-wraper {
   display: flex;
 }
 .product-image {
@@ -70,7 +71,8 @@ a:hover {
   flex-grow: 1;
 }
 .product-name {
-  flex-grow: 1;
+  flex-grow: 2;
+  max-width: 55%;
 }
 .product-data {
   padding-left: 2rem;
@@ -91,4 +93,49 @@ mat-icon {
 .larger {
   font-size: 1.4rem;
   vertical-align: middle;
+}
+@media only screen and (max-width: 1024px) {
+  h2 {
+    font: 500 15px/32px Roboto, "Helvetica Neue", sans-serif;
+  }
+  .order-summary {
+    margin: 3rem 1rem 3rem 2rem;
+  }
+  .calculation {
+    margin: 3rem 2rem 3rem 1rem;
+  }
+}
+@media only screen and (max-width: 992px) {
+  .calculation {
+    position: relative;
+  }
+  .calculation,
+  .order-summary {
+    max-width: 90vmin;
+    margin: 1rem;
+    left: auto;
+  }
+  .container {
+    flex-direction: column;
+    max-width: 90vmin;
+    margin: auto;
+    margin-top: 90px;
+  }
+}
+@media only screen and (max-width: 768px) {
+  .product {
+    max-width: 70vmin;
+    min-width: 60vmin;
+  }
+  .product-line {
+    margin: auto;
+  }
+  .poduct-wraper {
+    flex-direction: column;
+  }
+  :host(.app-navbar) {
+    input {
+      display: none;
+    }
+  }
 }
