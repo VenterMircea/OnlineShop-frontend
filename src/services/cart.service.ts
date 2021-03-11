@@ -11,6 +11,6 @@ export class CartService {
   currentCart = this.cartSource.asObservable();
   constructor() {}
   update() {
-    this.cartSource.next(JSON.parse(localStorage.getItem('cart') || '{}'));
+    this.cartSource.next(JSON.parse(localStorage.getItem('cart') || '[]'));
   }
 }
