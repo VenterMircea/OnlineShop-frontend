@@ -1,28 +1,31 @@
 <div class="details" *ngIf="product">
   <app-navbar></app-navbar>
-  <h1>{{ product.name }}</h1>
+  <h1>{{ product.name | titlecase }}</h1>
   <div class="product-information">
     <img [src]="product.image" alt="" />
-    <div class="rating-description">
-      <p>
-        Rating:
-        <star-rating
-          [value]="product.rating"
-          [totalstars]="5"
-          [readonly]="true"
-          checkedcolor="gold"
-          uncheckedcolor="gainsboro"
-          size="24px"
-        ></star-rating
-        >({{ product.rating }}/5)
-      </p>
-      <p class="product-description">{{ product.description }}</p>
-    </div>
-    <div class="add-to-cart">
-      <p>{{ product.price }} lei</p>
-      <button (click)="addToCart()">
-        <span class="material-icons shopping"> shopping_cart </span> Add to cart
-      </button>
+    <div class="product-details">
+      <div class="rating-description">
+        <p>
+          Rating:
+          <star-rating
+            [value]="product.rating"
+            [totalstars]="5"
+            [readonly]="true"
+            checkedcolor="gold"
+            uncheckedcolor="gainsboro"
+            size="18px"
+          ></star-rating
+          >({{ product.rating }}/5)
+        </p>
+        <p class="product-description">{{ product.description }}</p>
+      </div>
+      <div class="add-to-cart">
+        <p>{{ product.price }} lei</p>
+        <button (click)="addToCart()">
+          <span class="material-icons shopping"> shopping_cart </span> Add to
+          cart
+        </button>
+      </div>
     </div>
   </div>
 </div>
