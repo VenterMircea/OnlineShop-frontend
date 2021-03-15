@@ -123,7 +123,7 @@ mat-icon {
     margin: 3rem 2rem 3rem 1rem;
   }
   .container {
-    width: 930px;
+    width: 960px;
   }
   .product-name {
     max-width: 90%;
@@ -139,6 +139,7 @@ mat-icon {
     min-width: 90%;
     margin: 1rem;
     left: auto;
+    align-self: center;
   }
   .container {
     flex-direction: column;

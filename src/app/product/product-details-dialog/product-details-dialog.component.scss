@@ -1,6 +1,10 @@
 .modal {
   text-align: center;
-
+  @media only screen and (max-width: 992px) {
+    h1 {
+      font: 400 18px/32px Roboto, "Helvetica Neue", sans-serif;
+    }
+  }
   h2 {
     color: #634fbd;
   }
@@ -33,8 +37,22 @@
     }
 
     @media only screen and (max-width: 992px) {
-      flex-direction: column;
-      align-items: center;
+      display: grid;
+      margin-top: 0;
+      justify-items: center;
+      h1 {
+        font: 400 18px/32px Roboto, "Helvetica Neue", sans-serif;
+      }
+      #continue {
+        grid-row-start: 1;
+      }
+      #checkout-cart {
+        grid-row-start: 2;
+      }
+      #product {
+        grid-row-start: 3;
+        margin: auto;
+      }
     }
   }
 }
