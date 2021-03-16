@@ -4,6 +4,7 @@ import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 
 import { ProductDetailsDialogComponent } from './product-details-dialog.component';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 describe('ProductDetailsDialogComponent', () => {
   let component: ProductDetailsDialogComponent;
@@ -11,7 +12,11 @@ describe('ProductDetailsDialogComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ProductDetailsDialogComponent ]
+      declarations: [ ProductDetailsDialogComponent ],
+      providers: [
+        { provide: MAT_DIALOG_DATA, useValue: {} },
+        { provide: MatDialogRef, useValue: {} }
+    ]
     })
     .compileComponents();
   }));

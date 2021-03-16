@@ -1,9 +1,11 @@
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 /* tslint:disable:no-unused-variable */
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 
 import { ProductListComponent } from './product-list.component';
+import { RouterTestingModule } from '@angular/router/testing';
 
 describe('ProductListComponent', () => {
   let component: ProductListComponent;
@@ -11,6 +13,10 @@ describe('ProductListComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
+      imports: [
+        RouterTestingModule,
+        HttpClientTestingModule
+      ],
       declarations: [ ProductListComponent ]
     })
     .compileComponents();
