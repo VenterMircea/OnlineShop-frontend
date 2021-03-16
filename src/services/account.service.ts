@@ -11,7 +11,6 @@ import { User } from '../app/models/user';
 export class AccountService {
   private userSubject!: BehaviorSubject<any>;
   public user: Observable<any>;
-  private aux!: User;
 
   constructor(private router: Router, private http: HttpClient) {
     if (localStorage.hasOwnProperty('user'))

@@ -8,11 +8,16 @@ import { HttpClient } from '@angular/common/http';
 export class ProductService {
   constructor(private http: HttpClient) { }
 
-  getProducts(pageNo: any, pageSize: any) {
+  getProducts(pageNo: any, pageSize: any, sortBy: any, sortDirection: any) {
     //return this.http.get<any>('../assets/products.json');
-    return this.http.get<any>(
-      `http://3.120.32.114:8080/products/findAll?pageNo=${pageNo}&pageSize=${pageSize}`
-    );
+    if(sortBy!='' && sortBy!='-')
+      return this.http.get<any>(
+        `http://3.120.32.114:8080/products/findAll?pageNo=${pageNo}&pageSize=${pageSize}&sortBy=${sortBy}&sortDirection=${sortDirection}`
+      );
+    else 
+      return this.http.get<any>(
+        `http://3.120.32.114:8080/products/findAll?pageNo=${pageNo}&pageSize=${pageSize}`
+      );
   }
   getProduct(id: any) {
     return this.http.get<any>(`http://3.120.32.114:8080/products/${id}`);
