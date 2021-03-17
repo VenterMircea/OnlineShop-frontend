@@ -14,7 +14,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RatingModule } from 'ng-starrating';
 import { CartComponent } from './cart/cart.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { OrderComponent } from './order/order.component';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { NavbarComponent } from './navbar/navbar.component';
@@ -42,8 +42,9 @@ import { OverlayModule } from '@angular/cdk/overlay';
     FormsModule,
     ReactiveFormsModule,
     RatingModule,
-    HttpClientModule,
+    [HttpClientModule,],
     OverlayModule,
+    NavbarComponent
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AppInterceptorInterceptor, multi: true },
@@ -52,4 +53,4 @@ import { OverlayModule } from '@angular/cdk/overlay';
   bootstrap: [AppComponent],
   exports: [NavbarComponent],
 })
-export class AppModule {}
+export class AppModule { }
