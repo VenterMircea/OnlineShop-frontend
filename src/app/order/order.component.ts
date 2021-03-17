@@ -1,4 +1,3 @@
-import { element } from 'protractor';
 import { CartService } from './../../services/cart.service';
 import { OrderService } from './../../services/order.service';
 import { Component, ElementRef, OnInit, AfterViewInit } from '@angular/core';
