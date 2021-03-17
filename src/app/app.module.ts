@@ -44,7 +44,6 @@ import { OverlayModule } from '@angular/cdk/overlay';
     RatingModule,
     [HttpClientModule,],
     OverlayModule,
-    NavbarComponent
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AppInterceptorInterceptor, multi: true },
