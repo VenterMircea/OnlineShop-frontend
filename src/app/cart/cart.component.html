@@ -1,5 +1,5 @@
 <app-navbar></app-navbar>
-<div class="container">
+<div class="container" *ngIf="products.length>0">
   <div class="order-summary mat-elevation-z2">
     <h2 class="line">Produse in cos:</h2>
     <div *ngFor="let product of products" class="product line">
@@ -79,4 +79,12 @@
       Continua cumparaturile
     </button>
   </div>
+</div>
+<div class="empty-cart-container" *ngIf="products.length===0">
+  <div class="empty mat-elevation-z2">
+    Cosul este gol
+  </div>
+  <button class="margin2 back-button" style="width: 14rem" [routerLink]="'/'">
+    Continua cumparaturile
+  </button>
 </div>

@@ -39,13 +39,20 @@ export class OrderComponent implements OnInit, AfterViewInit {
     order['orderValue'] = this.orderValue;
     order['orderedProducts'] = this.orderObject;
     order['userId'] = this.user.id;
-    this.orderService.postOrder(order).subscribe();
+    this.orderService.postOrder(order).subscribe(
+      (response: Response) => {
+        setTimeout(() => {
+          this.router.navigate(['/']);
+        }, 3000);
+        localStorage.removeItem('cart');
+        this.cartService.update()
+      },
+      error => {
+        console.log(error);
+      } 
+    );
 
-    setTimeout(() => {
-      this.router.navigate(['/']);
-    }, 3000);
-    localStorage.removeItem('cart');
-    this.cartService.update();
+    ;
   }
   ngAfterViewInit() {
     this.elementRef.nativeElement.ownerDocument.body.style.backgroundColor =

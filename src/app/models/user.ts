@@ -1,8 +1,18 @@
-export class User {
-    id!: string;
-    username!: string;
-    password!: string;
+export class User 
+{
     firstName!: string;
     lastName!: string;
-    token!: string;
+    email!: string;
+    username!: string;
+    telephone!: string;
+    sex!: string;
+    password!: string;
+    addressEntity!: addressEntity;
+    id!: string;
+}
+class addressEntity {
+        address!: string;
+        city!: string;
+        county!: string;
+        postalCode!: string;
 }

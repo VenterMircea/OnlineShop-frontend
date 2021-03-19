@@ -15,6 +15,7 @@ export class LoginComponent implements OnInit {
   submitted = false;
   returnUrl!: string;
   hide = true;
+  errorFromServer=false;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -48,7 +49,7 @@ export class LoginComponent implements OnInit {
                     this.backToPreviousPage();
                 },
                 error => {
-                    console.log(error);
+                    if(error.status===401) this.errorFromServer=true;
                 });
     }
   ngAfterViewInit() {

@@ -12,7 +12,7 @@ export class AccountService {
   private userSubject!: BehaviorSubject<any>;
   public user: Observable<any>;
 
-  constructor(private router: Router, private http: HttpClient) {
+  constructor( private http: HttpClient) {
     if (localStorage.hasOwnProperty('user'))
       this.userSubject = new BehaviorSubject<User>(
         JSON.parse(localStorage.getItem('user') || '{}')
@@ -21,7 +21,7 @@ export class AccountService {
     this.user = this.userSubject.asObservable();
   }
 
-  public get userValue(): User {
+  public get userValue(): any {
     return this.userSubject.value;
   }
 
