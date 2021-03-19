@@ -59,6 +59,6 @@ export class LoginComponent implements OnInit {
   backToPreviousPage() {
     const { redirect } = window.history.state;
     if(redirect=='/cart') this.router.navigateByUrl('/order');
-    else this.router.navigateByUrl(redirect || '/homepage');
+    else this.router.navigateByUrl(redirect || '/');
   }
 }
