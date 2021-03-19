@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatSelectModule } from '@angular/material/select';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -13,11 +13,13 @@ const modules = [
   MatInputModule,
   MatIconModule,
   MatDialogModule,
+
 ];
 
 @NgModule({
   declarations: [],
   imports: [CommonModule, ...modules],
   exports: [...modules],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
-export class MaterialModule {}
+export class MaterialModule { }
