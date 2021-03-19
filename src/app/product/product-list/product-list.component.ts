@@ -34,12 +34,12 @@ export class ProductListComponent implements OnInit, AfterViewInit, OnDestroy {
   numberOfMultiplePages = 5;
   pageSize = 10;
   pageSizeSelector = [10, 20, 50];
-  orderOptions=['-', 'Price', 'Rating', 'Name', 'Brand'];
-  descending=true;
-  sortBy='';
+  orderOptions = ['-', 'Price', 'Rating', 'Name', 'Brand'];
+  descending = true;
+  sortBy = '';
 
   callForProducts(): void {
-    this.productServ.getProducts(this.pageNumber, this.pageSize, this.sortBy.toLowerCase(), this.descending? 'DESC' : 'ASC').subscribe((products) => {
+    this.productServ.getProducts(this.pageNumber, this.pageSize, this.sortBy.toLowerCase(), this.descending ? 'DESC' : 'ASC').subscribe((products) => {
       this.products = products.content;
       this.totalPages = products.totalPages;
       this.showMultiplePages(this.pageNumber);
@@ -125,7 +125,6 @@ export class ProductListComponent implements OnInit, AfterViewInit, OnDestroy {
         this.searchTerm = term;
       }
     );
-    console.log(this.route);
   }
 
   ngAfterViewInit() {
@@ -136,12 +135,12 @@ export class ProductListComponent implements OnInit, AfterViewInit, OnDestroy {
   ngOnDestroy() {
     this.subscription.unsubscribe();
   }
-  changeSortDirection(){
-    if(this.sortBy!='' && this.sortBy!='-')this.descending=!this.descending;
+  changeSortDirection() {
+    if (this.sortBy != '' && this.sortBy != '-') this.descending = !this.descending;
     this.callForProducts();
   }
-  selectSortCriteria(event: any){
-    this.sortBy=event.target.value;
+  selectSortCriteria(event: any) {
+    this.sortBy = event.target.value;
     console.log("sortby: ", this.sortBy);
     this.callForProducts();
   }

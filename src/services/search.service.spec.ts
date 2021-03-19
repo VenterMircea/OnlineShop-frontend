@@ -13,4 +13,10 @@ describe('SearchService', () => {
   it('should be created', () => {
     expect(service).toBeTruthy();
   });
+  it('shoud search with bicicleta', () => {
+    spyOn(service, 'changeTerm').and.callThrough();
+    service.changeTerm("bicicleta");
+    expect(service.changeTerm).toHaveBeenCalled();
+    expect(service.changeTerm).toHaveBeenCalledWith("bicicleta");
+  })
 });
