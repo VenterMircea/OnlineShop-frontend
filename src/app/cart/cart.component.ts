@@ -1,6 +1,5 @@
 import { AccountService } from './../../services/account.service';
 import { CartService } from './../../services/cart.service';
-import { Product } from './../models/product';
 import { Component, OnInit, AfterViewInit, ElementRef } from '@angular/core';
 import { Router } from '@angular/router';
 
@@ -33,7 +32,7 @@ export class CartComponent implements OnInit, AfterViewInit {
     this.computeTotal();
     this.cartService.update();
   }
-  modifyQuantity(id: number, diff: number) {
+  modifyQuantity(id: any, diff: number) {
     this.products.forEach((val) => {
       if (val.id === id) val.qty = val.qty + diff;
       localStorage.setItem('cart', JSON.stringify(this.products));

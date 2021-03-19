@@ -1,6 +1,5 @@
 import { environment } from './../environments/environment';
 import { Injectable } from '@angular/core';
-import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
@@ -38,6 +37,7 @@ export class AccountService {
           userM.token = user.headers.get('Authorization');
           localStorage.setItem('user', JSON.stringify(userM));
           this.userSubject.next(user.body);
+          console.log('complete response', user);
           return user;
         })
       );
