@@ -37,6 +37,7 @@ export class LoginComponent implements OnInit {
   }
 
     onSubmit() {
+        this.errorFromServer=false;
         this.submitted = true;
         if (this.form.invalid) {
             return;
@@ -50,6 +51,8 @@ export class LoginComponent implements OnInit {
                 },
                 error => {
                     if(error.status===401) this.errorFromServer=true;
+                    this.submitted=false;
+                    this.loading=false;
                 });
     }
   ngAfterViewInit() {
