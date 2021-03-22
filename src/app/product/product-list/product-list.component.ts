@@ -85,7 +85,7 @@ export class ProductListComponent implements OnInit, AfterViewInit, OnDestroy {
     let viewPages = this.totalPages - this.numberOfMultiplePages;
 
     this.multiplePages = [];
-
+    /* istanbul ignore else */
     if (this.totalPages < this.numberOfMultiplePages) {
       pageNo = 0;
       do {

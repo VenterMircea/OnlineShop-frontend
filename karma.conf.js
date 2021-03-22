@@ -22,6 +22,14 @@ module.exports = function (config) {
         { type: 'html' },
         { type: 'text-summary' }
       ],
+      check: {
+        global: {
+          statements: 65,
+          branches: 65,
+          functions: 65,
+          lines: 65
+        }
+      }
     },
     reporters: ['progress', 'kjhtml'],
     port: 9876,
