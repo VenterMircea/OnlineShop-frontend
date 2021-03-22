@@ -45,7 +45,7 @@ export class OrderComponent implements OnInit, AfterViewInit {
           this.router.navigate(['/']);
         }, 3000);
         localStorage.removeItem('cart');
-        this.cartService.update()
+        this.cartService.update();
       },
       error => {
         console.log(error);

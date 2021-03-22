@@ -21,7 +21,7 @@
       </div>
       <div class="add-to-cart">
         <p>{{ product.price }} lei</p>
-        <button (click)="addToCart()">
+        <button (click)="addToCart(); openDialog()">
           <span class="material-icons shopping"> shopping_cart </span> Add to
           cart
         </button>
@@ -32,7 +32,7 @@
 <h2 class="margin">Produse vizualizate recent:</h2>
 <div class="product-list">
   <app-product-item
-    *ngFor="let product of displayHistory"
+    *ngFor="let product of displayHistory "
     [product]="product"
   ></app-product-item>
   <i aria-hidden="true"></i>

@@ -1,3 +1,4 @@
+import { Product } from './../../models/product';
 import { ProductDetailsDialogComponent } from './../product-details-dialog/product-details-dialog.component';
 import { CartService } from './../../../services/cart.service';
 import { Component, OnInit } from '@angular/core';
@@ -37,22 +38,23 @@ export class ProductDetailsComponent implements OnInit {
       : this.cart[ind].qty++;
     localStorage.setItem('cart', JSON.stringify(this.cart));
     this.cartService.update();
+  }
+  openDialog(){
     this.dialog.open(ProductDetailsDialogComponent, { data: this.product });
   }
 
-  ngOnInit() {
-    this.productServ.getProduct(this.id).subscribe((product) => {
-      this.product = product;
-      this.history = JSON.parse(localStorage.getItem('history') || '[]');
+  handleHistory(product: any){
+    this.history = JSON.parse(localStorage.getItem('history') || '[]');
       this.displayHistory = this.history.filter(
-        (val) => val.id !== this.product.id
+        (val) => val.id !== product.id
       );
+      this.displayHistory=this.displayHistory.reverse();
       let exist = false;
       this.history.forEach((val) => {
-        if (val.id === this.product.id) exist = true;
+        if (val.id === product.id) exist = true;
       });
       if (!exist) {
-        this.history.push(this.product);
+        this.history.push(product);
       }
       if (this.displayHistory.length > 5) {
         this.displayHistory = this.displayHistory.slice(
@@ -67,6 +69,12 @@ export class ProductDetailsComponent implements OnInit {
         );
       }
       localStorage.setItem('history', JSON.stringify(this.history));
+  }
+
+  ngOnInit() {
+    this.productServ.getProduct(this.id).subscribe((product) => {
+      this.product = product;
+      this.handleHistory(product);
     });
   }
 }

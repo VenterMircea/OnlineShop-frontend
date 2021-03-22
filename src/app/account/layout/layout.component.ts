@@ -12,11 +12,7 @@ export class LayoutComponent implements AfterViewInit {
     private router: Router,
     private accountService: AccountService,
     private elementRef: ElementRef
-  ) {
-    if (this.accountService.userValue) {
-      // this.router.navigate(['/']);
-    }
-  }
+  ) { }
   ngAfterViewInit() {
     this.elementRef.nativeElement.ownerDocument.body.style.backgroundColor =
       '#fafbfc';
