@@ -1,11 +1,11 @@
 <div class="register">
   <img src="../../../assets/estore.jpg" alt="" routerLink="/" />
-  <form #registerForm="ngForm" (submit)="submit()">
+  <form [formGroup]='form' (ngSubmit)="submit()">
     <h1>Register</h1>
     <hr />
     <div *ngIf="option === 1">
       <label for="title">Gender</label>
-      <select name="title" [(ngModel)]="user.sex" required >
+      <select name="title" formControlName="sex">
         <option>F</option>
         <option>M</option>
         <option>Other</option></select
@@ -14,9 +14,7 @@
       <div class='inputs'>
         <input
           type="text"
-          name="firstName"
-          [(ngModel)]="user.firstName"
-          required
+          formControlName="firstName"
         />
       </div>
       <br />
@@ -24,14 +22,15 @@
       <div class="inputs">
         <input
           type="text"
-          name="lastName"
-          [(ngModel)]="user.lastName"
-          required
+          formControlName="lastName"
         />
       </div>
       <br />
       <label for="email">E-mail</label><br />
-      <div class="inputs"><input type="text" name="email" [(ngModel)]="user.email" required /></div><br />
+      <div class="inputs"><input type="text" formControlName="email" /></div><br />
+      <div *ngIf="!f.email.valid! && !f.email.pristine" class='red'>
+        Email doesn't look right.
+      </div>
       <button class="register-button next" (click)="optionIncrease()">
         Next
       </button>
@@ -41,38 +40,41 @@
       <div class="inputs">
         <input
           type="text"
-          name="username"
-          [(ngModel)]="user.username"
-          required
+          formControlName="username"
         />
       </div>
       <br />
       <label for="password">Password</label><br />
-      <div class="inputs" [class]="passwordValid ? 'red' : 'blue'">
+      <div class="inputs">
         <input
           [type]="hide1 ? 'password' : 'text'"
-          name="password"
-          [(ngModel)]="user.password"
-          (keyup)='checkValidity()'
-          required
+          formControlName="password"
         />
         <mat-icon (click)="hide1 = !hide1">{{
           hide1 ? "visibility_off" : "visibility"
         }}</mat-icon>
       </div>
+      <div *ngIf="f.password.errors && f.password.errors.pattern" class='red'>Password must: 
+        <ul>
+        <li> contain one uppercase letter</li>
+        <li> contain one number</li>
+        <li> contain one special character</li>  
+        <li> be at lest 8 characters long.</li>
+        </ul>
+      </div>
       <br />
       <label for="repeat-password">Repeat Password</label><br />
-      <div class="inputs" [ngClass]="{'red': wrongRetype}">
+      <div class="inputs">
         <input 
           [type]="hide2 ? 'password' : 'text'" 
-          name="repeat-password"  
-          [(ngModel)]="passwordRetype" 
-          required
-          (keyup)='checkMatch()'
+          formControlName="passwordRetype"
           />
         <mat-icon (click)="hide2 = !hide2">{{
           hide2 ? "visibility_off" : "visibility"
         }}</mat-icon>
+      </div>
+      <div *ngIf="f.passwordRetype.value!==f.password.value && !f.passwordRetype.pristine" class='red'>
+        Passwords do not match
       </div>
       <br />
       <button class="register-button" (click)="optionIncrease()">Next</button>
@@ -86,19 +88,16 @@
       <h2 *ngIf="success == 1">User Successfuly Created</h2>
       <h2 *ngIf="success == 2">There was and error please try again</h2>
       <label for="phone">Phone Number</label><br />
+      <div class="inputs">
       <input
         type="text"
-        name="phone"
-        [(ngModel)]="user.telephone"
-        required
-      /><br />
+        formControlName="telephone"
+      /></div><br />
       <label for="address">Address</label><br />
       <div class="inputs">
         <input 
           type="text"
-          name="address"
-          [(ngModel)]="user.addressEntity.address"
-          required
+          formControlName="address"
         />
       </div>
       <br />
@@ -106,9 +105,7 @@
       <div class="inputs">
         <input
           type="text"
-          name="county"
-          [(ngModel)]="user.addressEntity.county"
-          required
+          formControlName="county"
         />
       </div>
       <br />
@@ -116,9 +113,7 @@
       <div class="inputs">
         <input
           type="text"
-          name="city"
-          [(ngModel)]="user.addressEntity.city"
-          required
+          formControlName="city"
         />
       </div>
       <br />
@@ -126,9 +121,7 @@
       <div class="inputs">
         <input
           type="text"
-          name="postal-code"
-          [(ngModel)]="user.addressEntity.postalCode"
-          required
+          formControlName="postalCode"
         />
       </div>
       <br />
@@ -138,10 +131,10 @@
       <hr />
       <button
         [ngClass]="
-          !registerForm.valid ? 'register-user-disabled' : 'register-button'
+          !form.valid ? 'register-user-disabled' : 'register-button'
         "
         type="submit"
-        [disabled]="!registerForm.valid"
+        [disabled]="!form.valid"
       >
         Register
       </button>
@@ -150,6 +143,11 @@
   <div class="confirm" *ngIf="success == 1">
     <mat-icon>check_circle_outline</mat-icon>
     <h3>User created successfuly</h3>
-    <h2>Redirecting to sign in page</h2>
+    <h2>Chech your inbox for confirmation mail</h2>
+  </div>
+  <div class="confirm" *ngIf="success == 2" [style.visibility]="dialogVisibility ? 'visible' : 'hidden'">
+    <mat-icon>check_circle_outline</mat-icon>
+    <h3>{{message}}</h3>
+    <h2>Please try again with a different username</h2>
   </div>
 </div>

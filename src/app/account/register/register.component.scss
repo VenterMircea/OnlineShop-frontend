@@ -63,6 +63,9 @@
     width: 20rem;
     display: flex;
   }
+  .invalid-inputs{
+    border: 1px solid red;
+  }
   .inputs:focus-within{
     @include mat-elevation(2);
   }
@@ -91,5 +94,10 @@ hr{
   border-top: 1px solid #979292;
 }
 .red{
-  background-color: red;
+  margin-top: 0.5rem;
+  color:red;
+}
+ul{
+  margin-top: 0.2rem;
+  text-align: left;
 }
