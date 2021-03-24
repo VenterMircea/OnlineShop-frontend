@@ -20,6 +20,7 @@ export class RegisterComponent implements OnInit, OnDestroy {
   hide1=true;
   hide2=true;
   dialogVisibility=false;
+  submittedUsername='';
   option = 1;
   user = new CreateUser('', '', '', '', '', '', '', {
     address: '',
@@ -49,12 +50,13 @@ export class RegisterComponent implements OnInit, OnDestroy {
     this.user.addressEntity.postalCode=this.f.postalCode.value;
     this.user.addressEntity.city=this.f.city.value;
     this.user.addressEntity.county=this.f.county.value;
+    this.submittedUsername=this.user.username;
     this.accountService.createUser(this.user).subscribe(
       () => {
         this.success = 1;
         this.interval = setInterval(() => {
           this.router.navigate(['/account/login']);
-        }, 3000);
+        }, 5000);
       },
       (err) => {
         this.success = 2;
@@ -62,7 +64,7 @@ export class RegisterComponent implements OnInit, OnDestroy {
         this.dialogVisibility=true;
         this.interval = setInterval(() => {
           this.dialogVisibility=false;
-        }, 3000);
+        }, 5000);
       }
     );
     console.log(this.user);

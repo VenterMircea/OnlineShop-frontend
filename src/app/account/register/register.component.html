@@ -43,6 +43,9 @@
           formControlName="username"
         />
       </div>
+      <div *ngIf="success==2 && submittedUsername==f.username.value" class='red'>
+        Try a different username.
+      </div>
       <br />
       <label for="password">Password</label><br />
       <div class="inputs">
@@ -86,7 +89,7 @@
     </div>
     <div *ngIf="option === 3">
       <h2 *ngIf="success == 1">User Successfuly Created</h2>
-      <h2 *ngIf="success == 2">There was and error please try again</h2>
+      <h2 *ngIf="success == 2">{{message}} Please try again</h2>
       <label for="phone">Phone Number</label><br />
       <div class="inputs">
       <input
