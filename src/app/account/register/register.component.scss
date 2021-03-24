@@ -10,10 +10,17 @@
   img {
     width: 200px;
   }
+  label{
+    padding: 1rem;
+  }
+  select{
+    margin-bottom: 1rem;
+  }
   .register-button {
     background-image: linear-gradient(to left, #5fd4d2, #634fbd 40%);
     color: white;
-    width: 250px;
+    width: 20rem;
+    height: 2rem;
     margin: 5px auto;
     border-radius: 3%;
     border: none;
@@ -34,11 +41,28 @@
     background-image: linear-gradient(to left, #5fd4d2, #634fbd 40%);
     margin-top: 20px;
   }
-  input {
-    width: 250px;
-    height: 25px;
-    border: 0;
+  input{
+    height: 1rem;
+    outline: none;
+    border: none;
+    width: 20rem;
+    margin: 0.3rem;
+  }
+  .inputs{
+    border: 1px solid #979292;
+    border-radius: 3%;
+    overflow: hidden;
+    width: 20rem;
+    display: flex;
+  }
+  .invalid-inputs{
+    border: 1px solid red;
+  }
+  .inputs:focus-within{
     @include mat-elevation(2);
+  }
+  .mat-icon{
+    padding-right: 0.2rem;
   }
 }
 .confirm {
@@ -57,4 +81,15 @@
     font-size: 3rem;
     color: #56c465;
   }
+}
+hr{
+  border-top: 1px solid #979292;
+}
+.red{
+  margin-top: 0.5rem;
+  color:red;
+}
+ul{
+  margin-top: 0.2rem;
+  text-align: left;
 }
