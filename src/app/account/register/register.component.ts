@@ -10,7 +10,13 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 })
 export class RegisterComponent implements OnInit, OnDestroy {
   constructor(private accountService: AccountService, private router: Router) {}
+  hide1=true;
+  hide2=true;
   option = 1;
+  passwordRetype!: string;
+  wrongRetype=false;
+  passwordValid=false;
+  regularExpression = /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,16}$/;
   user = new CreateUser('', '', '', '', '', '', '', {
     address: '',
     city: '',
@@ -25,6 +31,14 @@ export class RegisterComponent implements OnInit, OnDestroy {
   }
   optionDecrease() {
     this.option--;
+  }
+  checkMatch(){
+    if(this.user.password!==this.passwordRetype) this.wrongRetype=true;
+  }
+  checkValidity(){
+    if(!this.regularExpression.test(this.user.password)) {
+      {  this.passwordValid=false;}
+  }
   }
   submit() {
     this.accountService.createUser(this.user).subscribe(
