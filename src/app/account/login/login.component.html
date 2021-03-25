@@ -1,8 +1,8 @@
 <div class="container mat-elevation-z2">
   <img src="../../../assets/estore.jpg" alt="logo" routerLink="/" />
-  <h2>Autentificare</h2>
+  <h2>Authentication</h2>
   <div>
-    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <form class="form" [formGroup]="form" (ngSubmit)="onSubmit()">
       <div class="form-group inputs">
         <input
           type="text"
@@ -30,7 +30,9 @@
         </div>
       </div>
       <span class="spacer"></span>
-      <div *ngIf="errorFromServer" class="invalid-feedback"> User sau parola incorecta </div>
+      <div *ngIf="errorFromServer" class="invalid-feedback">
+        {{ serverMessage }}
+      </div>
       <div class="form-group">
         <button [disabled]="loading" class="btn btn-primary">
           <span
@@ -39,11 +41,14 @@
           ></span>
           Login
         </button>
-        <h4>sau</h4>
+        <h4>or</h4>
         <button routerLink="../register" class="btn btn-link">
-          Creaza cont
+          Create Acount
         </button>
       </div>
     </form>
+    <div class="confirm" *ngIf="popup">
+      <h3 class="confirm-header">{{ serverMessage }}</h3>
+    </div>
   </div>
 </div>

@@ -34,19 +34,6 @@ describe('ProductListComponent', () => {
   });
 
   it('should call for products', () => {
-    // let pageNumber = 0,
-    //   pageSize = 10,
-    //   orderOptions = ['-', 'Price', 'Rating', 'Name', 'Brand'],
-    //   descending = true,
-    //   sortBy = '';
-
-    // component = new ProductListComponent(
-    //   ElementRef as any,
-    //   ProductService as any,
-    //   SearchService as any,
-    //   ViewportScroller as any,
-    //   ActivatedRoute as any
-    // )
     spyOn(component, 'callForProducts').and.callThrough();
     component.callForProducts();
     expect(component.callForProducts).toHaveBeenCalled();
