@@ -7,32 +7,58 @@
         <input
           type="text"
           formControlName="username"
-          [ngClass]="{ 'is-invalid': submitted && f.username.errors }"
-          placeholder="nume utilizator"
+          [ngClass]="{
+            'is-invalid': submitted && formControls.username.errors
+          }"
+          placeholder="*User name"
         />
-        <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
-          <div *ngIf="f.username.errors.required">Username is required</div>
+        <div
+          *ngIf="submitted && formControls.username.errors"
+          class="invalid-feedback"
+        >
+          <div *ngIf="formControls.username.errors.required">
+            Username is required
+          </div>
         </div>
       </div>
       <span class="spacer"></span>
+      <div
+        *ngIf="
+          formControls.password.errors && formControls.password.errors.pattern
+        "
+        style="color: #ff0000"
+      >
+        Password must have: <br />
+        one uppercase letter, one number, one or more<br />
+        special character, and be at lest 8 characters long.
+      </div>
       <div class="form-group inputs">
         <input
           [type]="hide ? 'password' : 'text'"
           formControlName="password"
-          [ngClass]="{ 'is-invalid': submitted && f.password.errors }"
-          placeholder="parola"
+          [ngClass]="{
+            'is-invalid': submitted && formControls.password.errors
+          }"
+          placeholder="*Password"
+          title="Password must contain: one uppercase letter, one number, one special character and be at lest 8 characters long."
         />
         <mat-icon (click)="hide = !hide">{{
           hide ? "visibility_off" : "visibility"
         }}</mat-icon>
-        <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
-          <div *ngIf="f.password.errors.required">Password is required</div>
+        <div
+          *ngIf="submitted && formControls.password.errors"
+          class="invalid-feedback"
+        >
+          <div *ngIf="formControls.password.errors.required">
+            Password is required
+          </div>
         </div>
       </div>
-      <span class="spacer"></span>
       <div *ngIf="errorFromServer" class="invalid-feedback">
         {{ serverMessage }}
       </div>
+      <span class="spacer"></span>
+      <p><span style="color: #ff0000">*</span>Fields are mandatory.</p>
       <div class="form-group">
         <button [disabled]="loading" class="btn btn-primary">
           <span
