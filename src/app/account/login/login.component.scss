@@ -30,14 +30,19 @@
     width: 99%;
   }
   button {
-    margin: 1rem 0 0 0;
     background-image: linear-gradient(to right, #5fd4d2, #634fbd 40%);
     color: white;
-    min-width: 23rem;
+    min-width: 60vmin;
     min-height: 2rem;
     border-radius: 3%;
     border: none;
     font-size: 1.2rem;
+    align-self: center;
+    margin: 3% auto;
+    position: relative;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
     cursor: pointer;
   }
   .inputs {
@@ -45,6 +50,7 @@
     border-radius: 3%;
     overflow: hidden;
     width: 100%;
+    min-width: 60vmin;
   }
   .inputs:focus-within {
     @include mat-elevation(2);
