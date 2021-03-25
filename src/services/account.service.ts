@@ -98,4 +98,8 @@ export class AccountService {
   userUpdate(id: any, updatedUser: any) {
     return this.http.put(`http://3.120.32.114:8080/users/${id}`, updatedUser);
   }
+
+  confirmAccount(id: any){
+    return this.http.put(`${environment.apiUrl}/userConfirmation?userId=${id}`, id);
+  }
 }

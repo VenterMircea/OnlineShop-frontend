@@ -33,7 +33,6 @@ export class RegisterComponent implements OnInit, OnDestroy {
 
   optionIncrease() {
     this.option++;
-    console.log('form so far:', this.f);
   }
   optionDecrease() {
     this.option--;
@@ -60,6 +59,7 @@ export class RegisterComponent implements OnInit, OnDestroy {
       },
       (err) => {
         this.success = 2;
+        this.option=2;
         this.message=err.error;
         this.dialogVisibility=true;
         this.interval = setInterval(() => {
@@ -67,7 +67,6 @@ export class RegisterComponent implements OnInit, OnDestroy {
         }, 5000);
       }
     );
-    console.log(this.user);
   }
   get f() {
     return this.form.controls;
@@ -81,7 +80,7 @@ export class RegisterComponent implements OnInit, OnDestroy {
       username: ['', Validators.required],
       password: ['',[ Validators.required, Validators.pattern('(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&].{7,}')]],
       passwordRetype: ['', Validators.required],
-      telephone: ['', Validators.required],
+      telephone: ['', [Validators.required, Validators.pattern("[0-9]{7,12}")]],
       address: ['', Validators.required],
       county: ['', Validators.required],
       city: ['', Validators.required],
