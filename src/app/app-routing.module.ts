@@ -1,3 +1,4 @@
+import { ConfirmAccountComponent } from './confirm-account/confirm-account.component';
 import { UserDetailsComponent } from './user-details/user-details.component';
 import { OrderComponent } from './order/order.component';
 import { ProductDetailsComponent } from './product/product-details/product-details.component';
@@ -9,18 +10,15 @@ import { Routes, RouterModule } from '@angular/router';
 
 const accountModule = () =>
   import('./account/account.module').then((x) => x.AccountModule);
-//const usersModule = () => import('./users/users.module').then(x => x.UsersModule);
 
 const routes: Routes = [
   { path: '', component: ProductListComponent },
   { path: 'products/:id', component: ProductDetailsComponent },
   { path: 'account', loadChildren: accountModule },
   { path: 'order', component: OrderComponent },
-  {
-    path: 'cart',
-    component: CartComponent,
-  },
+  { path: 'cart', component: CartComponent },
   { path: 'account/details', component: UserDetailsComponent },
+  { path: 'userConfirmation', component: ConfirmAccountComponent,  pathMatch: 'prefix' },
 ];
 
 @NgModule({

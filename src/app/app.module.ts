@@ -19,6 +19,7 @@ import { OrderComponent } from './order/order.component';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { NavbarComponent } from './navbar/navbar.component';
 import { OverlayModule } from '@angular/cdk/overlay';
+import { ConfirmAccountComponent } from './confirm-account/confirm-account.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { OverlayModule } from '@angular/cdk/overlay';
     OrderComponent,
     NavbarComponent,
     UserDetailsComponent,
+    ConfirmAccountComponent,
   ],
   entryComponents: [ProductDetailsDialogComponent],
   imports: [

@@ -89,13 +89,17 @@
     </div>
     <div *ngIf="option === 3">
       <h2 *ngIf="success == 1">User Successfuly Created</h2>
-      <h2 *ngIf="success == 2">{{message}} Please try again</h2>
+      <!-- <h2 *ngIf="success == 2">{{message}} Please try again</h2> -->
       <label for="phone">Phone Number</label><br />
       <div class="inputs">
       <input
-        type="text"
+        type="tel"
         formControlName="telephone"
-      /></div><br />
+      /></div>
+      <div *ngIf="!f.telephone.valid! && !f.telephone.pristine" class='red'>
+        Telephone number doesn't look right.
+      </div>
+      <br />
       <label for="address">Address</label><br />
       <div class="inputs">
         <input 
