@@ -20,7 +20,7 @@ export class ConfirmAccountComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.accountService.confirmAccount(this.id);
+    this.accountService.confirmAccount(this.id).subscribe();
     this.route.navigate(['/account/login']);
   }
 }
