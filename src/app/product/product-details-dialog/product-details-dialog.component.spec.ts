@@ -12,13 +12,12 @@ describe('ProductDetailsDialogComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ProductDetailsDialogComponent ],
+      declarations: [ProductDetailsDialogComponent],
       providers: [
         { provide: MAT_DIALOG_DATA, useValue: {} },
-        { provide: MatDialogRef, useValue: {} }
-    ]
-    })
-    .compileComponents();
+        { provide: MatDialogRef, useValue: {} },
+      ],
+    }).compileComponents();
   }));
 
   beforeEach(() => {

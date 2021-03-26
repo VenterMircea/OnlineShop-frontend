@@ -47,12 +47,10 @@ export class OrderComponent implements OnInit, AfterViewInit {
         localStorage.removeItem('cart');
         this.cartService.update();
       },
-      error => {
+      (error) => {
         console.log(error);
-      } 
+      }
     );
-
-    ;
   }
   ngAfterViewInit() {
     this.elementRef.nativeElement.ownerDocument.body.style.backgroundColor =

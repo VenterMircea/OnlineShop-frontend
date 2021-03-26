@@ -27,10 +27,12 @@ describe('OrderService', () => {
     expect(service).toBeTruthy();
   });
 
-
-  it('should call post order', inject([OrderService], (service: OrderService) => {
-    spyOn(service, 'postOrder').and.callThrough;
-    service.postOrder(order);
-    expect(service.postOrder).toHaveBeenCalled();
-  }));
+  it('should call post order', inject(
+    [OrderService],
+    (service: OrderService) => {
+      spyOn(service, 'postOrder').and.callThrough;
+      service.postOrder(order);
+      expect(service.postOrder).toHaveBeenCalled();
+    }
+  ));
 });

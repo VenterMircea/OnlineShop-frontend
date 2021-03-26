@@ -15,8 +15,8 @@ describe('SearchService', () => {
   });
   it('shoud search with bicicleta', () => {
     spyOn(service, 'changeTerm').and.callThrough();
-    service.changeTerm("bicicleta");
+    service.changeTerm('bicicleta');
     expect(service.changeTerm).toHaveBeenCalled();
-    expect(service.changeTerm).toHaveBeenCalledWith("bicicleta");
-  })
+    expect(service.changeTerm).toHaveBeenCalledWith('bicicleta');
+  });
 });

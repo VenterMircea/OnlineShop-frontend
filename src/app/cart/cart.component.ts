@@ -3,7 +3,6 @@ import { CartService } from './../../services/cart.service';
 import { Component, OnInit, AfterViewInit, ElementRef } from '@angular/core';
 import { Router } from '@angular/router';
 
-
 @Component({
   selector: 'app-cart',
   templateUrl: './cart.component.html',
@@ -15,12 +14,17 @@ export class CartComponent implements OnInit, AfterViewInit {
   selected = 'option1';
   user: any;
 
-  constructor(private cartService: CartService, private elementRef: ElementRef, private accountService: AccountService, private router: Router) {}
+  constructor(
+    private cartService: CartService,
+    private elementRef: ElementRef,
+    private accountService: AccountService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
     this.products = JSON.parse(localStorage.getItem('cart') || '[]');
     this.computeTotal();
-    this.user=this.accountService.userValue;
+    this.user = this.accountService.userValue;
   }
   ngAfterViewInit() {
     this.elementRef.nativeElement.ownerDocument.body.style.backgroundColor =
@@ -42,15 +46,17 @@ export class CartComponent implements OnInit, AfterViewInit {
     this.cartService.update();
   }
   computeTotal() {
-    this.total=0;
+    this.total = 0;
     this.products.forEach((val: any) => {
       this.total += val.price * val.qty;
     });
-    this.total=parseFloat(this.total.toFixed(2));
+    this.total = parseFloat(this.total.toFixed(2));
   }
-  changeRoute(){
-    if(!this.user)
-    this.router.navigate(['account/login'], { state: { redirect: this.router.url } });
+  changeRoute() {
+    if (!this.user)
+      this.router.navigate(['account/login'], {
+        state: { redirect: this.router.url },
+      });
     else this.router.navigate(['order']);
   }
 }

@@ -15,7 +15,7 @@ export class LoginComponent implements OnInit {
   submitted = false;
   returnUrl!: string;
   hide = true;
-  errorFromServer=false;
+  errorFromServer = false;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -25,43 +25,45 @@ export class LoginComponent implements OnInit {
     private elementRef: ElementRef
   ) {}
 
-    ngOnInit() {
-        this.form = this.formBuilder.group({
-            username: ['', Validators.required],
-            password: ['', Validators.required]
-        });
-    }
+  ngOnInit() {
+    this.form = this.formBuilder.group({
+      username: ['', Validators.required],
+      password: ['', Validators.required],
+    });
+  }
 
   get f() {
     return this.form.controls;
   }
 
-    onSubmit() {
-        this.errorFromServer=false;
-        this.submitted = true;
-        if (this.form.invalid) {
-            return;
-        }
-        this.loading = true;
-        this.accountService.login(this.f.username.value, this.f.password.value)
-            .pipe(first())
-            .subscribe(
-                (response: Response) => {
-                    this.backToPreviousPage();
-                },
-                error => {
-                    if(error.status===401) this.errorFromServer=true;
-                    this.submitted=false;
-                    this.loading=false;
-                });
+  onSubmit() {
+    this.errorFromServer = false;
+    this.submitted = true;
+    if (this.form.invalid) {
+      return;
     }
+    this.loading = true;
+    this.accountService
+      .login(this.f.username.value, this.f.password.value)
+      .pipe(first())
+      .subscribe(
+        (response: Response) => {
+          this.backToPreviousPage();
+        },
+        (error) => {
+          if (error.status === 401) this.errorFromServer = true;
+          this.submitted = false;
+          this.loading = false;
+        }
+      );
+  }
   ngAfterViewInit() {
     this.elementRef.nativeElement.ownerDocument.body.style.backgroundColor =
       '#fafbfc';
   }
   backToPreviousPage() {
     const { redirect } = window.history.state;
-    if(redirect=='/cart') this.router.navigateByUrl('/order');
+    if (redirect == '/cart') this.router.navigateByUrl('/order');
     else this.router.navigateByUrl(redirect || '/');
   }
 }

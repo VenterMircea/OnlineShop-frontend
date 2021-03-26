@@ -1,66 +1,67 @@
 @import "~@angular/material/theming";
-.container{
-    padding: 2rem;
-    width: 25%;
-    margin: 120px auto 0 auto;
-    background: white;
-    border-radius: 2%;
+.container {
+  padding: 2rem;
+  width: 25%;
+  margin: 120px auto 0 auto;
+  background: white;
+  border-radius: 2%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  h2 {
+    border-bottom: 1px solid #979292;
+    padding: 0 3rem 1rem 3rem;
+    margin-bottom: 2rem;
+  }
+  img {
+    width: 7rem;
+    margin-bottom: 1rem;
+  }
+  input {
+    height: 2rem;
+    outline: none;
+    border: none;
+    width: 20rem;
+  }
+  button {
+    margin: 1rem 0 0 0;
+    background-image: linear-gradient(to right, #5fd4d2, #634fbd 40%);
+    color: white;
+    min-width: 23rem;
+    min-height: 2rem;
+    border-radius: 3%;
+    border: none;
+    font-size: 1.2rem;
+  }
+  .inputs {
+    border: 1px solid #979292;
+    border-radius: 3%;
+    overflow: hidden;
+  }
+  .inputs:focus-within {
+    @include mat-elevation(2);
+  }
+  .spacer {
+    margin: 1rem;
+  }
+  mat-icon {
+    vertical-align: middle;
+    color: #817e7e;
+    padding: 0 0.6rem;
+  }
+  h4 {
+    margin-top: 2rem;
     display: flex;
-    align-items: center;
-    flex-direction: column;
-    h2{
-        border-bottom: 1px solid #979292;
-        padding: 0 3rem 1rem 3rem;
-        margin-bottom: 2rem;
-    }
-    img{
-        width: 7rem;
-        margin-bottom: 1rem;
-    }
-    input{
-        height: 2rem;
-        outline: none;
-        border: none;
-        width: 20rem;
-    }
-    button{
-        margin: 1rem 0 0 0;
-        background-image: linear-gradient(to right, #5fd4d2, #634fbd 40%);
-        color: white;
-        min-width: 23rem;
-        min-height: 2rem;
-        border-radius: 3%;
-        border: none;
-        font-size: 1.2rem;
-    }
-    .inputs{
-        border: 1px solid #979292;
-        border-radius: 3%;
-        overflow: hidden;
-    }
-    .inputs:focus-within{
-        @include mat-elevation(2);
-    }
-    .spacer{
-        margin: 1rem;
-    }
-    mat-icon{
-        vertical-align: middle;
-        color:  #817e7e;
-        padding:  0 0.6rem;
-    }
-    h4 { 
-        margin-top: 2rem;
-        display: flex; 
-        flex-direction: row; 
-    } 
-    h4:before, h4:after {
-        content: " ";
-        flex: 1 1;
-        border-bottom: 1px solid #979292;
-        margin: auto 1rem;
-   }
-   .invalid-feedback{
-       color: red;
-   }
+    flex-direction: row;
+  }
+  h4:before,
+  h4:after {
+    content: " ";
+    flex: 1 1;
+    border-bottom: 1px solid #979292;
+    margin: auto 1rem;
+  }
+  .invalid-feedback {
+    color: red;
+  }
 }

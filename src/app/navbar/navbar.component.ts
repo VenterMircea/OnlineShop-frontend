@@ -45,7 +45,9 @@ export class NavbarComponent implements OnInit {
       : (this.userLogged = false);
     this.user = JSON.parse(localStorage.getItem('user') || '[]');
   }
-  goToLogin(){
-    this.router.navigate(['account/login'], { state: { redirect: this.router.url } });
+  goToLogin() {
+    this.router.navigate(['account/login'], {
+      state: { redirect: this.router.url },
+    });
   }
 }

@@ -13,13 +13,12 @@ const modules = [
   MatInputModule,
   MatIconModule,
   MatDialogModule,
-
 ];
 
 @NgModule({
   declarations: [],
   imports: [CommonModule, ...modules],
   exports: [...modules],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA]
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
-export class MaterialModule { }
+export class MaterialModule {}

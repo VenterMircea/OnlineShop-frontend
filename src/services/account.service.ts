@@ -11,7 +11,7 @@ export class AccountService {
   private userSubject!: BehaviorSubject<any>;
   public user: Observable<any>;
 
-  constructor( private http: HttpClient) {
+  constructor(private http: HttpClient) {
     if (localStorage.hasOwnProperty('user'))
       this.userSubject = new BehaviorSubject<User>(
         JSON.parse(localStorage.getItem('user') || '{}')
@@ -91,15 +91,18 @@ export class AccountService {
     );
   }
   createUser(user: any) {
-    return this.http.post('http://3.120.32.114:8080/users', user);
+    return this.http.post(`${environment.apiUrl}/users`, user);
   }
 
   // publish updated user to subscribers
   userUpdate(id: any, updatedUser: any) {
-    return this.http.put(`http://3.120.32.114:8080/users/${id}`, updatedUser);
+    return this.http.put(`${environment.apiUrl}/users/${id}`, updatedUser);
   }
 
-  confirmAccount(id: any){
-    return this.http.put(`${environment.apiUrl}/userConfirmation?userId=${id}`, id);
+  confirmAccount(id: any) {
+    return this.http.put(
+      `${environment.apiUrl}/userConfirmation?userId=${id}`,
+      id
+    );
   }
 }

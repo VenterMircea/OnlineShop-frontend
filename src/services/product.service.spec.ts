@@ -8,7 +8,7 @@ describe('Service: Product', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [HttpClientTestingModule],
-      providers: [ProductService]
+      providers: [ProductService],
     });
   }));
 
@@ -18,23 +18,31 @@ describe('Service: Product', () => {
     }));
   }
 
-  it('should get products', inject([ProductService], (service: ProductService) => {
-    spyOn(service, 'getProducts').and.callThrough();
-    service.getProducts(0, 10, '', '');
-    expect(service.getProducts).toHaveBeenCalled();
-    expect(service.getProducts).toHaveBeenCalledWith(0, 10, '', '');
-  }));
-  it('should get product', inject([ProductService], (service: ProductService) => {
-    spyOn(service, 'getProduct').and.callThrough();
-    service.getProduct(100);
-    expect(service.getProduct).toHaveBeenCalled();
-    expect(service.getProduct).toHaveBeenCalledWith(100);
-
-  }));
-  it('should get page size', inject([ProductService], (service: ProductService) => {
-    spyOn(service, 'getPageSize').and.callThrough();
-    service.getPageSize(20);
-    expect(service.getPageSize).toHaveBeenCalled();
-    expect(service.getPageSize).toHaveBeenCalledWith(20);
-  }));
+  it('should get products', inject(
+    [ProductService],
+    (service: ProductService) => {
+      spyOn(service, 'getProducts').and.callThrough();
+      service.getProducts(0, 10, '', '');
+      expect(service.getProducts).toHaveBeenCalled();
+      expect(service.getProducts).toHaveBeenCalledWith(0, 10, '', '');
+    }
+  ));
+  it('should get product', inject(
+    [ProductService],
+    (service: ProductService) => {
+      spyOn(service, 'getProduct').and.callThrough();
+      service.getProduct(100);
+      expect(service.getProduct).toHaveBeenCalled();
+      expect(service.getProduct).toHaveBeenCalledWith(100);
+    }
+  ));
+  it('should get page size', inject(
+    [ProductService],
+    (service: ProductService) => {
+      spyOn(service, 'getPageSize').and.callThrough();
+      service.getPageSize(20);
+      expect(service.getPageSize).toHaveBeenCalled();
+      expect(service.getPageSize).toHaveBeenCalledWith(20);
+    }
+  ));
 });

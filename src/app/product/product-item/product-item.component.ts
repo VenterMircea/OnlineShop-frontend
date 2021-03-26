@@ -9,7 +9,6 @@ import { StarRatingComponent } from 'ng-starrating';
 export class ProductItemComponent implements OnInit {
   constructor() {}
   @Input() product: any;
-  rating = 3;
 
   ngOnInit() {}
 }

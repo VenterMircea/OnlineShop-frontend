@@ -10,10 +10,10 @@
   img {
     width: 200px;
   }
-  label{
+  label {
     padding: 1rem;
   }
-  select{
+  select {
     margin-bottom: 1rem;
   }
   .register-button {
@@ -41,27 +41,27 @@
     background-image: linear-gradient(to left, #5fd4d2, #634fbd 40%);
     margin-top: 20px;
   }
-  input{
+  input {
     height: 1rem;
     outline: none;
     border: none;
     width: 20rem;
     margin: 0.3rem;
   }
-  .inputs{
+  .inputs {
     border: 1px solid #979292;
     border-radius: 3%;
     overflow: hidden;
     width: 20rem;
     display: flex;
   }
-  .invalid-inputs{
+  .invalid-inputs {
     border: 1px solid red;
   }
-  .inputs:focus-within{
+  .inputs:focus-within {
     @include mat-elevation(2);
   }
-  .mat-icon{
+  .mat-icon {
     padding-right: 0.2rem;
   }
 }
@@ -82,14 +82,14 @@
     color: #56c465;
   }
 }
-hr{
+hr {
   border-top: 1px solid #979292;
 }
-.red{
+.red {
   margin-top: 0.5rem;
-  color:red;
+  color: red;
 }
-ul{
+ul {
   margin-top: 0.2rem;
   text-align: left;
 }

@@ -1,28 +1,29 @@
 import { BehaviorSubject } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { environment } from './../environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ProductService {
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   getProducts(pageNo: any, pageSize: any, sortBy: any, sortDirection: any) {
     //return this.http.get<any>('../assets/products.json');
-    if(sortBy!='' && sortBy!='-')
+    if (sortBy != '' && sortBy != '-')
       return this.http.get<any>(
-        `http://3.120.32.114:8080/products/findAll?pageNo=${pageNo}&pageSize=${pageSize}&sortBy=${sortBy}&sortDirection=${sortDirection}`
+        `${environment.apiUrl}/products/findAll?pageNo=${pageNo}&pageSize=${pageSize}&sortBy=${sortBy}&sortDirection=${sortDirection}`
       );
-    else 
+    else
       return this.http.get<any>(
-        `http://3.120.32.114:8080/products/findAll?pageNo=${pageNo}&pageSize=${pageSize}`
+        `${environment.apiUrl}/products/findAll?pageNo=${pageNo}&pageSize=${pageSize}`
       );
   }
   getProduct(id: any) {
-    return this.http.get<any>(`http://3.120.32.114:8080/products/${id}`);
+    return this.http.get<any>(`${environment.apiUrl}/products/${id}`);
   }
   getPageSize(size: any) {
-    return this.http.get<any>(`http://3.120.32.114:8080/products/${size}`);
+    return this.http.get<any>(`${environment.apiUrl}/products/${size}`);
   }
 }
