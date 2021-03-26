@@ -1,6 +1,5 @@
 import { AccountService } from './../../services/account.service';
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { User } from '../models/user';
 
 @Component({
   selector: 'app-user-details',

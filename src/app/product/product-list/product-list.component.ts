@@ -22,7 +22,6 @@ export class ProductListComponent implements OnInit, AfterViewInit, OnDestroy {
     private productServ: ProductService,
     private searchService: SearchService,
     private scroll: ViewportScroller,
-    private route: ActivatedRoute
   ) {}
 
   products: any[] = [];
