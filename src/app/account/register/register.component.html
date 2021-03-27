@@ -3,149 +3,132 @@
   <form [formGroup]='form' (ngSubmit)="submit()">
     <h1>Register</h1>
     <hr />
-    <div *ngIf="option === 1">
-      <label for="title">Gender</label>
-      <select name="title" formControlName="sex">
-        <option>F</option>
-        <option>M</option>
-        <option>Other</option></select
-      ><br />
-      <label for="firstName">First Name</label><br />
-      <div class='inputs'>
-        <input
-          type="text"
-          formControlName="firstName"
-        />
-      </div>
-      <br />
-      <label for="lastName">Last Name</label><br />
-      <div class="inputs">
-        <input
-          type="text"
-          formControlName="lastName"
-        />
-      </div>
-      <br />
-      <label for="email">E-mail</label><br />
-      <div class="inputs"><input type="text" formControlName="email" /></div><br />
-      <div *ngIf="!f.email.valid! && !f.email.pristine" class='red'>
-        Email doesn't look right.
-      </div>
-      <button class="register-button next" (click)="optionIncrease()">
-        Next
-      </button>
-    </div>
-    <div *ngIf="option === 2">
-      <label for="username">Username</label><br />
-      <div class="inputs">
-        <input
-          type="text"
-          formControlName="username"
-        />
-      </div>
-      <div *ngIf="success==2 && submittedUsername==f.username.value" class='red'>
-        Try a different username.
-      </div>
-      <br />
-      <label for="password">Password</label><br />
-      <div class="inputs">
-        <input
-          [type]="hide1 ? 'password' : 'text'"
-          formControlName="password"
-        />
-        <mat-icon (click)="hide1 = !hide1">{{
-          hide1 ? "visibility_off" : "visibility"
-        }}</mat-icon>
-      </div>
-      <div *ngIf="f.password.errors && f.password.errors.pattern" class='red'>Password must: 
-        <ul>
-        <li> contain one uppercase letter</li>
-        <li> contain one number</li>
-        <li> contain one special character</li>  
-        <li> be at lest 8 characters long.</li>
-        </ul>
-      </div>
-      <br />
-      <label for="repeat-password">Repeat Password</label><br />
-      <div class="inputs">
-        <input 
-          [type]="hide2 ? 'password' : 'text'" 
-          formControlName="passwordRetype"
+    <div class='flex-container'>
+      <div class='column'>
+        <label for="firstName">*First Name</label>
+        <div class='inputs'>
+          <input
+            type="text"
+            formControlName="firstName"
           />
-        <mat-icon (click)="hide2 = !hide2">{{
-          hide2 ? "visibility_off" : "visibility"
-        }}</mat-icon>
+        </div>
+        <label for="lastName">*Last Name</label>
+        <div class="inputs">
+          <input
+            type="text"
+            formControlName="lastName"
+          />
+        </div>
+        <label for="email">*E-mail</label>
+        <div class="inputs" ><input type="text" formControlName="email" (keyup)='checkEmail()'/></div>
+        <div *ngIf="f.email.errors?.email && !f.email.pristine" class='red'>
+          Email doesn't look right.
+        </div>
+        <div *ngIf="emailExists" class='red'>
+          This email is already used.
+        </div>
+      
+        <label for="username">*Username</label>
+        <div class="inputs" >
+          <input
+            type="text"
+            formControlName="username"
+            (keyup)='checkUsername()'
+          />
+        </div>
+        <div *ngIf="usernameExists" class='red'>
+          Try a different username.
+        </div>
+       
+        <label for="password">*Password</label>
+        <div class="inputs">
+          <input
+            [type]="hide1 ? 'password' : 'text'"
+            formControlName="password"
+          />
+          <mat-icon (click)="hide1 = !hide1">{{
+            hide1 ? "visibility_off" : "visibility"
+          }}</mat-icon>
+        </div>
+        <div *ngIf="f.password.errors && f.password.errors.pattern" class='red'>Password must: 
+          <ul>
+          <li> contain one uppercase letter</li>
+          <li> contain one number</li>
+          <li> contain one special character</li>  
+          <li> be at lest 8 characters long.</li>
+          </ul>
+        </div>
+        <label for="repeat-password">*Repeat Password</label>
+        <div class="inputs">
+          <input 
+            [type]="hide2 ? 'password' : 'text'" 
+            formControlName="passwordRetype"
+            />
+          <mat-icon (click)="hide2 = !hide2">{{
+            hide2 ? "visibility_off" : "visibility"
+          }}</mat-icon>
+        </div>
+        <div *ngIf="f.passwordRetype.value!==f.password.value && !f.passwordRetype.pristine" class='red'>
+          Passwords do not match
+        </div>
       </div>
-      <div *ngIf="f.passwordRetype.value!==f.password.value && !f.passwordRetype.pristine" class='red'>
-        Passwords do not match
+      <div class='column'>
+        <label for="phone">*Phone Number</label>
+        <div class="inputs">
+        <input
+          type="tel"
+          formControlName="telephone"
+        /></div>
+        <div *ngIf="!f.telephone.valid! && !f.telephone.pristine" class='red'>
+          Telephone number doesn't look right.
+        </div>
+        <label for="address">*Address</label>
+        <div class="inputs">
+          <input 
+            type="text"
+            formControlName="address"
+          />
+        </div>
+        <label for="county">*County</label>
+        <div class="inputs">
+          <input
+            type="text"
+            formControlName="county"
+          />
+        </div>
+        <label for="city">*City</label>
+        <div class="inputs">
+          <input
+            type="text"
+            formControlName="city"
+          />
+        </div>
+        <label for="postal-code">Postal Code</label>
+        <div class="inputs">
+          <input
+            type="text"
+            formControlName="postalCode"
+          />
+        </div>
+        <label for="title" class='gender-label'>Gender</label>
+        <select name="title" formControlName="sex">
+          <option>F</option>
+          <option>M</option>
+          <option>Other</option></select
+        >
       </div>
-      <br />
-      <button class="register-button" (click)="optionIncrease()">Next</button>
-     <br />
-      <hr />
-      <button class="register-button first-btn" (click)="optionDecrease()">
-        Previous</button
-      >
     </div>
-    <div *ngIf="option === 3">
-      <h2 *ngIf="success == 1">User Successfuly Created</h2>
-      <!-- <h2 *ngIf="success == 2">{{message}} Please try again</h2> -->
-      <label for="phone">Phone Number</label><br />
-      <div class="inputs">
-      <input
-        type="tel"
-        formControlName="telephone"
-      /></div>
-      <div *ngIf="!f.telephone.valid! && !f.telephone.pristine" class='red'>
-        Telephone number doesn't look right.
-      </div>
-      <br />
-      <label for="address">Address</label><br />
-      <div class="inputs">
-        <input 
-          type="text"
-          formControlName="address"
-        />
-      </div>
-      <br />
-      <label for="county">County</label><br />
-      <div class="inputs">
-        <input
-          type="text"
-          formControlName="county"
-        />
-      </div>
-      <br />
-      <label for="city">City</label><br />
-      <div class="inputs">
-        <input
-          type="text"
-          formControlName="city"
-        />
-      </div>
-      <br />
-      <label for="postal-code">Postal Code</label>
-      <div class="inputs">
-        <input
-          type="text"
-          formControlName="postalCode"
-        />
-      </div>
-      <br />
-      <button class="register-button first-btn" (click)="optionDecrease()">
-        Previous</button
-      ><br />
+      <p class='align-left'>* Fileds are required </p>
       <hr />
       <button
         [ngClass]="
-          !form.valid ? 'register-user-disabled' : 'register-button'
+          !form.valid || usernameExists || emailExists ? 'register-user-disabled' : 'register-button'
         "
         type="submit"
-        [disabled]="!form.valid"
+        [disabled]="!form.valid || usernameExists || emailExists"
       >
         Register
       </button>
-    </div>
   </form>
   <div class="confirm" *ngIf="success == 1">
     <mat-icon>check_circle_outline</mat-icon>

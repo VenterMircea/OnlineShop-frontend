@@ -38,7 +38,10 @@ export class CartComponent implements OnInit, AfterViewInit {
   }
   modifyQuantity(id: any, diff: number) {
     this.products.forEach((val) => {
-      if (val.id === id) val.qty = val.qty + diff;
+      if (val.id === id)
+       {if (val.qty!=1 || diff==1) val.qty = val.qty + diff;
+        else this.deleteFromCart(id);
+       }
       localStorage.setItem('cart', JSON.stringify(this.products));
     });
     this.computeTotal();

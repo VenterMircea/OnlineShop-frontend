@@ -21,17 +21,12 @@ export class RegisterComponent implements OnInit, OnDestroy {
   hide2 = true;
   dialogVisibility = false;
   submittedUsername = '';
-  option = 1;
   user = new CreateUser();
   interval: any;
   success = 0;
+  emailExists: any;
+  usernameExists: any;
 
-  optionIncrease() {
-    this.option++;
-  }
-  optionDecrease() {
-    this.option--;
-  }
   submit() {
     this.user.firstName = this.f.firstName.value;
     this.user.lastName = this.f.lastName.value;
@@ -54,7 +49,6 @@ export class RegisterComponent implements OnInit, OnDestroy {
       },
       (err) => {
         this.success = 2;
-        this.option = 2;
         this.message = err.error;
         this.dialogVisibility = true;
         this.interval = setInterval(() => {
@@ -66,13 +60,31 @@ export class RegisterComponent implements OnInit, OnDestroy {
   get f() {
     return this.form.controls;
   }
+
+  checkUsername() {
+    this.accountService
+      .checkUsernameNotTaken(this.f.username.value)
+      .subscribe((response: any) => {
+        this.usernameExists = response;
+      });
+  }
+
+  checkEmail() {
+    if (this.f.email.valid)
+      this.accountService
+        .checkEmailNotTaken(this.f.email.value)
+        .subscribe((response: any) => {
+          this.emailExists = response;
+        });
+  }
+
   ngOnInit(): void {
     this.form = this.formBuilder.group({
-      sex: ['', Validators.required],
+      sex: '',
       firstName: ['', Validators.required],
       lastName: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
-      username: ['', Validators.required],
+      username: ['', [Validators.required]],
       password: [
         '',
         [
@@ -87,7 +99,7 @@ export class RegisterComponent implements OnInit, OnDestroy {
       address: ['', Validators.required],
       county: ['', Validators.required],
       city: ['', Validators.required],
-      postalCode: ['', Validators.required],
+      postalCode: '',
     });
   }
   ngOnDestroy() {
