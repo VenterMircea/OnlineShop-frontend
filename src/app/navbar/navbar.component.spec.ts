@@ -18,11 +18,8 @@ describe('NavbarComponent', () => {
     TestBed.configureTestingModule({
       imports: [HttpClientTestingModule],
       declarations: [NavbarComponent],
-      providers: [
-        { provide: Router, useValue: routerSpy }
-      ]
-    })
-      .compileComponents();
+      providers: [{ provide: Router, useValue: routerSpy }],
+    }).compileComponents();
   }));
 
   beforeEach(async(() => {
@@ -48,6 +45,9 @@ describe('NavbarComponent', () => {
     component.goToLogin();
     fixture.detectChanges();
     expect(component.goToLogin).toHaveBeenCalled();
-    expect(routerSpy.navigate).toHaveBeenCalledWith(['account/login'], Object({ state: jasmine.any(Object) }));
+    expect(routerSpy.navigate).toHaveBeenCalledWith(
+      ['account/login'],
+      Object({ state: jasmine.any(Object) })
+    );
   });
 });

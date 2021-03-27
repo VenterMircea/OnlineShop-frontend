@@ -39,36 +39,34 @@ export class ProductDetailsComponent implements OnInit {
     localStorage.setItem('cart', JSON.stringify(this.cart));
     this.cartService.update();
   }
-  openDialog(){
+  openDialog() {
     this.dialog.open(ProductDetailsDialogComponent, { data: this.product });
   }
 
-  handleHistory(product: any){
+  handleHistory(product: any) {
     this.history = JSON.parse(localStorage.getItem('history') || '[]');
-      this.displayHistory = this.history.filter(
-        (val) => val.id !== product.id
+    this.displayHistory = this.history.filter((val) => val.id !== product.id);
+    this.displayHistory = this.displayHistory.reverse();
+    let exist = false;
+    this.history.forEach((val) => {
+      if (val.id === product.id) exist = true;
+    });
+    if (!exist) {
+      this.history.push(product);
+    }
+    if (this.displayHistory.length > 5) {
+      this.displayHistory = this.displayHistory.slice(
+        this.displayHistory.length - 5,
+        this.displayHistory.length
       );
-      this.displayHistory=this.displayHistory.reverse();
-      let exist = false;
-      this.history.forEach((val) => {
-        if (val.id === product.id) exist = true;
-      });
-      if (!exist) {
-        this.history.push(product);
-      }
-      if (this.displayHistory.length > 5) {
-        this.displayHistory = this.displayHistory.slice(
-          this.displayHistory.length - 5,
-          this.displayHistory.length
-        );
-      }
-      if (this.history.length > 6) {
-        this.history = this.history.slice(
-          this.history.length - 5,
-          this.history.length
-        );
-      }
-      localStorage.setItem('history', JSON.stringify(this.history));
+    }
+    if (this.history.length > 6) {
+      this.history = this.history.slice(
+        this.history.length - 5,
+        this.history.length
+      );
+    }
+    localStorage.setItem('history', JSON.stringify(this.history));
   }
 
   ngOnInit() {

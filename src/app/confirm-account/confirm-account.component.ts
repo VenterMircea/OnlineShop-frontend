@@ -8,15 +8,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./confirm-account.component.scss'],
 })
 export class ConfirmAccountComponent implements OnInit {
-  id='';
+  id = '';
   constructor(
     private accountService: AccountService,
     private activatedRoute: ActivatedRoute,
-    private route: Router,
+    private route: Router
   ) {
-    this.activatedRoute.queryParams.subscribe(params =>
-      this.id=params['userId']
-      )
+    this.activatedRoute.queryParams.subscribe(
+      (params) => (this.id = params['userId'])
+    );
   }
 
   ngOnInit(): void {

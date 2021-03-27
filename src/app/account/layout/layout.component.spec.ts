@@ -11,9 +11,8 @@ describe('LayoutComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [RouterTestingModule, HttpClientTestingModule],
-      declarations: [LayoutComponent]
-    })
-      .compileComponents();
+      declarations: [LayoutComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {

@@ -1,6 +1,5 @@
 import { AccountService } from './../../services/account.service';
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { User } from '../models/user';
 
 @Component({
   selector: 'app-user-details',
@@ -9,7 +8,7 @@ import { User } from '../models/user';
 })
 export class UserDetailsComponent implements OnInit, OnDestroy {
   user: any;
-  newUser=JSON.parse('{ }');
+  newUser = JSON.parse('{ }');
   userLogo: any;
   constructor(private accountService: AccountService) {}
   accountName = true;
@@ -67,7 +66,7 @@ export class UserDetailsComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.newUser = JSON.parse(localStorage.getItem('user') || '{ }');
-    if(this.newUser.hasOwnProperty('firstName'))
+    if (this.newUser.hasOwnProperty('firstName'))
       this.userLogo =
         this.newUser.firstName[0].toUpperCase() +
         this.newUser.lastName[0].toUpperCase();

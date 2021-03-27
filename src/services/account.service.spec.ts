@@ -62,11 +62,11 @@ describe('AccountService', () => {
     expect(httpClientSpy.get.calls.count()).toBe(1, 'one call');
   });
 
-  it('userUpdate() should post modified user and return user by making one post request', ()=>{
+  it('userUpdate() should post modified user and return user by making one post request', () => {
     httpClientSpy.put.and.returnValue(of(user));
-    accountService.userUpdate('id',user).subscribe(
-      response=>  expect(response).toBe(user)
-    )
+    accountService
+      .userUpdate('id', user)
+      .subscribe((response) => expect(response).toBe(user));
     expect(httpClientSpy.put.calls.count()).toBe(1, 'one call');
-  })
+  });
 });

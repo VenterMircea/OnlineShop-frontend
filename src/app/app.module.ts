@@ -44,14 +44,18 @@ import { ConfirmAccountComponent } from './confirm-account/confirm-account.compo
     FormsModule,
     ReactiveFormsModule,
     RatingModule,
-    [HttpClientModule,],
+    [HttpClientModule],
     OverlayModule,
   ],
   providers: [
-    { provide: HTTP_INTERCEPTORS, useClass: AppInterceptorInterceptor, multi: true },
-    { provide: LocationStrategy, useClass: HashLocationStrategy }
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AppInterceptorInterceptor,
+      multi: true,
+    },
+    { provide: LocationStrategy, useClass: HashLocationStrategy },
   ],
   bootstrap: [AppComponent],
   exports: [NavbarComponent],
 })
-export class AppModule { }
+export class AppModule {}

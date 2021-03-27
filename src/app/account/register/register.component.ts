@@ -11,45 +11,35 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class RegisterComponent implements OnInit, OnDestroy {
   constructor(
-    private accountService: AccountService, 
+    private accountService: AccountService,
     private router: Router,
-    private formBuilder: FormBuilder,
-    ) {}
+    private formBuilder: FormBuilder
+  ) {}
   form!: FormGroup;
-  message='';
-  hide1=true;
-  hide2=true;
-  dialogVisibility=false;
-  submittedUsername='';
-  option = 1;
-  user = new CreateUser('', '', '', '', '', '', '', {
-    address: '',
-    city: '',
-    county: '',
-    postalCode: '',
-  });
+  message = '';
+  hide1 = true;
+  hide2 = true;
+  dialogVisibility = false;
+  submittedUsername = '';
+  user = new CreateUser();
   interval: any;
   success = 0;
+  emailExists: any;
+  usernameExists: any;
 
-  optionIncrease() {
-    this.option++;
-  }
-  optionDecrease() {
-    this.option--;
-  }
   submit() {
-    this.user.firstName=this.f.firstName.value;
-    this.user.lastName=this.f.lastName.value;
-    this.user.email=this.f.email.value;
-    this.user.sex=this.f.sex.value;
-    this.user.password=this.f.password.value;
-    this.user.username=this.f.username.value;
-    this.user.telephone=this.f.telephone.value;
-    this.user.addressEntity.address=this.f.address.value;
-    this.user.addressEntity.postalCode=this.f.postalCode.value;
-    this.user.addressEntity.city=this.f.city.value;
-    this.user.addressEntity.county=this.f.county.value;
-    this.submittedUsername=this.user.username;
+    this.user.firstName = this.f.firstName.value;
+    this.user.lastName = this.f.lastName.value;
+    this.user.email = this.f.email.value;
+    this.user.sex = this.f.sex.value;
+    this.user.password = this.f.password.value;
+    this.user.username = this.f.username.value;
+    this.user.telephone = this.f.telephone.value;
+    this.user.addressEntity.address = this.f.address.value;
+    this.user.addressEntity.postalCode = this.f.postalCode.value;
+    this.user.addressEntity.city = this.f.city.value;
+    this.user.addressEntity.county = this.f.county.value;
+    this.submittedUsername = this.user.username;
     this.accountService.createUser(this.user).subscribe(
       () => {
         this.success = 1;
@@ -59,11 +49,10 @@ export class RegisterComponent implements OnInit, OnDestroy {
       },
       (err) => {
         this.success = 2;
-        this.option=2;
-        this.message=err.error;
-        this.dialogVisibility=true;
+        this.message = err.error;
+        this.dialogVisibility = true;
         this.interval = setInterval(() => {
-          this.dialogVisibility=false;
+          this.dialogVisibility = false;
         }, 5000);
       }
     );
@@ -71,21 +60,47 @@ export class RegisterComponent implements OnInit, OnDestroy {
   get f() {
     return this.form.controls;
   }
+
+  checkUsername() {
+    this.accountService
+      .checkUsernameNotTaken(this.f.username.value)
+      .subscribe((response: any) => {
+        this.usernameExists = response;
+      });
+  }
+
+  checkEmail() {
+    if (this.f.email.valid)
+      this.accountService
+        .checkEmailNotTaken(this.f.email.value)
+        .subscribe((response: any) => {
+          this.emailExists = response;
+        });
+  }
+
   ngOnInit(): void {
-    this.form=this.formBuilder.group({
-      sex: ['', Validators.required],
+    this.form = this.formBuilder.group({
+      sex: '',
       firstName: ['', Validators.required],
       lastName: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
-      username: ['', Validators.required],
-      password: ['',[ Validators.required, Validators.pattern('(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&].{7,}')]],
+      username: ['', [Validators.required]],
+      password: [
+        '',
+        [
+          Validators.required,
+          Validators.pattern(
+            '(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-zd$@$!%*?&].{7,}'
+          ),
+        ],
+      ],
       passwordRetype: ['', Validators.required],
-      telephone: ['', [Validators.required, Validators.pattern("[0-9]{7,12}")]],
+      telephone: ['', [Validators.required, Validators.pattern('[0-9]{7,12}')]],
       address: ['', Validators.required],
       county: ['', Validators.required],
       city: ['', Validators.required],
-      postalCode: ['', Validators.required],
-    } );
+      postalCode: '',
+    });
   }
   ngOnDestroy() {
     if (this.interval) {

@@ -22,8 +22,7 @@ export class ProductListComponent implements OnInit, AfterViewInit, OnDestroy {
     private productServ: ProductService,
     private searchService: SearchService,
     private scroll: ViewportScroller,
-    private route: ActivatedRoute
-  ) { }
+  ) {}
 
   products: any[] = [];
   multiplePages: number[] = [];
@@ -39,11 +38,18 @@ export class ProductListComponent implements OnInit, AfterViewInit, OnDestroy {
   sortBy = '';
 
   callForProducts(): void {
-    this.productServ.getProducts(this.pageNumber, this.pageSize, this.sortBy.toLowerCase(), this.descending ? 'DESC' : 'ASC').subscribe((products) => {
-      this.products = products.content;
-      this.totalPages = products.totalPages;
-      this.showMultiplePages(this.pageNumber);
-    });
+    this.productServ
+      .getProducts(
+        this.pageNumber,
+        this.pageSize,
+        this.sortBy.toLowerCase(),
+        this.descending ? 'DESC' : 'ASC'
+      )
+      .subscribe((products) => {
+        this.products = products.content;
+        this.totalPages = products.totalPages;
+        this.showMultiplePages(this.pageNumber);
+      });
     this.scroll.scrollToPosition([0, 0]);
   }
 
@@ -55,7 +61,7 @@ export class ProductListComponent implements OnInit, AfterViewInit, OnDestroy {
   decreasePageNo(): void {
     this.pageNumber--;
     this.callForProducts();
-    console.log(this.pageNumber)
+    console.log(this.pageNumber);
   }
 
   showPageNo(pageNo: number): void {
@@ -81,7 +87,6 @@ export class ProductListComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   showMultiplePages(pageNo: number): void {
-
     let viewPages = this.totalPages - this.numberOfMultiplePages;
 
     this.multiplePages = [];
@@ -89,37 +94,42 @@ export class ProductListComponent implements OnInit, AfterViewInit, OnDestroy {
     if (this.totalPages < this.numberOfMultiplePages) {
       pageNo = 0;
       do {
-        pageNo++
-        this.multiplePages.push((pageNo));
-      } while (pageNo != this.totalPages)
-    }
-    else if (pageNo - 1 < viewPages) {
-      pageNo = (pageNo - Math.floor(this.numberOfMultiplePages / 2)) <= 0 ? 0
-        : (pageNo <= this.numberOfMultiplePages) ? (pageNo - Math.floor(this.numberOfMultiplePages / 2))
+        pageNo++;
+        this.multiplePages.push(pageNo);
+      } while (pageNo != this.totalPages);
+    } else if (pageNo - 1 < viewPages) {
+      pageNo =
+        pageNo - Math.floor(this.numberOfMultiplePages / 2) <= 0
+          ? 0
+          : pageNo <= this.numberOfMultiplePages
+          ? pageNo - Math.floor(this.numberOfMultiplePages / 2)
           : pageNo;
       do {
-        pageNo++
-        this.multiplePages.push((pageNo));
-      } while (this.multiplePages.length != this.numberOfMultiplePages &&
-        ([...this.multiplePages].pop() != this.totalPages))
-    }
-    else {
+        pageNo++;
+        this.multiplePages.push(pageNo);
+      } while (
+        this.multiplePages.length != this.numberOfMultiplePages &&
+        [...this.multiplePages].pop() != this.totalPages
+      );
+    } else {
       pageNo = this.totalPages - this.numberOfMultiplePages;
       do {
         pageNo++;
-        this.multiplePages.push((pageNo));
+        this.multiplePages.push(pageNo);
       } while (this.multiplePages.length != this.numberOfMultiplePages);
     }
   }
 
   ngOnInit() {
-    this.productServ.getProducts(this.pageNumber, this.pageSize, '', '').subscribe((products) => {
-      this.products = products.content;
-      this.totalPages = products.totalPages;
-      this.showMultiplePages(this.pageNumber);
-      this.scroll.scrollToPosition([0, 0]);
-      console.log(products);
-    });
+    this.productServ
+      .getProducts(this.pageNumber, this.pageSize, '', '')
+      .subscribe((products) => {
+        this.products = products.content;
+        this.totalPages = products.totalPages;
+        this.showMultiplePages(this.pageNumber);
+        this.scroll.scrollToPosition([0, 0]);
+        console.log(products);
+      });
     this.subscription = this.searchService.currentSearchTerm.subscribe(
       (term) => {
         this.searchTerm = term;
@@ -136,12 +146,13 @@ export class ProductListComponent implements OnInit, AfterViewInit, OnDestroy {
     this.subscription.unsubscribe();
   }
   changeSortDirection() {
-    if (this.sortBy != '' && this.sortBy != '-') this.descending = !this.descending;
+    if (this.sortBy != '' && this.sortBy != '-')
+      this.descending = !this.descending;
     this.callForProducts();
   }
   selectSortCriteria(event: any) {
     this.sortBy = event.target.value;
-    console.log("sortby: ", this.sortBy);
+    console.log('sortby: ', this.sortBy);
     this.callForProducts();
   }
 }

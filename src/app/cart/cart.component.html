@@ -1,5 +1,5 @@
 <app-navbar></app-navbar>
-<div class="container" *ngIf="products.length>0">
+<div class="container" *ngIf="products.length">
   <div class="order-summary mat-elevation-z2">
     <h2 class="line">Produse in cos:</h2>
     <div *ngFor="let product of products" class="product line">
@@ -23,13 +23,7 @@
         <div class="poduct-wraper">
           <div class="product-data">
             <p>Cantitate:</p>
-            <mat-icon
-              class="quantity-buttons"
-              (click)="deleteFromCart(product.id)"
-              >delete_forever</mat-icon
-            >
             <button
-              *ngIf="product.qty > 1"
               (click)="modifyQuantity(product.id, -1)"
               class="quantity-buttons"
             >
@@ -46,6 +40,12 @@
           <div class="product-data">
             <p>Pret:</p>
             <h2>{{ (product.price * product.qty).toFixed(2) }} lei</h2>
+            <span class='pointer' (click)="deleteFromCart(product.id)"><mat-icon
+              class="trash"
+              >delete_forever</mat-icon
+            >
+            Sterge din cos
+          </span>
           </div>
         </div>
       </div>

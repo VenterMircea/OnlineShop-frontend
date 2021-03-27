@@ -18,7 +18,11 @@ const routes: Routes = [
   { path: 'order', component: OrderComponent },
   { path: 'cart', component: CartComponent },
   { path: 'account/details', component: UserDetailsComponent },
-  { path: 'userConfirmation', component: ConfirmAccountComponent,  pathMatch: 'prefix' },
+  {
+    path: 'userConfirmation',
+    component: ConfirmAccountComponent,
+    pathMatch: 'prefix',
+  },
 ];
 
 @NgModule({

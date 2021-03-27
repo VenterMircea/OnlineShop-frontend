@@ -1,7 +1,7 @@
 @import "~@angular/material/theming";
 .register {
-  width: 300px;
-  margin: 120px auto;
+  width: 50vw;
+  margin: 50px auto;
   @include mat-elevation(3);
   padding: 50px;
   text-align: center;
@@ -10,28 +10,35 @@
   img {
     width: 200px;
   }
-  label{
-    padding: 1rem;
+  label {
+    display: block;
+    text-align: left;
   }
-  select{
+  .gender-label{
+    display: inline;
+    padding-right: 1rem;
+  }
+  select {
     margin-bottom: 1rem;
+    height: 1.7rem;
   }
   .register-button {
     background-image: linear-gradient(to left, #5fd4d2, #634fbd 40%);
     color: white;
-    width: 20rem;
-    height: 2rem;
+    width: 50%;
+    height: 2.5rem;
     margin: 5px auto;
     border-radius: 3%;
     border: none;
-    font-size: 1.2rem;
+    font-size: 1.5rem;
   }
   .register-user-disabled {
-    width: 250px;
+    width: 50%;
+    height: 2.5rem;
     margin: 5px auto;
     border-radius: 3%;
     border: none;
-    font-size: 1.2rem;
+    font-size: 1.5rem;
   }
   .first-btn {
     margin-top: 20px;
@@ -41,30 +48,28 @@
     background-image: linear-gradient(to left, #5fd4d2, #634fbd 40%);
     margin-top: 20px;
   }
-  input{
+  input {
     height: 1rem;
     outline: none;
     border: none;
-    width: 20rem;
+    min-width: calc(100% - 3rem);
     margin: 0.3rem;
   }
-  .inputs{
+  .inputs {
     border: 1px solid #979292;
     border-radius: 3%;
     overflow: hidden;
-    width: 20rem;
     display: flex;
+    margin-bottom: 1rem;
   }
-  .invalid-inputs{
+  .invalid-inputs {
     border: 1px solid red;
   }
-  .inputs:focus-within{
+  .inputs:focus-within {
     @include mat-elevation(2);
   }
-  .mat-icon{
-    padding-right: 0.2rem;
-  }
 }
+
 .confirm {
   position: fixed;
   left: 50%;
@@ -82,14 +87,50 @@
     color: #56c465;
   }
 }
-hr{
+hr {
   border-top: 1px solid #979292;
 }
-.red{
+.red {
   margin-top: 0.5rem;
-  color:red;
+  color: red;
 }
-ul{
+ul {
   margin-top: 0.2rem;
   text-align: left;
+}
+.align-left{
+  text-align: left;
+  padding-left: 2rem;
+}
+.flex-container{
+  display: flex;
+  justify-content: space-between;
+  .column{
+    margin: 2rem;
+    text-align: left;
+    width: 45%;
+  }
+}
+@media only screen and (max-width: 992px) {
+  .flex-container{
+    flex-direction: column;
+    .column{
+      width: 85%;
+      margin: 0 2rem;
+    }
+  }
+  .confirm{
+    min-width: 60%;
+  }
+}
+@media only screen and (max-width: 600px) {
+  .register{
+    width: 100%
+  }
+  .flex-container{
+    width: 90%;
+  }
+  .confirm{
+    min-width: 70%;
+  }
 }

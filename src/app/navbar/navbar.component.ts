@@ -1,5 +1,4 @@
 import { Router } from '@angular/router';
-import { ProductService } from './../../services/product.service';
 import { SearchService } from './../../services/search.service';
 import { CartService } from './../../services/cart.service';
 import { Component, OnInit } from '@angular/core';
@@ -23,7 +22,6 @@ export class NavbarComponent implements OnInit {
   constructor(
     private cartService: CartService,
     private searchService: SearchService,
-    private productServ: ProductService,
     private router: Router
   ) {}
 
@@ -45,7 +43,9 @@ export class NavbarComponent implements OnInit {
       : (this.userLogged = false);
     this.user = JSON.parse(localStorage.getItem('user') || '[]');
   }
-  goToLogin(){
-    this.router.navigate(['account/login'], { state: { redirect: this.router.url } });
+  goToLogin() {
+    this.router.navigate(['account/login'], {
+      state: { redirect: this.router.url },
+    });
   }
 }

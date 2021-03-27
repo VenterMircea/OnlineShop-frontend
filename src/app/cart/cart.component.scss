@@ -37,13 +37,13 @@ a:hover {
   padding: 2rem;
   background-color: white;
 }
-.empty-cart-container{
+.empty-cart-container {
   max-width: 100%;
   display: flex;
   margin-top: 90px;
   flex-direction: column;
 }
-.empty{
+.empty {
   background-color: white;
   width: 90vw;
   margin: 3rem 1.5rem 3rem 3rem;
@@ -117,6 +117,13 @@ a:hover {
 .quantity-buttons:hover {
   cursor: pointer;
 }
+.trash{
+  font-size: 1.2rem;
+  display: inline;
+}
+.pointer:hover{
+  cursor: pointer;
+}
 mat-icon {
   vertical-align: middle;
 }
@@ -180,4 +187,3 @@ mat-icon {
     margin-bottom: 10px;
   }
 }
-

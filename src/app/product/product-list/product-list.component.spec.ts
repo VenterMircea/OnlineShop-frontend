@@ -18,9 +18,8 @@ describe('ProductListComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [HttpClientTestingModule, RouterTestingModule],
-      declarations: [ProductListComponent, FilterProductPipe]
-    })
-      .compileComponents();
+      declarations: [ProductListComponent, FilterProductPipe],
+    }).compileComponents();
   }));
 
   beforeEach(() => {
