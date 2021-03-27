@@ -2,7 +2,7 @@ import { environment } from './../environments/environment';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { map} from 'rxjs/operators';
 
 import { User } from '../app/models/user';
 
@@ -37,7 +37,6 @@ export class AccountService {
           userM.token = user.headers.get('Authorization');
           localStorage.setItem('user', JSON.stringify(userM));
           this.userSubject.next(user.body);
-          console.log('complete response', user);
           return user;
         })
       );
@@ -105,4 +104,13 @@ export class AccountService {
       id
     );
   }
+
+  checkEmailNotTaken(email: string){
+    return this.http.get<boolean>(`${environment.apiUrl}/users/existsByEmail?email=${email}`);
+  }
+
+  checkUsernameNotTaken(username: any): Observable<boolean> {
+    return this.http.get<boolean>(`${environment.apiUrl}/users/existsByUsername?username=${username}`);
+  }
+ 
 }
