@@ -1,6 +1,13 @@
 .user-details {
-  width: 50%;
-  margin: 200px auto 0 auto;
+  @media only screen and (max-width: 500px) {
+    border-left: none;
+    border-right: none;
+    min-width: 100%;
+  }
+  min-width: fit-content;
+  max-width: 80vw;
+  min-height: 50%;
+  max-height: fit-content;
   background-color: white;
   display: flex;
   border: 2px solid;
@@ -14,12 +21,16 @@
     #56c465,
     #634fbd
   );
-  border-radius: 5px;
+  border-radius: 8px;
   padding-top: 40px;
   padding-bottom: 40px;
+  position: relative;
+  left: 50%;
+  top: 62%;
+  transform: translate(-50%, -50%);
   .user-name {
     border-right: 1px solid black;
-
+    padding-left: 1%;
     text-align: center;
     width: 200px;
     h2 {
@@ -54,28 +65,60 @@
   .user-information {
     display: flex;
     flex-grow: 1;
+    @media only screen and (max-width: 850px) {
+      flex-direction: column;
+      align-items: center;
+      input {
+        max-width: 95%;
+      }
+    }
     .user-account-info {
+      @media only screen and (max-width: 850px) {
+        border: none;
+        margin-bottom: 12%;
+        align-items: center;
+        width: fit-content;
+      }
       display: flex;
       width: 50%;
       border-right: 1px solid;
-      justify-content: space-around;
+      padding-left: 2%;
+      flex-direction: column;
     }
     .user-account-password {
+      @media only screen and (max-width: 850px) {
+        border: none;
+        margin-bottom: 12%;
+        align-items: center;
+        width: fit-content;
+      }
       display: flex;
-      justify-content: space-around;
       width: 50%;
+      padding-left: 2%;
+      .validation-text {
+        color: #ff0000;
+        text-align: justify;
+        margin-right: 2%;
+        max-width: fit-content;
+      }
     }
   }
   .details-address {
     display: flex;
     justify-content: center;
     width: 60%;
+    border-right: 1px solid;
+    padding-left: 1%;
   }
 }
 .edit-btn {
   background-color: white;
   border: none;
   height: 30px;
+  cursor: pointer;
+}
+.mat-icon {
+  cursor: pointer;
 }
 .active {
   background-color: #b5a988;

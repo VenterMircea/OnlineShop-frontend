@@ -28,9 +28,9 @@
         "
         style="color: #ff0000"
       >
-        Password must have: <br />
-        one uppercase letter, one number, one or more<br />
-        special character, and be at lest 8 characters long.
+        Password must be 8 or more characters. <br />
+        Must have upper and lower case letters.<br />
+        Must contain at least one number and on symbol.
       </div>
       <div class="form-group inputs">
         <input
@@ -40,7 +40,8 @@
             'is-invalid': submitted && formControls.password.errors
           }"
           placeholder="*Password"
-          title="Password must contain: one uppercase letter, one number, one special character and be at lest 8 characters long."
+          title="Password must contain: one uppercase letter, one number,
+           one special character and be at lest 8 characters long."
         />
         <mat-icon (click)="hide = !hide">{{
           hide ? "visibility_off" : "visibility"

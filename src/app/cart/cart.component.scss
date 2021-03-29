@@ -143,6 +143,7 @@ mat-icon {
   }
   .container {
     width: 960px;
+    margin-top: 130px;
   }
   .product-name {
     max-width: 90%;
@@ -165,7 +166,7 @@ mat-icon {
     flex-direction: column;
     max-width: 90vmin;
     margin: auto;
-    margin-top: 90px;
+    margin-top: 130px;
   }
 }
 @media only screen and (max-width: 768px) {

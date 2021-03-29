@@ -22,6 +22,12 @@
   </div>
   <div class="user-information" *ngIf="detailsOption == 1">
     <div class="user-account-info">
+      <p>
+        Account info
+        <button (click)="enableNameForm()" title="edit" class="edit-btn">
+          <span class="material-icons"> mode_edit </span>
+        </button>
+      </p>
       <form #nameForm="ngForm">
         <label>First Name</label><br />
         <input
@@ -70,22 +76,33 @@
           Submit
         </button>
       </form>
-      <button (click)="enableNameForm()" title="edit" class="edit-btn">
-        <span class="material-icons"> mode_edit </span>
-      </button>
     </div>
     <div class="user-account-password">
       <div>
-        <h3>Password</h3>
+        <p>
+          Change password
+          <button title="edit" class="edit-btn" (click)="enablePasswordForm()">
+            <span class="material-icons"> mode_edit </span>
+          </button>
+        </p>
         <label>New Password</label><br />
+        <div *ngIf="!validPassword" class="validation-text">
+          Password must be 8 or more characters. Must have upper and lower case
+          letters. Must contain at least one number and on symbol.
+        </div>
         <input
+          [type]="hide ? 'password' : 'text'"
           type="password"
           name="password"
           [(ngModel)]="newPassword"
           [disabled]="accountPassword"
-        /><br />
+        /><mat-icon *ngIf="eyeIcon" (click)="hide = !hide">{{
+          hide ? "visibility_off" : "visibility"
+        }}</mat-icon
+        ><br />
         <label>Repeat Password</label><br />
         <input
+          [type]="hide ? 'password' : 'text'"
           type="password"
           [(ngModel)]="repeatPassword"
           [disabled]="accountPassword"
@@ -101,9 +118,6 @@
           Submit
         </button>
       </div>
-      <button title="edit" class="edit-btn" (click)="enablePasswordForm()">
-        <span class="material-icons"> mode_edit </span>
-      </button>
     </div>
   </div>
   <div class="details-address" *ngIf="detailsOption == 2">
