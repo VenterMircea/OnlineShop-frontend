@@ -10,13 +10,17 @@ export class UserDetailsComponent implements OnInit, OnDestroy {
   user: any;
   newUser = JSON.parse('{ }');
   userLogo: any;
-  constructor(private accountService: AccountService) {}
+  constructor(private accountService: AccountService) { }
   accountName = true;
   accountPassword = true;
   accountAddress = true;
+  regExpStr = '(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?.&])[A-Za-z\d$@$!%*?&].{7,}';
   detailsOption = 1;
   newPassword = '';
   repeatPassword = '';
+  hide = true;
+  eyeIcon = false;
+  validPassword = true;
   passwordMatch = true;
   confirm = false;
   interval: any;
@@ -26,6 +30,7 @@ export class UserDetailsComponent implements OnInit, OnDestroy {
   }
   enablePasswordForm() {
     this.accountPassword = !this.accountPassword;
+    this.eyeIcon = !this.eyeIcon;
   }
   enableAddressForm() {
     this.accountAddress = !this.accountAddress;
@@ -42,12 +47,16 @@ export class UserDetailsComponent implements OnInit, OnDestroy {
   }
   submitPassword() {
     if (this.newPassword == this.repeatPassword && this.newPassword != '') {
-      this.user.password = this.newPassword;
-      this.accountService.userUpdate(this.user.id, this.user).subscribe();
-      this.confirm = true;
-      this.interval = setInterval(() => {
-        this.confirm = false;
-      }, 1500);
+      if (new RegExp(this.regExpStr, 'g').test(this.newPassword)) {
+        this.user.password = this.newPassword;
+        this.accountService.userUpdate(this.user.id, this.user).subscribe();
+        this.confirm = true;
+        this.interval = setInterval(() => {
+          this.validPassword = true;
+          this.confirm = false;
+        }, 3500);
+      }
+      this.validPassword = false
     } else {
       this.passwordMatch = false;
     }
@@ -57,7 +66,6 @@ export class UserDetailsComponent implements OnInit, OnDestroy {
       this.user.password = this.newUser.password;
     }
     this.accountService.userUpdate(this.user.id, this.user).subscribe();
-    console.log(this.user);
     this.confirm = true;
     this.interval = setInterval(() => {
       this.confirm = false;
@@ -72,7 +80,6 @@ export class UserDetailsComponent implements OnInit, OnDestroy {
         this.newUser.lastName[0].toUpperCase();
     this.user = { ...this.newUser, password: '' };
     delete this.user.token;
-    console.log(this.newUser);
   }
   ngOnDestroy() {
     if ((this, this.interval)) {

@@ -1,4 +1,8 @@
 .product-list {
+  @media only screen and (max-width: 575px) {
+    justify-content: center;
+    width: 100%;
+  }
   display: flex;
   flex-wrap: wrap;
   font-size: 1.1 em;
@@ -26,7 +30,6 @@ label {
 .page-controls {
   text-align: center;
   margin-bottom: 100px;
-  //margin-top: -100px;
 }
 
 .page-controls > button {
@@ -52,9 +55,19 @@ label {
   height: 100px;
 }
 .sort-container {
-  margin-top: 120px;
+  @media only screen and (max-width: 575px) {
+    flex-direction: column;
+    text-align: center;
+    .sort-item {
+      margin-bottom: 3%;
+    }
+  }
+  .sort-item {
+    margin-left: 0;
+  }
+  display: flex;
   width: 90%;
-  margin-left: auto;
+  margin: 130px auto 0;
   font-size: 1.1rem;
 }
 .sort-item {
@@ -66,7 +79,6 @@ label {
 }
 .sort-button {
   display: inline-block;
-  //border: 1px solid black;
   margin-left: 2rem;
   min-width: 8rem;
 }
