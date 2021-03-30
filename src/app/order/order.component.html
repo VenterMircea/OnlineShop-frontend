@@ -8,9 +8,9 @@
     >
       <h2>Sumar comanda</h2>
       <div *ngFor="let product of products" class="space-between">
-        <div>
+        <div class="image-detail">
           <img src="{{ product.image }}" />
-          <span>{{ product.name.slice(0, 40) | titlecase }}</span>
+          <p>{{ product.name.slice(0, 40) | titlecase }}</p>
         </div>
         <div>
           <span class="price"> {{ product.qty }} buc </span>

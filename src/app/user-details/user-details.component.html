@@ -96,16 +96,18 @@
           Password must be 8 or more characters. Must have upper and lower case
           letters. Must contain at least one number and on symbol.
         </div>
-        <input
-          [type]="hide ? 'password' : 'text'"
-          type="password"
-          name="password"
-          [(ngModel)]="newPassword"
-          [disabled]="accountPassword"
-        /><mat-icon *ngIf="eyeIcon" (click)="hide = !hide">{{
-          hide ? "visibility_off" : "visibility"
-        }}</mat-icon
-        ><br />
+        <div>
+          <input
+            [type]="hide ? 'password' : 'text'"
+            type="password"
+            name="password"
+            [(ngModel)]="newPassword"
+            [disabled]="accountPassword"
+          /><mat-icon *ngIf="eyeIcon" (click)="hide = !hide">{{
+            hide ? "visibility_off" : "visibility"
+          }}</mat-icon>
+        </div>
+        <br />
         <label>Repeat Password</label><br />
         <input
           [type]="hide ? 'password' : 'text'"

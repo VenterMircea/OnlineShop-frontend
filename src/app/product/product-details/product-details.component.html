@@ -11,9 +11,9 @@
             [value]="product.rating"
             [totalstars]="5"
             [readonly]="true"
-            checkedcolor="gold"
-            uncheckedcolor="gainsboro"
-            size="18px"
+            checkedcolor="#ffd700"
+            uncheckedcolor="#dcdcdc"
+            size="24px"
           ></star-rating
           >({{ product.rating }}/5)
         </p>
@@ -45,7 +45,7 @@
 <h2 class="margin">Produse vizualizate recent:</h2>
 <div class="product-list">
   <app-product-item
-    *ngFor="let product of displayHistory "
+    *ngFor="let product of displayHistory"
     [product]="product"
   ></app-product-item>
   <i aria-hidden="true"></i>
