@@ -1,3 +1,4 @@
+import { User } from 'src/app/models/user';
 import { AccountService } from './../../services/account.service';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 
@@ -7,7 +8,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
   styleUrls: ['./user-details.component.scss'],
 })
 export class UserDetailsComponent implements OnInit, OnDestroy {
-  user: any;
+  user!: User;
   newUser = JSON.parse('{ }');
   userLogo: any;
   constructor(private accountService: AccountService) { }

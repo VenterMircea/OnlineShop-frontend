@@ -23,26 +23,32 @@ export class ProductDetailsComponent implements OnInit {
       return false;
     };
   }
-  products!: any[];
-  product!: any;
-  cart: any[] = [];
-  history: any[] = [];
-  displayHistory: any[] = [];
+  products!: Product[];
+  product!: Product;
+  cart: Product[] = [];
+  history: Product[] = [];
+  displayHistory: Product[] = [];
   id = this.route.snapshot.params.id;
+  qty=1;
 
   addToCart() {
     this.cart = JSON.parse(localStorage.getItem('cart') || '[]');
     const ind = this.cart.findIndex((x) => x.id == this.product.id);
     ind < 0
-      ? this.cart.push({ ...this.product, qty: 1 })
-      : this.cart[ind].qty++;
+      ? this.cart.push({ ...this.product, qty: this.qty })
+      : this.cart[ind].qty+=this.qty;
     localStorage.setItem('cart', JSON.stringify(this.cart));
     this.cartService.update();
   }
   openDialog() {
     this.dialog.open(ProductDetailsDialogComponent, { data: this.product });
   }
-
+  modifyQuantity(val: number){
+    if(!(val===-1 && this.qty===1))
+    this.qty+=val;
+  }
+  //add to history the current product
+  //display from history only 5 products and exclude current product
   handleHistory(product: any) {
     this.history = JSON.parse(localStorage.getItem('history') || '[]');
     this.displayHistory = this.history.filter((val) => val.id !== product.id);

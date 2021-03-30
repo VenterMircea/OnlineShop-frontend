@@ -38,6 +38,7 @@
     }
 
     .add-to-cart {
+      margin: 1rem auto;
       p {
         font-size: 40px;
         font-weight: 500;
@@ -47,14 +48,31 @@
         height: 50px;
         width: 250px;
         background-image: linear-gradient(to right, #5fd4d2, #634fbd 40%);
-        text-align: start;
+        //text-align: start;
         border: none;
         color: white;
         font-size: 20px;
         border-radius: 5px;
+        display: flex;
+        align-items: center;
         cursor: pointer;
         .shopping {
-          margin-right: 70px;
+          vertical-align: middle;
+        }
+        .quantity {
+          padding: 0 1rem;
+        }
+        .quantity-buttons {
+          background-color: rgba(255, 255, 255, 0);
+          border: none;
+          vertical-align: middle;
+          font-size: 1.6rem;
+        }
+        .quantity-buttons:hover {
+          cursor: pointer;
+        }
+        .add-text {
+          margin-left: 2rem;
         }
       }
     }

@@ -1,5 +1,5 @@
+import { Product } from './../../models/product';
 import { Component, OnInit, Input } from '@angular/core';
-import { StarRatingComponent } from 'ng-starrating';
 
 @Component({
   selector: 'app-product-item',
@@ -8,7 +8,7 @@ import { StarRatingComponent } from 'ng-starrating';
 })
 export class ProductItemComponent implements OnInit {
   constructor() {}
-  @Input() product: any;
+  @Input() product!: Product;
 
   ngOnInit() {}
 }
