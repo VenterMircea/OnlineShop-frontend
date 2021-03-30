@@ -1,3 +1,5 @@
+import { User } from 'src/app/models/user';
+import { Product } from './../models/product';
 import { Router } from '@angular/router';
 import { SearchService } from './../../services/search.service';
 import { CartService } from './../../services/cart.service';
@@ -9,11 +11,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./navbar.component.scss'],
 })
 export class NavbarComponent implements OnInit {
-  cart: any = [];
+  cart: Product[] = [];
   searchTerm = '';
   qty = 0;
   userLogged!: boolean;
-  user: any;
+  user!: User;
   userOptions = false;
   subscrption = this.cartService.currentCart.subscribe((cart) => {
     this.cart = cart;

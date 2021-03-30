@@ -22,8 +22,21 @@
       <div class="add-to-cart">
         <p>{{ product.price }} lei</p>
         <button (click)="addToCart(); openDialog()">
-          <span class="material-icons shopping"> shopping_cart </span> Add to
-          cart
+          <span class="material-icons shopping"> shopping_cart </span> 
+          <div class='quantity' (click)='$event.stopPropagation()'>
+            <span
+              (click)="modifyQuantity(-1)"
+              class="quantity-buttons">
+              -
+            </span>
+            <span class="larger">{{ qty }}</span>
+            <span
+            (click)="modifyQuantity(1)"
+              class="quantity-buttons">
+              +
+            </span>
+          </div>
+          <span class='add-text'>Add to cart</span>
         </button>
       </div>
     </div>

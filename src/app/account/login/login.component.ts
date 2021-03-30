@@ -49,7 +49,6 @@ export class LoginComponent implements OnInit {
       .pipe(first())
       .subscribe(
         (response: Response) => {
-          console.log(response.headers);
           this.backToPreviousPage();
         },
         error => {

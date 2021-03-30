@@ -1,3 +1,4 @@
+import { Product } from './../../models/product';
 import { Subscription } from 'rxjs';
 import { SearchService } from './../../../services/search.service';
 import { ProductService } from './../../../services/product.service';
@@ -24,14 +25,14 @@ export class ProductListComponent implements OnInit, AfterViewInit, OnDestroy {
     private scroll: ViewportScroller,
   ) {}
 
-  products: any[] = [];
+  products: Product[] = [];
   multiplePages: number[] = [];
   subscription!: Subscription;
   searchTerm = '';
   pageNumber = 0;
   totalPages = 0;
   numberOfMultiplePages = 5;
-  pageSize = 10;
+  pageSize!: number;
   pageSizeSelector = [10, 20, 50];
   orderOptions = ['-', 'Price', 'Rating', 'Name', 'Brand'];
   descending = true;
@@ -61,7 +62,6 @@ export class ProductListComponent implements OnInit, AfterViewInit, OnDestroy {
   decreasePageNo(): void {
     this.pageNumber--;
     this.callForProducts();
-    console.log(this.pageNumber);
   }
 
   showPageNo(pageNo: number): void {
@@ -72,7 +72,6 @@ export class ProductListComponent implements OnInit, AfterViewInit, OnDestroy {
   increasePageNo(): void {
     this.pageNumber++;
     this.callForProducts();
-    console.log(this.pageNumber);
   }
 
   showLastPage(): void {
@@ -82,6 +81,7 @@ export class ProductListComponent implements OnInit, AfterViewInit, OnDestroy {
 
   selectPageSizeHandler(event: any): void {
     this.pageSize = event.target.value;
+    sessionStorage.setItem('pageSize', JSON.stringify(this.pageSize));
     this.pageNumber = 0;
     this.callForProducts();
   }
@@ -121,6 +121,7 @@ export class ProductListComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   ngOnInit() {
+    this.pageSize=parseInt(JSON.parse(sessionStorage.getItem('pageSize') || '10'));
     this.productServ
       .getProducts(this.pageNumber, this.pageSize, '', '')
       .subscribe((products) => {
@@ -128,7 +129,6 @@ export class ProductListComponent implements OnInit, AfterViewInit, OnDestroy {
         this.totalPages = products.totalPages;
         this.showMultiplePages(this.pageNumber);
         this.scroll.scrollToPosition([0, 0]);
-        console.log(products);
       });
     this.subscription = this.searchService.currentSearchTerm.subscribe(
       (term) => {
@@ -152,7 +152,6 @@ export class ProductListComponent implements OnInit, AfterViewInit, OnDestroy {
   }
   selectSortCriteria(event: any) {
     this.sortBy = event.target.value;
-    console.log('sortby: ', this.sortBy);
     this.callForProducts();
   }
 }

@@ -29,8 +29,8 @@
     title="The number of products per page"
     (change)="selectPageSizeHandler($event)"
   >
-    <option *ngFor="let pageSize of pageSizeSelector" value="{{ pageSize }}">
-      {{ pageSize }}
+    <option *ngFor="let pageSizeItem of pageSizeSelector" value="{{ pageSizeItem }}" [selected]="pageSizeItem===pageSize? 'isSelected' : ''">
+      {{ pageSizeItem }}
     </option>
   </select>
   <button

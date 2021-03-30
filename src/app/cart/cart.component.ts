@@ -1,7 +1,9 @@
+import { Product } from './../models/product';
 import { AccountService } from './../../services/account.service';
 import { CartService } from './../../services/cart.service';
 import { Component, OnInit, AfterViewInit, ElementRef } from '@angular/core';
 import { Router } from '@angular/router';
+import { environment } from '../../environments/environment'
 
 @Component({
   selector: 'app-cart',
@@ -9,10 +11,11 @@ import { Router } from '@angular/router';
   styleUrls: ['./cart.component.scss'],
 })
 export class CartComponent implements OnInit, AfterViewInit {
-  products!: any[];
+  products!: Product[];
   total = 0;
   selected = 'option1';
   user: any;
+  transportFee=environment.transportFee;
 
   constructor(
     private cartService: CartService,

@@ -1,7 +1,10 @@
+import { Product } from './../models/product';
+import { User } from 'src/app/models/user';
 import { CartService } from './../../services/cart.service';
 import { OrderService } from './../../services/order.service';
 import { Component, ElementRef, OnInit, AfterViewInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { environment } from '../../environments/environment'
 
 @Component({
   selector: 'app-order',
@@ -9,12 +12,13 @@ import { Router } from '@angular/router';
   styleUrls: ['./order.component.scss'],
 })
 export class OrderComponent implements OnInit, AfterViewInit {
-  user!: any;
-  products!: any;
+  user!: User;
+  products!: Product[];
   orderValue = 0;
   orderObject = Object();
   section = 1;
   confirm = false;
+  transportFee=environment.transportFee;
   constructor(
     private orderService: OrderService,
     private router: Router,
@@ -28,7 +32,7 @@ export class OrderComponent implements OnInit, AfterViewInit {
     this.products.forEach((val: any) => {
       this.orderValue += val.price * val.qty;
     });
-    this.orderValue = parseFloat(this.orderValue.toFixed(2));
+    this.orderValue = parseFloat(this.orderValue.toFixed(2))+this.transportFee;
     this.products.forEach((element: any) => {
       this.orderObject[element.id] = element.qty;
     });
@@ -48,7 +52,7 @@ export class OrderComponent implements OnInit, AfterViewInit {
         this.cartService.update();
       },
       (error) => {
-        console.log(error);
+        console.error(error);
       }
     );
   }

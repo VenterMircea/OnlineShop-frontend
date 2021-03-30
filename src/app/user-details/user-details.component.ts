@@ -1,3 +1,4 @@
+import { User } from 'src/app/models/user';
 import { AccountService } from './../../services/account.service';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 
@@ -7,7 +8,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
   styleUrls: ['./user-details.component.scss'],
 })
 export class UserDetailsComponent implements OnInit, OnDestroy {
-  user: any;
+  user!: User;
   newUser = JSON.parse('{ }');
   userLogo: any;
   constructor(private accountService: AccountService) {}
@@ -57,7 +58,6 @@ export class UserDetailsComponent implements OnInit, OnDestroy {
       this.user.password = this.newUser.password;
     }
     this.accountService.userUpdate(this.user.id, this.user).subscribe();
-    console.log(this.user);
     this.confirm = true;
     this.interval = setInterval(() => {
       this.confirm = false;
@@ -72,7 +72,6 @@ export class UserDetailsComponent implements OnInit, OnDestroy {
         this.newUser.lastName[0].toUpperCase();
     this.user = { ...this.newUser, password: '' };
     delete this.user.token;
-    console.log(this.newUser);
   }
   ngOnDestroy() {
     if ((this, this.interval)) {
