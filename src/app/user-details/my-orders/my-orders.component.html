@@ -1,0 +1,4 @@
+<div *ngFor="let order of myOrders">
+    <!-- <div [routerLink]="['/order/', order.id]">{{order.value}} {{order.id}} </div> -->
+    <div (click)="sendSectionChange(order)">{{order.value}} {{order.id}} </div>
+</div>

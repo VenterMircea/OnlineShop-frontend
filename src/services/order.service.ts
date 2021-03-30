@@ -8,7 +8,12 @@ import { environment } from './../environments/environment';
 })
 export class OrderService {
   constructor(private http: HttpClient) {}
+
   postOrder(order: any): Observable<any> {
     return this.http.post<any>(`${environment.apiUrl}/orders`, order);
+  }
+
+  getOrderByUserId(id: string): Observable<any>{
+    return this.http.get(`${environment.apiUrl}/orders/user/${id}`);
   }
 }

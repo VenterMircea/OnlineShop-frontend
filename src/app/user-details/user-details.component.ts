@@ -25,6 +25,7 @@ export class UserDetailsComponent implements OnInit, OnDestroy {
   passwordMatch = true;
   confirm = false;
   interval: any;
+  order: any;
 
   enableNameForm() {
     this.accountName = !this.accountName;
@@ -71,6 +72,14 @@ export class UserDetailsComponent implements OnInit, OnDestroy {
     this.interval = setInterval(() => {
       this.confirm = false;
     }, 1500);
+  }
+
+  receiveSectionChangeFromMyOrder($event: any) {
+    this.detailsOption = 4;
+    this.order=$event;
+  }
+  receiveSectionChangeFromOrderItem($event: any) {
+    this.detailsOption = $event;
   }
 
   ngOnInit() {
