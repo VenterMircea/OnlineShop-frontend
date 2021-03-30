@@ -15,7 +15,7 @@ export class UserDetailsComponent implements OnInit, OnDestroy {
   accountName = true;
   accountPassword = true;
   accountAddress = true;
-  regExpStr = '(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?.&])[A-Za-z\d$@$!%*?&].{7,}';
+  regExpStr = '(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&].{7,}';
   detailsOption = 1;
   newPassword = '';
   repeatPassword = '';

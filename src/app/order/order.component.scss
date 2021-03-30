@@ -8,6 +8,9 @@
   display: flex;
   background: white;
   flex-direction: row;
+  .image-detail {
+    display: inline-flex;
+  }
   img {
     max-height: 2rem;
     max-width: 3rem;
@@ -58,6 +61,9 @@
     margin-right: 3rem;
   }
   .list {
+    @media only screen and (max-width: 960px) {
+      width: auto;
+    }
     width: 35%;
   }
   .list div:nth-last-child(3) {
@@ -102,7 +108,7 @@
     }
   }
 }
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 960px) {
   .container {
     display: flex;
     flex-direction: column;

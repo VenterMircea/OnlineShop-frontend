@@ -23,18 +23,19 @@
       text-align: justify;
       p {
         display: flex;
-        width: 60%;
+        width: 90%;
         margin: 0 auto;
+        justify-content: center;
       }
       .product-description {
         margin: 30px auto;
-        width: 60%;
+        width: 80%;
       }
     }
     img {
       min-width: 65%;
       height: fit-content;
-      object-fit: cover;
+      object-fit: contain;
     }
 
     .add-to-cart {
@@ -86,6 +87,7 @@
   flex-direction: column-reverse;
   justify-content: space-evenly;
   margin-left: 4%;
+  min-width: 40%;
   @media only screen and (max-width: 992px) {
     margin-top: 6%;
     flex-direction: column;

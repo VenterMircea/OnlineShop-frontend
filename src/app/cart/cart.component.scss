@@ -117,11 +117,11 @@ a:hover {
 .quantity-buttons:hover {
   cursor: pointer;
 }
-.trash{
+.trash {
   font-size: 1.2rem;
   display: inline;
 }
-.pointer:hover{
+.pointer:hover {
   cursor: pointer;
 }
 mat-icon {
@@ -156,8 +156,8 @@ mat-icon {
   .calculation,
   .empty,
   .order-summary {
-    max-width: 90vmin;
-    min-width: 90%;
+    max-width: 95vmin;
+    min-width: 95%;
     margin: 1rem;
     left: auto;
     align-self: center;

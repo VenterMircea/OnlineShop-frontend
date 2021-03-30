@@ -14,8 +14,8 @@
           <star-rating
             [value]="product.rating"
             [totalstars]="5"
-            checkedcolor="gold"
-            uncheckedcolor="gainsboro"
+            checkedcolor="#ffd700"
+            uncheckedcolor="#dcdcdc"
             size="18px"
             [readonly]="true"
           ></star-rating>
@@ -40,12 +40,10 @@
           <div class="product-data">
             <p>Pret:</p>
             <h2>{{ (product.price * product.qty).toFixed(2) }} lei</h2>
-            <span class='pointer' (click)="deleteFromCart(product.id)"><mat-icon
-              class="trash"
-              >delete_forever</mat-icon
-            >
-            Sterge din cos
-          </span>
+            <span class="pointer" (click)="deleteFromCart(product.id)"
+              ><mat-icon class="trash">delete_forever</mat-icon>
+              Remove from cart
+            </span>
           </div>
         </div>
       </div>
@@ -72,18 +70,16 @@
         [disabled]="products.length == 0"
         (click)="changeRoute()"
       >
-        Pasul urmator
+        Next Step
       </button>
     </div>
     <button class="margin2 back-button" [routerLink]="'/'">
-      Continua cumparaturile
+      Continue shopping
     </button>
   </div>
 </div>
-<div class="empty-cart-container" *ngIf="products.length===0">
-  <div class="empty mat-elevation-z2">
-    Cosul este gol
-  </div>
+<div class="empty-cart-container" *ngIf="products.length === 0">
+  <div class="empty mat-elevation-z2">Cosul este gol</div>
   <button class="margin2 back-button" style="width: 14rem" [routerLink]="'/'">
     Continua cumparaturile
   </button>
