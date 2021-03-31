@@ -1,3 +1,4 @@
+import { OrderItemComponent } from './user-details/order-item/order-item.component';
 import { ConfirmAccountComponent } from './confirm-account/confirm-account.component';
 import { UserDetailsComponent } from './user-details/user-details.component';
 import { OrderComponent } from './order/order.component';
@@ -18,6 +19,7 @@ const routes: Routes = [
   { path: 'order', component: OrderComponent },
   { path: 'cart', component: CartComponent },
   { path: 'account/details', component: UserDetailsComponent },
+  { path: 'order/:id', component: OrderItemComponent },
   {
     path: 'userConfirmation',
     component: ConfirmAccountComponent,

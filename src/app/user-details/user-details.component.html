@@ -18,6 +18,12 @@
       >
         Address
       </li>
+      <li
+        [ngClass]="{ active: detailsOption == 3 || detailsOption==4 }"
+        (click)="detailsOption = 3"
+      >
+        My Orders
+      </li>
     </ul>
   </div>
   <div class="user-information" *ngIf="detailsOption == 1">
@@ -181,6 +187,12 @@
     <button title="edit" class="edit-btn" (click)="enableAddressForm()">
       <span class="material-icons"> mode_edit </span>
     </button>
+  </div>
+  <div *ngIf='detailsOption===3' class="details-address">
+    <app-my-orders (sectionEvent)='receiveSectionChangeFromMyOrder($event)'></app-my-orders>
+  </div>
+  <div *ngIf='detailsOption==4'>
+    <app-order-item [order]="order" (sectionEvent)='receiveSectionChangeFromOrderItem($event)'></app-order-item>
   </div>
   <div class="confirm" *ngIf="confirm">
     <mat-icon>check_circle_outline</mat-icon>

@@ -20,6 +20,8 @@ import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { NavbarComponent } from './navbar/navbar.component';
 import { OverlayModule } from '@angular/cdk/overlay';
 import { ConfirmAccountComponent } from './confirm-account/confirm-account.component';
+import { MyOrdersComponent } from './user-details/my-orders/my-orders.component';
+import { OrderItemComponent } from './user-details/order-item/order-item.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +36,8 @@ import { ConfirmAccountComponent } from './confirm-account/confirm-account.compo
     NavbarComponent,
     UserDetailsComponent,
     ConfirmAccountComponent,
+    MyOrdersComponent,
+    OrderItemComponent,
   ],
   entryComponents: [ProductDetailsDialogComponent],
   imports: [
