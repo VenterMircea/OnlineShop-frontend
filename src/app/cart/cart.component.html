@@ -1,7 +1,7 @@
 <app-navbar></app-navbar>
 <div class="container" *ngIf="products.length">
   <div class="order-summary mat-elevation-z2">
-    <h2 class="line">Produse in cos:</h2>
+    <h2 class="line">Products in cart:</h2>
     <div *ngFor="let product of products" class="product line">
       <div><img src="{{ product.image }}" alt="" class="product-image" /></div>
       <div class="product-section">
@@ -22,7 +22,7 @@
         </div>
         <div class="poduct-wraper">
           <div class="product-data">
-            <p>Cantitate:</p>
+            <p>Quantity:</p>
             <button
               (click)="modifyQuantity(product.id, -1)"
               class="quantity-buttons"
@@ -38,7 +38,7 @@
             </button>
           </div>
           <div class="product-data">
-            <p>Pret:</p>
+            <p>Price:</p>
             <h2>{{ (product.price * product.qty).toFixed(2) }} lei</h2>
             <span class="pointer" (click)="deleteFromCart(product.id)"
               ><mat-icon class="trash">delete_forever</mat-icon>
@@ -51,13 +51,13 @@
   </div>
 
   <div class="calculation mat-elevation-z2">
-    <h2 class="line">Sumar comanda:</h2>
+    <h2 class="line">Order review:</h2>
     <div class="calculation-body">
-      <p class="space-between">Pret produse:</p>
+      <p class="space-between">Products price:</p>
       <p>{{ total }} lei</p>
     </div>
     <div class="calculation-body line">
-      <p class="space-between">Cost livare:</p>
+      <p class="space-between">Shipping:</p>
       <p>{{transportFee}} lei</p>
     </div>
     <div class="calculation-body margin2">
@@ -81,6 +81,6 @@
 <div class="empty-cart-container" *ngIf="products.length === 0">
   <div class="empty mat-elevation-z2">Cosul este gol</div>
   <button class="margin2 back-button" style="width: 14rem" [routerLink]="'/'">
-    Continua cumparaturile
+    Continue shopping
   </button>
 </div>

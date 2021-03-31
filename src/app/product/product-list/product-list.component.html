@@ -1,13 +1,13 @@
 <app-navbar></app-navbar>
 <div class="sort-container">
   <div class='sort-item'>
-    <label for="order">Ordoneza dupa:</label>
+    <label for="order">Sort by:</label>
       <select name="order" (change)="selectSortCriteria($event)">
         <option  *ngFor="let ord of orderOptions" value={{ord}}>{{ord}}</option>
       </select>
   </div>
-  <div *ngIf="descending" class="sort-button" [class.gray]="sortBy=='' || sortBy=='-'" (click)="changeSortDirection()"><mat-icon>arrow_circle_down</mat-icon>Descrescator</div>
-  <div *ngIf="!descending" class="sort-button" (click)="changeSortDirection()"><mat-icon>arrow_circle_up</mat-icon>Crescator</div>
+  <div *ngIf="descending" class="sort-button" [class.gray]="sortBy=='' || sortBy=='-'" (click)="changeSortDirection()"><mat-icon>arrow_circle_down</mat-icon>Descending</div>
+  <div *ngIf="!descending" class="sort-button" (click)="changeSortDirection()"><mat-icon>arrow_circle_up</mat-icon>Ascending</div>
 </div>
 <div class="product-list">
   <app-product-item
