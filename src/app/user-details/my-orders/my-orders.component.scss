@@ -1,0 +1,61 @@
+@import "~@angular/material/theming";
+
+h1{
+    text-align: center;
+    margin-bottom: 2rem;
+}
+.order-card{
+    @include mat-elevation(3);
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    width: 40vw;
+    margin-bottom: 1rem;
+    .upper-section{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        border-bottom: 1px solid gray;
+        padding: 1rem;
+        .order-number{
+            color: #634fbd;
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+        button{
+            background-image: linear-gradient(to right, #5fd4d2, #634fbd 40%);
+            border: none;
+            color: white;
+            font-size: 1.1rem;
+            border-radius: 5px;
+            padding: 0.5rem 0.7rem;
+        }
+    }
+    @media only screen  and (min-width: 411px) and (max-width: 880px) {
+        .upper-section{
+            flex-direction: column;
+            .order-number{
+                font-size: 0.9rem;
+            }
+            button{
+                font-size: 0.9rem;
+            }
+        }
+    }
+    @media only screen and (max-width: 410px){
+        .upper-section{
+            flex-direction: column;
+            .order-number{
+                font-size: 0.7rem;
+            }
+            button{
+                font-size: 0.7rem;
+            }
+        }
+    }
+    
+    .padding{
+        padding: 1rem;
+    }
+}

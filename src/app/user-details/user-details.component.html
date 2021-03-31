@@ -188,7 +188,7 @@
       <span class="material-icons"> mode_edit </span>
     </button>
   </div>
-  <div *ngIf='detailsOption===3'>
+  <div *ngIf='detailsOption===3' class="details-address">
     <app-my-orders (sectionEvent)='receiveSectionChangeFromMyOrder($event)'></app-my-orders>
   </div>
   <div *ngIf='detailsOption==4'>

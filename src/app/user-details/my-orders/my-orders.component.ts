@@ -4,26 +4,25 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 @Component({
   selector: 'app-my-orders',
   templateUrl: './my-orders.component.html',
-  styleUrls: ['./my-orders.component.scss']
+  styleUrls: ['./my-orders.component.scss'],
 })
 export class MyOrdersComponent implements OnInit {
-  userID='';
+  userID = '';
   myOrders!: any;
   @Output() sectionEvent = new EventEmitter();
 
-  constructor(private orderService: OrderService) { }
+  constructor(private orderService: OrderService) {}
 
-  sendSectionChange(order:any) {
+  sendSectionChange(order: any) {
     this.sectionEvent.emit(order);
   }
 
   ngOnInit(): void {
-    this.userID=JSON.parse(localStorage.getItem('user') || '{}' ).id;
-    console.log("user in my oder", this.userID);
-    this.orderService.getOrderByUserId(this.userID).subscribe(
-      order=> {this.myOrders=order;
-      console.log('my orders: ',this.myOrders);}
-    )
+    this.userID = JSON.parse(localStorage.getItem('user') || '{}').id;
+    console.log('user in my oder', this.userID);
+    this.orderService.getOrderByUserId(this.userID).subscribe((order) => {
+      this.myOrders = order.reverse();
+      console.log('my orders: ', this.myOrders);
+    });
   }
-
 }
