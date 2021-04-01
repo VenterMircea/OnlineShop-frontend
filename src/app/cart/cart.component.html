@@ -12,6 +12,7 @@
             }}</a>
           </h2>
           <star-rating
+            class="star-rating"
             [value]="product.rating"
             [totalstars]="5"
             checkedcolor="#ffd700"
@@ -40,9 +41,9 @@
           <div class="product-data">
             <p>Price:</p>
             <h2>{{ (product.price * product.qty).toFixed(2) }} lei</h2>
-            <span class="pointer" (click)="deleteFromCart(product.id)"
-              ><mat-icon class="trash">delete_forever</mat-icon>
-              Remove from cart
+            <span class="pointer" (click)="deleteFromCart(product.id)">
+              <mat-icon class="trash">delete_forever</mat-icon>
+              Remove
             </span>
           </div>
         </div>
@@ -58,7 +59,7 @@
     </div>
     <div class="calculation-body line">
       <p class="space-between">Shipping:</p>
-      <p>{{transportFee}} lei</p>
+      <p>{{ transportFee }} lei</p>
     </div>
     <div class="calculation-body margin2">
       <h2 class="space-between">Total:</h2>
