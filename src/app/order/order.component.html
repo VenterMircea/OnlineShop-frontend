@@ -14,7 +14,9 @@
         </div>
         <div>
           <span class="price"> {{ product.qty }} piece </span>
-          <span class="price"> {{ product.price * product.qty }} lei </span>
+          <span class="price">
+            {{ (product.price * product.qty).toFixed(2) }} lei
+          </span>
         </div>
       </div>
       <div></div>
@@ -75,7 +77,8 @@
         <p>{{ orderValue }} lei</p>
       </div>
       <div class="space-between">
-        <span class="price distance">Shipping: </span><span>{{transportFee}} lei</span>
+        <span class="price distance">Shipping: </span
+        ><span>{{ transportFee }} lei</span>
       </div>
       <h2></h2>
       <div class="space-between">

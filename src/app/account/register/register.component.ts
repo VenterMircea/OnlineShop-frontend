@@ -11,10 +11,10 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class RegisterComponent implements OnInit, OnDestroy {
   constructor(
-    private accountService: AccountService,
+    public accountService: AccountService,
     private router: Router,
     private formBuilder: FormBuilder
-  ) {}
+  ) { }
   form!: FormGroup;
   message = '';
   hide1 = true;

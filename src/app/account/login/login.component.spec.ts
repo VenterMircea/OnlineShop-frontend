@@ -46,11 +46,19 @@ describe('LoginComponent', () => {
     component.onSubmit();
     expect(component.onSubmit).toThrowError();
   })
+
   it('should submit password and user through account service', () => {
     const accountService = fixture.debugElement.injector.get(AccountService);
     spyOn(accountService, 'login').and.callThrough();
     component.accountService.login("jade", "Test1234?");
     expect(component.accountService.login).toHaveBeenCalledWith("jade", "Test1234?");
+  });
+
+  it('should through error because password pattern do not match', () => {
+    const accountService = fixture.debugElement.injector.get(AccountService);
+    spyOn(accountService, 'login').and.callThrough();
+    component.accountService.login("jade", "Test1234");
+    expect(component.accountService.userValue).toEqual(null);
   });
 
 });
