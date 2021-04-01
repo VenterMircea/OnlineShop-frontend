@@ -55,14 +55,21 @@ describe('CartComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should increses the number of itmes in cart when + is clicked', () => {
+  it('should increses the number of first item in cart when + is clicked', () => {
     component.modifyQuantity('6040d6ba1e240556a8b76e8f', 1);
     expect(component.products[0].qty).toBe(2);
   });
 
-  it('should decreases the number of itmes in cart when - is clicked', () => {
+  it('should decreases the number of itemes in cart when - is clicked', () => {
+    spyOn(component, 'modifyQuantity').and.callThrough();
+    component.modifyQuantity('6040d6ba1e240556a8b76e8f', -1);
+    expect(component.products[0].qty).toBe(1);
+  });
+
+  it('should call modifyQuantity with correct args', () => {
+    spyOn(component, 'modifyQuantity').and.callThrough();
     component.modifyQuantity('6040d6ba1e240556a8b76ea4', -1);
-    expect(component.products[1].qty).toBe(0);
+    expect(component.modifyQuantity).toHaveBeenCalledWith('6040d6ba1e240556a8b76ea4', -1);
   });
 
   it('should compute cart total', () => {
@@ -70,8 +77,4 @@ describe('CartComponent', () => {
     expect(component.total).toBe(16343.9);
   });
 
-  it('should delete product from cart', () => {
-    component.deleteFromCart('6040d6ba1e240556a8b76ea4');
-    expect(component.products[1]).toBe(undefined);
-  });
 });

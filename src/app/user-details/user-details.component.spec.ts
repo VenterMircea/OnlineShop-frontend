@@ -30,13 +30,15 @@ describe('UserDetailsComponent', () => {
   });
 
   it('should enable name editing', () => {
+    spyOn(component, 'enableNameForm').and.callThrough
     component.enableNameForm();
-    expect(component.accountName).toBe(false);
+    expect(component.accountName).toBe(true);
   });
 
   it('should enable password editing', () => {
+    spyOn(component, 'enablePasswordForm').and.callThrough
     component.enablePasswordForm();
-    expect(component.accountPassword).toBe(false);
+    expect(component.accountPassword).toBe(true);
   });
 
   it('should enable address editing', () => {
@@ -54,9 +56,8 @@ describe('UserDetailsComponent', () => {
   it('should submit new password through account service', () => {
     const accountService = fixture.debugElement.injector.get(AccountService);
     const mySpy = spyOn(accountService, 'userUpdate').and.callThrough();
-    component.newPassword = component.repeatPassword = 'test';
+    component.newPassword = component.repeatPassword = 'Test1234?';
     component.submitPassword();
-    fixture.detectChanges();
     expect(mySpy).toHaveBeenCalledTimes(1);
   });
 
