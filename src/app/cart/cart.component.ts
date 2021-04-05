@@ -3,7 +3,7 @@ import { AccountService } from './../../services/account.service';
 import { CartService } from './../../services/cart.service';
 import { Component, OnInit, AfterViewInit, ElementRef } from '@angular/core';
 import { Router } from '@angular/router';
-import { environment } from '../../environments/environment'
+import { environment } from '../../environments/environment';
 
 @Component({
   selector: 'app-cart',
@@ -15,14 +15,14 @@ export class CartComponent implements OnInit, AfterViewInit {
   total = 0;
   selected = 'option1';
   user: any;
-  transportFee=environment.transportFee;
+  transportFee = environment.transportFee;
 
   constructor(
     private cartService: CartService,
     private elementRef: ElementRef,
     private accountService: AccountService,
     private router: Router
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.products = JSON.parse(localStorage.getItem('cart') || '[]');
@@ -41,10 +41,10 @@ export class CartComponent implements OnInit, AfterViewInit {
   }
   modifyQuantity(id: any, diff: number) {
     this.products.forEach((val) => {
-      if (val.id === id)
-       {if (val.qty!=1 || diff==1) val.qty = val.qty + diff;
+      if (val.id === id) {
+        if (val.qty != 1 || diff == 1) val.qty = val.qty + diff;
         else this.deleteFromCart(id);
-       }
+      }
       localStorage.setItem('cart', JSON.stringify(this.products));
     });
     this.computeTotal();
@@ -60,7 +60,7 @@ export class CartComponent implements OnInit, AfterViewInit {
   }
   changeRoute() {
     if (!this.user)
-      this.router.navigate(['account/login'], {
+      this.router.navigate(['/account/login'], {
         state: { redirect: this.router.url },
       });
     else this.router.navigate(['order']);

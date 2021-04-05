@@ -9,6 +9,7 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AccountService } from 'src/services/account.service';
 import { CreateUser } from 'src/app/models/createUser';
+import { MatIconModule } from '@angular/material/icon';
 
 describe('RegisterComponent', () => {
   let component: RegisterComponent;
@@ -16,7 +17,7 @@ describe('RegisterComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [HttpClientTestingModule, RouterTestingModule, FormsModule, ReactiveFormsModule],
+      imports: [HttpClientTestingModule, RouterTestingModule, FormsModule, ReactiveFormsModule, MatIconModule],
       declarations: [RegisterComponent],
     }).compileComponents();
   }));
