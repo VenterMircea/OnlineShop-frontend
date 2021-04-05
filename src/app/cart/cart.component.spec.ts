@@ -3,6 +3,9 @@ import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 
 import { CartComponent } from './cart.component';
+import { NavbarComponent } from '../navbar/navbar.component';
+import { MatIconModule } from '@angular/material/icon';
+import { RatingModule } from 'ng-starrating';
 
 describe('CartComponent', () => {
   let component: CartComponent;
@@ -11,8 +14,8 @@ describe('CartComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [HttpClientTestingModule, RouterTestingModule],
-      declarations: [CartComponent],
+      imports: [HttpClientTestingModule, RouterTestingModule, MatIconModule, RatingModule],
+      declarations: [CartComponent, NavbarComponent],
     }).compileComponents();
   });
 

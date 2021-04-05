@@ -25,7 +25,7 @@ export class NavbarComponent implements OnInit {
     private cartService: CartService,
     private searchService: SearchService,
     private router: Router
-  ) {}
+  ) { }
 
   changeSearchTerm(event: any) {
     this.searchTerm = event.target.value;
@@ -46,7 +46,7 @@ export class NavbarComponent implements OnInit {
     this.user = JSON.parse(localStorage.getItem('user') || '[]');
   }
   goToLogin() {
-    this.router.navigate(['account/login'], {
+    this.router.navigate(['/account/login'], {
       state: { redirect: this.router.url },
     });
   }

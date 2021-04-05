@@ -10,9 +10,9 @@ describe('MyOrdersComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [HttpClientTestingModule],
-      declarations: [ MyOrdersComponent ]
+      declarations: [MyOrdersComponent]
     })
-    .compileComponents();
+      .compileComponents();
   });
 
   beforeEach(() => {
@@ -22,6 +22,7 @@ describe('MyOrdersComponent', () => {
   });
 
   it('should create', () => {
+    component.userID = '6049e212f8cb6a1bb44c6ca0';
     expect(component).toBeTruthy();
   });
 });

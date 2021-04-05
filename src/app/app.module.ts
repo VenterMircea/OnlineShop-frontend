@@ -22,6 +22,7 @@ import { OverlayModule } from '@angular/cdk/overlay';
 import { ConfirmAccountComponent } from './confirm-account/confirm-account.component';
 import { MyOrdersComponent } from './user-details/my-orders/my-orders.component';
 import { OrderItemComponent } from './user-details/order-item/order-item.component';
+import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
   declarations: [
@@ -50,6 +51,7 @@ import { OrderItemComponent } from './user-details/order-item/order-item.compone
     RatingModule,
     [HttpClientModule],
     OverlayModule,
+    TranslateModule.forRoot(),
   ],
   providers: [
     {
@@ -62,4 +64,4 @@ import { OrderItemComponent } from './user-details/order-item/order-item.compone
   bootstrap: [AppComponent],
   exports: [NavbarComponent],
 })
-export class AppModule {}
+export class AppModule { }

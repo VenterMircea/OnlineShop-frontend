@@ -20,4 +20,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes), FormsModule, ReactiveFormsModule],
   exports: [RouterModule, FormsModule, ReactiveFormsModule],
 })
-export class AccountRoutingModule {}
+export class AccountRoutingModule { }

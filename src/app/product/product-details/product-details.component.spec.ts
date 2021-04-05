@@ -7,6 +7,9 @@ import { ProductDetailsComponent } from './product-details.component';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { MatDialogModule } from '@angular/material/dialog';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { NavbarComponent } from 'src/app/navbar/navbar.component';
+import { ProductItemComponent } from '../product-item/product-item.component';
+import { RatingModule } from 'ng-starrating';
 
 describe('ProductDetailsComponent', () => {
   let component: ProductDetailsComponent;
@@ -15,12 +18,13 @@ describe('ProductDetailsComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ProductDetailsComponent],
+      declarations: [ProductDetailsComponent, NavbarComponent, ProductItemComponent],
       imports: [
         RouterModule.forRoot([]),
         HttpClientTestingModule,
         MatDialogModule,
         NoopAnimationsModule,
+        RatingModule,
       ],
       providers: [{ provide: CartService, ProductService }],
     }).compileComponents();
@@ -72,6 +76,6 @@ describe('ProductDetailsComponent', () => {
     const mySpy = spyOn(cartService, 'update').and.callThrough();
     component.addToCart();
     fixture.detectChanges();
-    expect(mySpy).toHaveBeenCalled();
+    expect(mySpy).toHaveBeenCalledTimes(1);
   });
 });

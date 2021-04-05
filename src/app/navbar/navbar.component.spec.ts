@@ -46,7 +46,7 @@ describe('NavbarComponent', () => {
     fixture.detectChanges();
     expect(component.goToLogin).toHaveBeenCalled();
     expect(routerSpy.navigate).toHaveBeenCalledWith(
-      ['account/login'],
+      ['/account/login'],
       Object({ state: jasmine.any(Object) })
     );
   });

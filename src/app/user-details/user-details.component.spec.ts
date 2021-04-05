@@ -6,6 +6,8 @@ import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 
 import { UserDetailsComponent } from './user-details.component';
+import { NavbarComponent } from '../navbar/navbar.component';
+import { MatIconModule } from '@angular/material/icon';
 
 describe('UserDetailsComponent', () => {
   let component: UserDetailsComponent;
@@ -13,8 +15,8 @@ describe('UserDetailsComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [HttpClientTestingModule, RouterTestingModule, FormsModule],
-      declarations: [UserDetailsComponent],
+      imports: [HttpClientTestingModule, RouterTestingModule, FormsModule, MatIconModule],
+      declarations: [UserDetailsComponent, NavbarComponent],
       providers: [{ provide: AccountService }],
     }).compileComponents();
   }));

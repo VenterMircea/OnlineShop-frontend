@@ -1,15 +1,12 @@
 import { FilterProductPipe } from './../../pipes/filter-product.pipe';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { By } from '@angular/platform-browser';
-import { DebugElement, ElementRef } from '@angular/core';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 
 import { ProductListComponent } from './product-list.component';
-import { ProductService } from 'src/services/product.service';
-import { SearchService } from 'src/services/search.service';
-import { ViewportScroller } from '@angular/common';
-import { ActivatedRoute } from '@angular/router';
+import { NavbarComponent } from 'src/app/navbar/navbar.component';
+import { ProductItemComponent } from '../product-item/product-item.component';
+import { MatIconModule } from '@angular/material/icon';
 
 describe('ProductListComponent', () => {
   let component: ProductListComponent;
@@ -17,8 +14,8 @@ describe('ProductListComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [HttpClientTestingModule, RouterTestingModule],
-      declarations: [ProductListComponent, FilterProductPipe],
+      imports: [HttpClientTestingModule, RouterTestingModule, MatIconModule],
+      declarations: [ProductListComponent, FilterProductPipe, NavbarComponent, ProductItemComponent],
     }).compileComponents();
   }));
 

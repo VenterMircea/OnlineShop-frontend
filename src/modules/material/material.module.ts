@@ -19,8 +19,7 @@ const modules = [
 
 @NgModule({
   declarations: [],
-  imports: [CommonModule, ...modules],
-  exports: [...modules],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA],
+  imports: [CommonModule, MatIconModule, ...modules],
+  exports: [MatIconModule, ...modules],
 })
-export class MaterialModule {}
+export class MaterialModule { }

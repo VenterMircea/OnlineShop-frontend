@@ -10,8 +10,6 @@ import {
   OnDestroy,
 } from '@angular/core';
 import { ViewportScroller } from '@angular/common';
-import { ActivatedRoute } from '@angular/router';
-
 @Component({
   selector: 'app-product-list',
   templateUrl: './product-list.component.html',
@@ -23,7 +21,7 @@ export class ProductListComponent implements OnInit, AfterViewInit, OnDestroy {
     private productServ: ProductService,
     private searchService: SearchService,
     private scroll: ViewportScroller,
-  ) {}
+  ) { }
 
   products: Product[] = [];
   multiplePages: number[] = [];
@@ -102,8 +100,8 @@ export class ProductListComponent implements OnInit, AfterViewInit, OnDestroy {
         pageNo - Math.floor(this.numberOfMultiplePages / 2) <= 0
           ? 0
           : pageNo <= this.numberOfMultiplePages
-          ? pageNo - Math.floor(this.numberOfMultiplePages / 2)
-          : pageNo;
+            ? pageNo - Math.floor(this.numberOfMultiplePages / 2)
+            : pageNo;
       do {
         pageNo++;
         this.multiplePages.push(pageNo);
@@ -121,7 +119,7 @@ export class ProductListComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   ngOnInit() {
-    this.pageSize=parseInt(JSON.parse(sessionStorage.getItem('pageSize') || '10'));
+    this.pageSize = parseInt(JSON.parse(sessionStorage.getItem('pageSize') || '10'));
     this.productServ
       .getProducts(this.pageNumber, this.pageSize, '', '')
       .subscribe((products) => {

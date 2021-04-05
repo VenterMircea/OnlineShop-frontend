@@ -3,6 +3,8 @@ import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 
 import { OrderComponent } from './order.component';
+import { NavbarComponent } from '../navbar/navbar.component';
+import { MatIconModule } from '@angular/material/icon';
 
 describe('OrderComponent', () => {
   let component: OrderComponent;
@@ -10,8 +12,8 @@ describe('OrderComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [HttpClientTestingModule, RouterTestingModule],
-      declarations: [OrderComponent],
+      imports: [HttpClientTestingModule, RouterTestingModule, MatIconModule],
+      declarations: [OrderComponent, NavbarComponent],
     }).compileComponents();
   });
 
