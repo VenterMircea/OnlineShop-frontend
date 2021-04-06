@@ -5,8 +5,6 @@ import { CartService } from './../../services/cart.service';
 import { Component, OnInit, AfterViewInit, ElementRef } from '@angular/core';
 import { Router } from '@angular/router';
 import { environment } from '../../environments/environment';
-import { catchError } from 'rxjs/operators';
-import { of } from 'rxjs';
 
 @Component({
   selector: 'app-cart',
@@ -78,7 +76,7 @@ export class CartComponent implements OnInit, AfterViewInit {
   }
   changeRoute() {
     if (!this.user)
-      this.router.navigate(['account/login'], {
+      this.router.navigate(['/account/login'], {
         state: { redirect: this.router.url },
       });
     else this.router.navigate(['order']);

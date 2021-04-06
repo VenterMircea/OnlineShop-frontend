@@ -1,8 +1,9 @@
 import { HttpClientTestingModule } from '@angular/common/http/testing';
-import { invalid } from '@angular/compiler/src/render3/view/util';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { ReactiveFormsModule } from '@angular/forms';
+import { MatIconModule } from '@angular/material/icon';
 import { RouterTestingModule } from '@angular/router/testing';
+import { first } from 'rxjs/operators';
 import { AccountService } from 'src/services/account.service';
 
 import { LoginComponent } from './login.component';
@@ -17,6 +18,7 @@ describe('LoginComponent', () => {
         ReactiveFormsModule,
         RouterTestingModule,
         HttpClientTestingModule,
+        MatIconModule,
       ],
       declarations: [LoginComponent],
     }).compileComponents();
@@ -50,7 +52,7 @@ describe('LoginComponent', () => {
   it('should submit password and user through account service', () => {
     const accountService = fixture.debugElement.injector.get(AccountService);
     spyOn(accountService, 'login').and.callThrough();
-    component.accountService.login("jade", "Test1234?");
+    component.accountService.login("jade", "Test1234?").pipe(first()).subscribe();
     expect(component.accountService.login).toHaveBeenCalledWith("jade", "Test1234?");
   });
 

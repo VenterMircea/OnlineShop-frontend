@@ -4,6 +4,7 @@ import { SearchService } from './../../services/search.service';
 import { CartService } from './../../services/cart.service';
 import { Component, OnInit } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-navbar',
@@ -21,8 +22,14 @@ export class NavbarComponent implements OnInit {
   constructor(
     private cartService: CartService,
     private searchService: SearchService,
-    private router: Router
-  ) {}
+    private router: Router,
+    public translate: TranslateService
+  ) {
+    translate.addLangs(['ro', 'en', 'de']);
+    const browserLang = translate.getBrowserLang();
+    translate.setDefaultLang(browserLang);
+    translate.use(browserLang.match(/ro|en|de/) ? browserLang : 'en');
+  }
 
   changeSearchTerm(event: any) {
     this.searchTerm = event.target.value;
@@ -50,8 +57,9 @@ export class NavbarComponent implements OnInit {
       this.qtyEmitter$.next(this.qty);
     });
   }
+
   goToLogin() {
-    this.router.navigate(['account/login'], {
+    this.router.navigate(['/account/login'], {
       state: { redirect: this.router.url },
     });
   }
