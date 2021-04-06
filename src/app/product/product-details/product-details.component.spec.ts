@@ -10,6 +10,9 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { NavbarComponent } from 'src/app/navbar/navbar.component';
 import { ProductItemComponent } from '../product-item/product-item.component';
 import { RatingModule } from 'ng-starrating';
+import { HttpClient } from '@angular/common/http';
+import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
+import { HttpLoaderFactory } from 'src/app/app.module';
 
 describe('ProductDetailsComponent', () => {
   let component: ProductDetailsComponent;
@@ -25,6 +28,13 @@ describe('ProductDetailsComponent', () => {
         MatDialogModule,
         NoopAnimationsModule,
         RatingModule,
+        TranslateModule.forRoot({
+          loader: {
+            provide: TranslateLoader,
+            useFactory: HttpLoaderFactory,
+            deps: [HttpClient]
+          }
+        })
       ],
       providers: [{ provide: CartService, ProductService }],
     }).compileComponents();

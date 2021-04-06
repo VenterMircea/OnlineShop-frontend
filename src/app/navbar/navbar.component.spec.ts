@@ -1,13 +1,12 @@
 /* tslint:disable:no-unused-variable */
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
-import { RouterTestingModule } from '@angular/router/testing';
 import { Router } from '@angular/router';
-import { ProductService } from './../../services/product.service';
-import { SearchService } from './../../services/search.service';
-import { CartService } from './../../services/cart.service';
 
 import { NavbarComponent } from './navbar.component';
+import { HttpClient } from '@angular/common/http';
+import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
+import { HttpLoaderFactory } from '../app.module';
 
 describe('NavbarComponent', () => {
   let component: NavbarComponent;
@@ -16,7 +15,13 @@ describe('NavbarComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [HttpClientTestingModule],
+      imports: [HttpClientTestingModule, TranslateModule.forRoot({
+        loader: {
+          provide: TranslateLoader,
+          useFactory: HttpLoaderFactory,
+          deps: [HttpClient]
+        }
+      })],
       declarations: [NavbarComponent],
       providers: [{ provide: Router, useValue: routerSpy }],
     }).compileComponents();

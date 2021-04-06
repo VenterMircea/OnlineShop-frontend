@@ -14,7 +14,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RatingModule } from 'ng-starrating';
 import { CartComponent } from './cart/cart.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HttpClient, HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { OrderComponent } from './order/order.component';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { NavbarComponent } from './navbar/navbar.component';
@@ -22,8 +22,11 @@ import { OverlayModule } from '@angular/cdk/overlay';
 import { ConfirmAccountComponent } from './confirm-account/confirm-account.component';
 import { MyOrdersComponent } from './user-details/my-orders/my-orders.component';
 import { OrderItemComponent } from './user-details/order-item/order-item.component';
-import { TranslateModule } from '@ngx-translate/core';
-
+import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+export function HttpLoaderFactory(httpClient: HttpClient) {
+  return new TranslateHttpLoader(httpClient);
+}
 @NgModule({
   declarations: [
     AppComponent,
@@ -51,7 +54,13 @@ import { TranslateModule } from '@ngx-translate/core';
     RatingModule,
     [HttpClientModule],
     OverlayModule,
-    TranslateModule.forRoot(),
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: HttpLoaderFactory,
+        deps: [HttpClient]
+      }
+    })
   ],
   providers: [
     {
@@ -62,6 +71,6 @@ import { TranslateModule } from '@ngx-translate/core';
     { provide: LocationStrategy, useClass: HashLocationStrategy },
   ],
   bootstrap: [AppComponent],
-  exports: [NavbarComponent],
+  exports: [NavbarComponent, TranslateModule],
 })
 export class AppModule { }

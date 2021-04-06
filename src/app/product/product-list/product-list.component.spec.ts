@@ -1,22 +1,36 @@
 import { FilterProductPipe } from './../../pipes/filter-product.pipe';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 
 import { ProductListComponent } from './product-list.component';
 import { NavbarComponent } from 'src/app/navbar/navbar.component';
 import { ProductItemComponent } from '../product-item/product-item.component';
 import { MatIconModule } from '@angular/material/icon';
+import { TranslateLoader, TranslateModule, TranslateService } from '@ngx-translate/core';
+import { HttpClient } from '@angular/common/http';
+import { HttpLoaderFactory } from 'src/app/app.module';
 
 describe('ProductListComponent', () => {
   let component: ProductListComponent;
   let fixture: ComponentFixture<ProductListComponent>;
+  let translate: TranslateService;
+  let http: HttpTestingController;
+
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [HttpClientTestingModule, RouterTestingModule, MatIconModule],
+      imports: [HttpClientTestingModule, RouterTestingModule, MatIconModule, TranslateModule.forRoot({
+        loader: {
+          provide: TranslateLoader,
+          useFactory: HttpLoaderFactory,
+          deps: [HttpClient]
+        }
+      })],
       declarations: [ProductListComponent, FilterProductPipe, NavbarComponent, ProductItemComponent],
     }).compileComponents();
+    translate = TestBed.inject(TranslateService);
+    http = TestBed.inject(HttpTestingController);
   }));
 
   beforeEach(() => {
