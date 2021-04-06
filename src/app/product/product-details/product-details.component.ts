@@ -5,6 +5,8 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ProductService } from 'src/services/product.service';
 import { MatDialog } from '@angular/material/dialog';
+import { cartBE } from 'src/app/models/cartBE';
+import { first } from 'rxjs/operators';
 
 @Component({
   selector: 'app-product-details',
@@ -25,27 +27,37 @@ export class ProductDetailsComponent implements OnInit {
   }
   products!: Product[];
   product!: Product;
-  cart: Product[] = [];
+  cart = new cartBE();
   history: Product[] = [];
   displayHistory: Product[] = [];
   id = this.route.snapshot.params.id;
-  qty=1;
+  qty = 1;
 
   addToCart() {
-    this.cart = JSON.parse(localStorage.getItem('cart') || '[]');
-    const ind = this.cart.findIndex((x) => x.id == this.product.id);
-    ind < 0
-      ? this.cart.push({ ...this.product, qty: this.qty })
-      : this.cart[ind].qty+=this.qty;
-    localStorage.setItem('cart', JSON.stringify(this.cart));
-    this.cartService.update();
+    this.cartService.currentCart.pipe(first()).subscribe((res) => {
+      if (Object.keys(res).length !== 0) this.cart = res;
+      let existInCart = false;
+      for (let key in this.cart.products)
+        if (key === this.product.id) {
+          this.cart.products[key] += this.qty;
+          existInCart = true;
+        }
+      if (!existInCart) {
+        this.cart.products[this.product.id] = this.qty;
+        if (localStorage.hasOwnProperty('user'))
+          this.cart.userId = JSON.parse(
+            localStorage.getItem('user') || '{}'
+          ).id;
+      }
+      delete this.cart.products[''];
+      this.cartService.update(this.cart);
+    });
   }
   openDialog() {
     this.dialog.open(ProductDetailsDialogComponent, { data: this.product });
   }
-  modifyQuantity(val: number){
-    if(!(val===-1 && this.qty===1))
-    this.qty+=val;
+  modifyQuantity(val: number) {
+    if (!(val === -1 && this.qty === 1)) this.qty += val;
   }
   //add to history the current product
   //display from history only 5 products and exclude current product

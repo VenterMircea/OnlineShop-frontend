@@ -1,10 +1,11 @@
+import { ProductService } from './../../services/product.service';
 import { Product } from './../models/product';
 import { User } from 'src/app/models/user';
 import { CartService } from './../../services/cart.service';
 import { OrderService } from './../../services/order.service';
 import { Component, ElementRef, OnInit, AfterViewInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { environment } from '../../environments/environment'
+import { environment } from '../../environments/environment';
 
 @Component({
   selector: 'app-order',
@@ -13,29 +14,37 @@ import { environment } from '../../environments/environment'
 })
 export class OrderComponent implements OnInit, AfterViewInit {
   user!: User;
-  products!: Product[];
+  products: Product[] = [];
+  cart!: any;
   orderValue = 0;
   orderObject = Object();
   section = 1;
   confirm = false;
-  transportFee=environment.transportFee;
+  transportFee = environment.transportFee;
   constructor(
     private orderService: OrderService,
     private router: Router,
     private elementRef: ElementRef,
-    private cartService: CartService
+    private cartService: CartService,
+    private productService: ProductService
   ) {}
 
   ngOnInit(): void {
-    this.products = JSON.parse(localStorage.getItem('cart') || '[]');
     this.user = JSON.parse(localStorage.getItem('user') || '{}');
-    this.products.forEach((val: any) => {
-      this.orderValue += val.price * val.qty;
-    });
-    this.orderValue = parseFloat(this.orderValue.toFixed(2))+this.transportFee;
-    this.products.forEach((element: any) => {
-      this.orderObject[element.id] = element.qty;
-    });
+    this.cart = JSON.parse(localStorage.getItem('cart') || '{}');
+    if (Object.keys(this.cart).length > 0) {
+      let productsIds = Object.keys(this.cart.products);
+      productsIds.forEach((element: string) =>
+        this.productService.getProduct(element).subscribe((res) => {
+          let product = res;
+          product.qty = this.cart.products[res.id];
+          this.products.push(product);
+          this.orderValue += product.price * product.qty;
+          this.orderObject[product.id] = product.qty;
+        })
+      );
+    }
+    this.orderValue = parseFloat(this.orderValue.toFixed(2));
   }
   placeOrder() {
     let order = Object();
@@ -49,7 +58,7 @@ export class OrderComponent implements OnInit, AfterViewInit {
           this.router.navigate(['/']);
         }, 3000);
         localStorage.removeItem('cart');
-        this.cartService.update();
+        this.cartService.update({});
       },
       (error) => {
         console.error(error);

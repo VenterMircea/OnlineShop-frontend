@@ -1,9 +1,9 @@
 import { User } from 'src/app/models/user';
-import { Product } from './../models/product';
 import { Router } from '@angular/router';
 import { SearchService } from './../../services/search.service';
 import { CartService } from './../../services/cart.service';
 import { Component, OnInit } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
 import { TranslateService } from '@ngx-translate/core';
 
 @Component({
@@ -12,16 +12,13 @@ import { TranslateService } from '@ngx-translate/core';
   styleUrls: ['./navbar.component.scss'],
 })
 export class NavbarComponent implements OnInit {
-  cart: Product[] = [];
+  cart: any;
   searchTerm = '';
   qty = 0;
+  qtyEmitter$ = new BehaviorSubject<number>(this.qty);
   userLogged!: boolean;
   user!: User;
   userOptions = false;
-  subscrption = this.cartService.currentCart.subscribe((cart) => {
-    this.cart = cart;
-    this.qty = this.cart.reduce((acc: any, val: any) => acc + val.qty, 0);
-  });
   constructor(
     private cartService: CartService,
     private searchService: SearchService,
@@ -40,6 +37,8 @@ export class NavbarComponent implements OnInit {
   }
   signout() {
     localStorage.removeItem('user');
+    localStorage.removeItem('cart');
+    this.cartService.update({});
     this.userOptions = false;
     localStorage.hasOwnProperty('user')
       ? (this.userLogged = true)
@@ -51,6 +50,12 @@ export class NavbarComponent implements OnInit {
       ? (this.userLogged = true)
       : (this.userLogged = false);
     this.user = JSON.parse(localStorage.getItem('user') || '[]');
+    this.cartService.currentCart.subscribe((cart) => {
+      this.cart = cart;
+      this.qty = 0;
+      for (let key in this.cart.products) this.qty += this.cart.products[key];
+      this.qtyEmitter$.next(this.qty);
+    });
   }
 
   goToLogin() {

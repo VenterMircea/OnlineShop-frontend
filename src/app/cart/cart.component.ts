@@ -1,3 +1,4 @@
+import { ProductService } from './../../services/product.service';
 import { Product } from './../models/product';
 import { AccountService } from './../../services/account.service';
 import { CartService } from './../../services/cart.service';
@@ -11,7 +12,8 @@ import { environment } from '../../environments/environment';
   styleUrls: ['./cart.component.scss'],
 })
 export class CartComponent implements OnInit, AfterViewInit {
-  products!: Product[];
+  cart!: any;
+  products: Product[] = [];
   total = 0;
   selected = 'option1';
   user: any;
@@ -21,35 +23,49 @@ export class CartComponent implements OnInit, AfterViewInit {
     private cartService: CartService,
     private elementRef: ElementRef,
     private accountService: AccountService,
-    private router: Router
-  ) { }
+    private router: Router,
+    private productService: ProductService
+  ) {}
 
   ngOnInit(): void {
-    this.products = JSON.parse(localStorage.getItem('cart') || '[]');
-    this.computeTotal();
     this.user = this.accountService.userValue;
+    this.cart = JSON.parse(localStorage.getItem('cart') || '{}');
+    if (Object.keys(this.cart).length > 0) {
+      let productsIds = Object.keys(this.cart.products);
+      productsIds.forEach((element: string) =>
+        this.productService.getProduct(element).subscribe((res) => {
+          let product = res;
+          product.qty = this.cart.products[res.id];
+          this.products.push(product);
+          this.computeTotal();
+        })
+      );
+    }
   }
   ngAfterViewInit() {
     this.elementRef.nativeElement.ownerDocument.body.style.backgroundColor =
       '#fafbfc';
   }
   deleteFromCart(id: any) {
-    this.products = this.products.filter((product) => product.id !== id);
-    localStorage.setItem('cart', JSON.stringify(this.products));
+    this.products = this.products.filter((product: any) => product.id !== id);
+    delete this.cart.products[id];
+    localStorage.setItem('cart', JSON.stringify(this.cart));
     this.computeTotal();
-    this.cartService.update();
+    this.cartService.update(this.cart);
   }
   modifyQuantity(id: any, diff: number) {
-    this.products.forEach((val) => {
+    this.products.forEach((val: any) => {
       if (val.id === id) {
-        if (val.qty != 1 || diff == 1) val.qty = val.qty + diff;
-        else this.deleteFromCart(id);
+        if (val.qty != 1 || diff == 1) {
+          val.qty = val.qty + diff;
+          this.cart.products[id] += diff;
+        } else this.deleteFromCart(id);
       }
-      localStorage.setItem('cart', JSON.stringify(this.products));
+      localStorage.setItem('cart', JSON.stringify(this.cart));
     });
     this.computeTotal();
-    localStorage.setItem('cart', JSON.stringify(this.products));
-    this.cartService.update();
+    localStorage.setItem('cart', JSON.stringify(this.cart));
+    this.cartService.update(this.cart);
   }
   computeTotal() {
     this.total = 0;

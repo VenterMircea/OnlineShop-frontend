@@ -4,8 +4,8 @@
 
 export const environment = {
   production: false,
-  apiUrl: "http://3.120.32.114:8080",
-  transportFee: 20,
+  apiUrl: 'http://3.120.32.114:8080',
+  transportFee: 0,
 };
 
 /*
