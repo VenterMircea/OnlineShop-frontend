@@ -15,7 +15,11 @@ export class AppInterceptorInterceptor implements HttpInterceptor {
     request: HttpRequest<unknown>,
     next: HttpHandler
   ): Observable<HttpEvent<unknown>> {
-    if (request.url.includes('/orders') || request.url.includes('/users')) {
+    if (
+      request.url.includes('/orders') ||
+      request.url.includes('/users') ||
+      request.url.includes('/carts')
+    ) {
       const token = JSON.parse(localStorage.getItem('user') || '{}').token;
       const req = request.clone({
         headers: request.headers.set('Authorization', `Bearer ${token}`),

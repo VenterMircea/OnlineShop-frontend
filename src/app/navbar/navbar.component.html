@@ -58,7 +58,7 @@
         ><span class="material-icons icons"> shopping_cart </span>
         <h3>
           Cart
-          <span *ngIf="cart.length > 0">( {{ qty }} )</span>
+          <span *ngIf="this.qty!==0">( {{ qtyEmitter$ | async }} )</span>
         </h3></a
       >
     </div>
