@@ -8,6 +8,9 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { UserDetailsComponent } from './user-details.component';
 import { NavbarComponent } from '../navbar/navbar.component';
 import { MatIconModule } from '@angular/material/icon';
+import { HttpClient } from '@angular/common/http';
+import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
+import { HttpLoaderFactory } from '../app.module';
 
 describe('UserDetailsComponent', () => {
   let component: UserDetailsComponent;
@@ -15,7 +18,13 @@ describe('UserDetailsComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [HttpClientTestingModule, RouterTestingModule, FormsModule, MatIconModule],
+      imports: [HttpClientTestingModule, RouterTestingModule, FormsModule, MatIconModule, TranslateModule.forRoot({
+        loader: {
+          provide: TranslateLoader,
+          useFactory: HttpLoaderFactory,
+          deps: [HttpClient]
+        }
+      })],
       declarations: [UserDetailsComponent, NavbarComponent],
       providers: [{ provide: AccountService }],
     }).compileComponents();

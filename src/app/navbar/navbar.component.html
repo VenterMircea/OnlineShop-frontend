@@ -18,7 +18,7 @@
     <div class="nav-options">
       <a (click)="goToLogin()" *ngIf="!userLogged"
         ><span class="material-icons"> account_circle </span>
-        <h3>Sign In</h3></a
+        <h4>{{ "Navbar.SignIn" | translate }}</h4></a
       >
       <div class="user-dropdown" *ngIf="userLogged">
         <a
@@ -26,7 +26,7 @@
           #trigger="cdkOverlayOrigin"
           (click)="userOptions = !userOptions"
           ><span class="material-icons"> account_circle </span>
-          <h3>{{ user.firstName }}</h3></a
+          <h4>{{ user.firstName }}</h4></a
         >
 
         <ng-template
@@ -36,31 +36,49 @@
         >
           <ul class="example-list">
             <li>
-              <h3>Hello,</h3>
+              <h4>{{ "Navbar.Hello" | translate }}</h4>
             </li>
             <li>
-              <h3 class="user-name">
+              <h4 class="user-name">
                 {{ user.firstName }} {{ user.lastName }}
-              </h3>
+              </h4>
             </li>
 
             <li>
               <a routerLink="/account/details" class="view-user-details">
-                > View my details</a
+                > {{ "Navbar.MyDetails" | translate }}</a
               >
             </li>
-            <button class="signout-btn" (click)="signout()">Sign Out</button>
+            <button class="signout-btn" (click)="signout()">
+              {{ "Navbar.SignOut" | translate }}
+            </button>
           </ul>
         </ng-template>
       </div>
 
       <a routerLink="/cart"
         ><span class="material-icons icons"> shopping_cart </span>
-        <h3>
-          Cart
-          <span *ngIf="cart.length > 0">( {{ qty }} )</span>
-        </h3></a
+        <h4>
+          {{ "Navbar.Cart" | translate }}
+          <span *ngIf="cart.length > 0"
+            ><p class="qty">( {{ qty }} )</p></span
+          >
+        </h4></a
       >
+    </div>
+    <div class="language-selector">
+      <p>
+        {{ "Navbar.Language" | translate }}
+        <select #langSelect (change)="translate.use(langSelect.value)">
+          <option
+            *ngFor="let lang of translate.getLangs()"
+            [value]="lang"
+            [selected]="lang === translate.currentLang"
+          >
+            {{ lang }}
+          </option>
+        </select>
+      </p>
     </div>
   </nav>
   <div class="horizontal"></div>

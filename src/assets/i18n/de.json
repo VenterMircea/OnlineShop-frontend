@@ -1,0 +1,21 @@
+{
+    "Navbar": {
+        "Language": "Sprache",
+        "Flag": "../i18n/RO.png",
+        "SignIn": "Anmelden",
+        "Hello": "Hallo,",
+        "MyDetails": "Meine Details",
+        "SignOut": "Ausloggen",
+        "Cart": "Mein Warenkorb"
+    },
+    "ProductList": {
+        "Sort": "Sortiere nach:",
+        "Descending": "Absteigend",
+        "Ascending": "Aufsteigend",
+        "Products": "Produkte: ",
+        "Previous": "Vorherige Seite",
+        "Page": "Seite: ",
+        "of": "von",
+        "Next": "Nächste Seite"
+    }
+}

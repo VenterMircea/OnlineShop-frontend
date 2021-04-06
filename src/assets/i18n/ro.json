@@ -1,0 +1,21 @@
+{
+    "Navbar": {
+        "Language": "Limba",
+        "Flag": "../i18n/RO.png",
+        "SignIn": "Intra in cont",
+        "Hello": "Salut,",
+        "MyDetails": "Informatiile mele",
+        "SignOut": "Paraseste contul",
+        "Cart": "Cosul meu"
+    },
+    "ProductList": {
+        "Sort": "Sorteaza dupa:",
+        "Descending": "Descrescator",
+        "Ascending": "Crescator",
+        "Products": "Produse: ",
+        "Previous": "Pagina anterioara",
+        "Page": "Pagina: ",
+        "of": "din",
+        "Next": "Pagina urmatoare"
+    }
+}
