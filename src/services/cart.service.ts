@@ -20,16 +20,31 @@ export class CartService {
     this.cartSource.next(cart);
     this.user = JSON.parse(localStorage.getItem('user') || '{}');
     localStorage.setItem('cart', JSON.stringify(cart));
-    if (Object.keys(this.user).length != 0) {
-      if (cart.hasOwnProperty('id'))
-        this.http
-          .put(`${environment.apiUrl}/carts/${cart.id}`, cart)
-          .subscribe();
+    if (Object.keys(this.user).length != 0 && Object.keys(cart).length != 0) {
+      if (cart.hasOwnProperty('id')) {
+        if (Object.keys(cart.products).length)
+          this.http
+            .put(`${environment.apiUrl}/carts/${cart.id}`, cart)
+            .subscribe();
+        else {
+          this.deleteCart(cart.id).subscribe();
+          localStorage.setItem('cart', JSON.stringify({}));
+          this.cartSource.next({});
+        }
+      } else {
+        this.http.post(`${environment.apiUrl}/carts`, cart).subscribe((res) => {
+          localStorage.setItem('cart', JSON.stringify(res));
+          this.cartSource.next(res);
+        });
+      }
     }
   }
   getCart() {
     this.user = JSON.parse(localStorage.getItem('user') || '{}');
     return this.http.get(`${environment.apiUrl}/carts/users/${this.user.id}`);
+  }
+  deleteCart(id: string) {
+    return this.http.delete(`${environment.apiUrl}/carts/${id}`);
   }
   //merge locally added products to cart before login with products in cart saved in BE
   mergeCarts(response: any) {
@@ -55,16 +70,25 @@ export class CartService {
           this.mergedCart
         )
         .subscribe();
+      this.cartSource.next(this.mergedCart);
     } else {
-      this.mergedCart = localCart;
-      this.mergedCart.userId = JSON.parse(
-        localStorage.getItem('user') || '{}'
-      ).id;
-      this.http
-        .post(`${environment.apiUrl}/carts`, this.mergedCart)
-        .subscribe();
-      localStorage.setItem('cart', JSON.stringify(this.mergedCart));
+      if (Object.keys(localCart).length > 0) {
+        this.mergedCart = localCart;
+        this.mergedCart.userId = JSON.parse(
+          localStorage.getItem('user') || '{}'
+        ).id;
+        if (localCart.hasOwnProperty('products')) {
+          this.http
+            .post(`${environment.apiUrl}/carts`, this.mergedCart)
+            .subscribe((res) => {
+              localStorage.setItem('cart', JSON.stringify(res));
+              this.cartSource.next(res);
+            });
+        }
+      } else {
+        this.mergedCart = localCart;
+        this.cartSource.next(this.mergedCart);
+      }
     }
-    this.cartSource.next(this.mergedCart);
   }
 }

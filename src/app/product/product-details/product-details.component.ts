@@ -49,7 +49,7 @@ export class ProductDetailsComponent implements OnInit {
             localStorage.getItem('user') || '{}'
           ).id;
       }
-      delete this.cart.products[''];
+      if (this.cart.products != null) delete this.cart.products[''];
       this.cartService.update(this.cart);
     });
   }

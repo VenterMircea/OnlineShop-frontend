@@ -31,15 +31,17 @@ export class CartComponent implements OnInit, AfterViewInit {
     this.user = this.accountService.userValue;
     this.cart = JSON.parse(localStorage.getItem('cart') || '{}');
     if (Object.keys(this.cart).length > 0) {
-      let productsIds = Object.keys(this.cart.products);
-      productsIds.forEach((element: string) =>
-        this.productService.getProduct(element).subscribe((res) => {
-          let product = res;
-          product.qty = this.cart.products[res.id];
-          this.products.push(product);
-          this.computeTotal();
-        })
-      );
+      if (this.cart.products != null) {
+        let productsIds = Object.keys(this.cart.products);
+        productsIds.forEach((element: string) =>
+          this.productService.getProduct(element).subscribe((res) => {
+            let product = res;
+            product.qty = this.cart.products[res.id];
+            this.products.push(product);
+            this.computeTotal();
+          })
+        );
+      }
     }
   }
   ngAfterViewInit() {
