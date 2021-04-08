@@ -6,7 +6,7 @@
     <div class="product-details">
       <div class="rating-description">
         <p>
-          Rating:
+          {{ "ProductDetails.Rating" | translate }}
           <star-rating
             [value]="product.rating"
             [totalstars]="5"
@@ -36,13 +36,13 @@
               +
             </span>
           </div>
-          <span class='add-text'>Add to cart</span>
+          <span class='add-text'>{{ "ProductDetails.Add" | translate }}</span>
         </button>
       </div>
     </div>
   </div>
 </div>
-<h2 class="margin">Recently viewed items:</h2>
+<h2 class="margin">{{ "ProductDetails.Recent" | translate }}</h2>
 <div class="product-list">
   <app-product-item
     *ngFor="let product of displayHistory"

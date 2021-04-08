@@ -49,5 +49,15 @@
         "Page": "Page: ",
         "of": "of",
         "Next": "Next page"
+    },
+    "ProductDetails": {
+        "Rating": "Rating: ",
+        "Add": "Add to cart",
+        "Recent": "Recently viewed items: "
+    },
+    "ProductDetailsDialog":{
+        "Success": "This product was successfully added to your cart ",
+        "ContinueShopping": "Continue Shopping ",
+        "GoToCart": "CheckOut Cart"
     }
 }
