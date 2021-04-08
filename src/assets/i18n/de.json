@@ -6,7 +6,7 @@
         "Hello": "Hallo,",
         "MyDetails": "Meine Details",
         "SignOut": "Ausloggen",
-        "Cart": "Mein Warenkorb"
+        "Cart": "Einkaufswagen"
     },
     "ProductList": {
         "Sort": "Sortiere nach:",
@@ -17,5 +17,15 @@
         "Page": "Seite: ",
         "of": "von",
         "Next": "Nächste Seite"
+    },
+    "ProductDetails": {
+        "Rating": "Bewertung: ",
+        "Add": "Einkaufswagen",
+        "Recent": "Ihr Browserverlauf: "
+    },
+    "ProductDetailsDialog":{
+        "Success": "Zum Einkaufswagen hinzugefügt ",
+        "ContinueShopping": "Einkaufen fortfahren ",
+        "GoToCart": "Zur Kasse gehen"
     }
 }

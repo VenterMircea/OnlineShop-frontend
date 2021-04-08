@@ -17,5 +17,15 @@
         "Page": "Pagina: ",
         "of": "din",
         "Next": "Pagina urmatoare"
+    },
+    "ProductDetails": {
+        "Rating": "Evaluare: ",
+        "Add": "Adauga in cos",
+        "Recent": "Produse vizualizate recent: "
+    },
+    "ProductDetailsDialog":{
+        "Success": "Produsul a fost adaugat in cos ",
+        "ContinueShopping": "Continua cumparaturile ",
+        "GoToCart": "Finalizare comanda"
     }
 }

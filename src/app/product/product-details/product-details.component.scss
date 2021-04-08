@@ -49,19 +49,22 @@
         height: 50px;
         width: 250px;
         background-image: linear-gradient(to right, #5fd4d2, #634fbd 40%);
-        //text-align: start;
         border: none;
         color: white;
         font-size: 20px;
         border-radius: 5px;
         display: flex;
+        justify-content: space-between;
         align-items: center;
         cursor: pointer;
         .shopping {
           vertical-align: middle;
+          flex-grow: 3;
         }
         .quantity {
-          padding: 0 1rem;
+          padding: 0 0.7rem;
+          flex-grow: 6;
+          flex-shrink: 0;
         }
         .quantity-buttons {
           background-color: rgba(255, 255, 255, 0);
@@ -73,7 +76,9 @@
           cursor: pointer;
         }
         .add-text {
-          margin-left: 2rem;
+          margin: 0 0.5rem;
+          font-size: 1.2rem;
+          flex-grow: 11;
         }
       }
     }
