@@ -27,5 +27,49 @@
         "Success": "This product was successfully added to your cart ",
         "ContinueShopping": "Continue Shopping ",
         "GoToCart": "CheckOut Cart"
+    },
+    "Login": {
+        "Authentication": "Authentication",
+        "Username": "*Username",
+        "Password": "*Password",
+        "UsernameRequired":"Username is required",
+        "PasswordLength":"Password must be 8 or more characters long." ,
+        "Case":"Must have upper and lower case letters.",
+        "Number": "Must contain at least one number and and symbol.",
+        "PasswordRequired":"Password is required",
+        "Fields": "Fields are mandatory",
+        "Login": "Login",
+        "Or": "or",
+        "Create": "Create Acount"
+    },
+    "Register":  {
+        "Register": "Register",
+        "FirstName":"First Name",
+        "LastName":"Last Name",
+        "Email": "E-mail",
+        "EmailInvalid": "Email doesn't look right.",
+        "EmailUsed": "This email is already used",
+        "Username": "Username",
+        "UsernameInvalid": "Try a different username.",
+        "Password": "Password",
+        "PasswordLength":"Password must be 8 or more characters long." ,
+        "Case":"Must have upper and lower case letters.",
+        "Number": "Must contain at least one number and and symbol.",
+        "PasswordRepeat": "Repeat Password",
+        "PasswordInvalid": "Passwords do not match",
+        "Phone":"Phone Number",
+        "PhoneInvalid":"Telephone number doesn't look right.",
+        "Address": "Address",
+        "County": "County",
+        "City": "City",
+        "PostalCode":"Postal Code",
+        "Gender":"Gender",
+        "Other": "Other",
+        "Fields": "Fields are mandatory",
+        "Success": "User created successfuly",
+        "Confirmation": "Chech your inbox for confirmation mail"
+    },
+    "Layout": {
+        "Language": "Language"
     }
 }

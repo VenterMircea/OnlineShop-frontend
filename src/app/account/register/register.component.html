@@ -1,34 +1,34 @@
 <div class="register">
   <img src="../../../assets/estore.jpg" alt="" routerLink="/" />
   <form [formGroup]='form' (ngSubmit)="submit()">
-    <h1>Register</h1>
+    <h1>{{"Register.Register" | translate}}</h1>
     <hr />
     <div class='flex-container'>
       <div class='column'>
-        <label for="firstName">*First Name</label>
+        <label for="firstName">*{{"Register.FirstName" | translate}}</label>
         <div class='inputs'>
           <input
             type="text"
             formControlName="firstName"
           />
         </div>
-        <label for="lastName">*Last Name</label>
+        <label for="lastName">*{{"Register.LastName" | translate}}</label>
         <div class="inputs">
           <input
             type="text"
             formControlName="lastName"
           />
         </div>
-        <label for="email">*E-mail</label>
+        <label for="email">*{{"Register.Email" | translate}}</label>
         <div class="inputs" ><input type="text" formControlName="email" (keyup)='checkEmail()'/></div>
         <div *ngIf="f.email.errors?.email && !f.email.pristine" class='red'>
-          Email doesn't look right.
+          {{"Register.EmailInvalid" | translate}}
         </div>
         <div *ngIf="emailExists" class='red'>
-          This email is already used.
+          {{"Register.EmailUsed" | translate}}
         </div>
       
-        <label for="username">*Username</label>
+        <label for="username">*{{"Register.Username" | translate}}</label>
         <div class="inputs" >
           <input
             type="text"
@@ -37,10 +37,10 @@
           />
         </div>
         <div *ngIf="usernameExists" class='red'>
-          Try a different username.
+          {{"Register.UsernameInvalid" | translate}}
         </div>
        
-        <label for="password">*Password</label>
+        <label for="password">*{{"Register.Password" | translate}}</label>
         <div class="inputs">
           <input
             [type]="hide1 ? 'password' : 'text'"
@@ -50,15 +50,12 @@
             hide1 ? "visibility_off" : "visibility"
           }}</mat-icon>
         </div>
-        <div *ngIf="f.password.errors && f.password.errors.pattern" class='red'>Password must: 
-          <ul>
-          <li> contain one uppercase letter</li>
-          <li> contain one number</li>
-          <li> contain one special character</li>  
-          <li> be at lest 8 characters long.</li>
-          </ul>
+        <div *ngIf="f.password.errors && f.password.errors.pattern" class='red'>
+          <p> {{"Register.PasswordLength" | translate}}</p>
+          <p> {{"Register.Case" | translate}}</p>
+          <p> {{"Register.Number" | translate}}</p>
         </div>
-        <label for="repeat-password">*Repeat Password</label>
+        <label for="repeat-password">*{{"Register.PasswordRepeat" | translate}}</label>
         <div class="inputs">
           <input 
             [type]="hide2 ? 'password' : 'text'" 
@@ -69,56 +66,56 @@
           }}</mat-icon>
         </div>
         <div *ngIf="f.passwordRetype.value!==f.password.value && !f.passwordRetype.pristine" class='red'>
-          Passwords do not match
+          {{"Register.PasswordInvalid" | translate}}
         </div>
       </div>
       <div class='column'>
-        <label for="phone">*Phone Number</label>
+        <label for="phone">*{{"Register.Phone" | translate}}</label>
         <div class="inputs">
         <input
           type="tel"
           formControlName="telephone"
         /></div>
         <div *ngIf="!f.telephone.valid! && !f.telephone.pristine" class='red'>
-          Telephone number doesn't look right.
+          {{"Register.PhoneInvalid" | translate}}
         </div>
-        <label for="address">*Address</label>
+        <label for="address">*{{"Register.Address" | translate}}</label>
         <div class="inputs">
           <input 
             type="text"
             formControlName="address"
           />
         </div>
-        <label for="county">*County</label>
+        <label for="county">*{{"Register.County" | translate}}</label>
         <div class="inputs">
           <input
             type="text"
             formControlName="county"
           />
         </div>
-        <label for="city">*City</label>
+        <label for="city">*{{"Register.City" | translate}}</label>
         <div class="inputs">
           <input
             type="text"
             formControlName="city"
           />
         </div>
-        <label for="postal-code">Postal Code</label>
+        <label for="postal-code">{{"Register.PostalCode" | translate}}</label>
         <div class="inputs">
           <input
             type="text"
             formControlName="postalCode"
           />
         </div>
-        <label for="title" class='gender-label'>Gender</label>
+        <label for="title" class='gender-label'>{{"Register.Gender" | translate}}</label>
         <select name="title" formControlName="sex">
           <option>F</option>
           <option>M</option>
-          <option>Other</option></select
+          <option>{{"Register.Other" | translate}}</option></select
         >
       </div>
     </div>
-      <p class='align-left'>* Fileds are required </p>
+      <p class='align-left'>* {{"Register.Fields" | translate}} </p>
       <hr />
       <button
         [ngClass]="
@@ -127,13 +124,13 @@
         type="submit"
         [disabled]="!form.valid || usernameExists || emailExists"
       >
-        Register
+        {{"Register.Register" | translate}}
       </button>
   </form>
   <div class="confirm" *ngIf="success == 1">
     <mat-icon>check_circle_outline</mat-icon>
-    <h3>User created successfuly</h3>
-    <h2>Chech your inbox for confirmation mail</h2>
+    <h3>{{"Register.Success" | translate}}</h3>
+    <h2>{{"Register.Confirmation" | translate}}</h2>
   </div>
   <div class="confirm" *ngIf="success == 2" [style.visibility]="dialogVisibility ? 'visible' : 'hidden'">
     <mat-icon>check_circle_outline</mat-icon>

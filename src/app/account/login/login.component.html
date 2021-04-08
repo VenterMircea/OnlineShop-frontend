@@ -1,6 +1,6 @@
 <div class="container mat-elevation-z2">
   <img src="../../../assets/estore.jpg" alt="logo" routerLink="/" />
-  <h2>Authentication</h2>
+  <h2> {{ "Login.Authentication" | translate }}</h2>
   <div>
     <form class="form" [formGroup]="form" (ngSubmit)="onSubmit()">
       <div class="form-group inputs">
@@ -10,14 +10,14 @@
           [ngClass]="{
             'is-invalid': submitted && formControls.username.errors
           }"
-          placeholder="*User name"
+          placeholder="{{ 'Login.Username' | translate }}"
         />
         <div
           *ngIf="submitted && formControls.username.errors"
           class="invalid-feedback"
         >
           <div *ngIf="formControls.username.errors.required">
-            Username is required
+            {{"Login.UsernameRequired" | translate}}
           </div>
         </div>
       </div>
@@ -28,9 +28,9 @@
         "
         style="color: #ff0000"
       >
-        Password must be 8 or more characters. <br />
-        Must have upper and lower case letters.<br />
-        Must contain at least one number and on symbol.
+      {{ "Login.PasswordLength" | translate }} <br />
+      {{ "Login.Case" | translate }}<br />
+      {{ "Login.Number" | translate }}
       </div>
       <div class="form-group inputs">
         <input
@@ -39,7 +39,7 @@
           [ngClass]="{
             'is-invalid': submitted && formControls.password.errors
           }"
-          placeholder="*Password"
+          placeholder="{{ 'Login.Password' | translate }}"
           title="Password must contain: one uppercase letter, one number,
            one special character and be at lest 8 characters long."
         />
@@ -51,7 +51,7 @@
           class="invalid-feedback"
         >
           <div *ngIf="formControls.password.errors.required">
-            Password is required
+            {{ "Login.PasswordRequired" | translate }}
           </div>
         </div>
       </div>
@@ -59,18 +59,18 @@
         {{ serverMessage }}
       </div>
       <span class="spacer"></span>
-      <p><span style="color: #ff0000">*</span>Fields are mandatory.</p>
+      <p><span style="color: #ff0000">*</span>{{ "Login.Fields" | translate }}</p>
       <div class="form-group">
         <button [disabled]="loading" class="btn btn-primary">
           <span
             *ngIf="loading"
             class="spinner-border spinner-border-sm mr-1"
           ></span>
-          Login
+          {{ "Login.Login" | translate }}
         </button>
-        <h4>or</h4>
+        <h4>{{ "Login.Or" | translate }}</h4>
         <button routerLink="../register" class="btn btn-link">
-          Create Acount
+          {{ "Login.Create" | translate }}
         </button>
       </div>
     </form>
