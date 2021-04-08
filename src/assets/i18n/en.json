@@ -8,6 +8,38 @@
         "SignOut": "Sign Out",
         "Cart": "My cart"
     },
+    "AccountInfo": {
+        "Account Info": "Account info",
+        "Address": "Address",
+        "My Orders": "My Orders",
+        "First Name": "First Name",
+        "Last Name": "Last Name",
+        "Username": "Username",
+        "Submit": "Submit",
+        "Change password": "Change password",
+        "New Password": "New Password",
+        "Validation": "Password must be 8 or more characters. Must have upper and lower case letters. Must contain at least one number and on symbol.",
+        "Repeat Password": "Repeat Password",
+        "InvalidPass": "*invalid or passwords don't match",
+        "Phone Number": "Phone Number",
+        "City": "City",
+        "County": "County",
+        "Postal Code": "Postal Code",
+        "Succes": "User updated successfuly",
+        "Order nb": "Order nb:",
+        "Placed on": "Placed on",
+        "Details": "Details",
+        "Value": "Value:"
+    },
+    "OrderItem": {
+        "My orders": "My orders» ",
+        "Order details": "Order details",
+        "Order nb": "Order nb:",
+        "Quantity": "Quantity:",
+        "Price": "Price:",
+        "Value": "Value:",
+        "Total": "Total: "
+    },
     "ProductList": {
         "Sort": "Sort by:",
         "Descending": "Descending",
