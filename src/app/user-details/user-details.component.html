@@ -10,32 +10,32 @@
         [ngClass]="{ active: detailsOption == 1 }"
         (click)="detailsOption = 1"
       >
-        Account info
+        {{ "AccountInfo.Account Info" | translate }}
       </li>
       <li
         [ngClass]="{ active: detailsOption == 2 }"
         (click)="detailsOption = 2"
       >
-        Address
+        {{ "AccountInfo.Address" | translate }}
       </li>
       <li
-        [ngClass]="{ active: detailsOption == 3 || detailsOption==4 }"
+        [ngClass]="{ active: detailsOption == 3 || detailsOption == 4 }"
         (click)="detailsOption = 3"
       >
-        My Orders
+        {{ "AccountInfo.My Orders" | translate }}
       </li>
     </ul>
   </div>
   <div class="user-information" *ngIf="detailsOption == 1">
     <div class="user-account-info">
-      <p>
-        Account info
+      <h4>
+        {{ "AccountInfo.Account Info" | translate }}
         <button (click)="enableNameForm()" title="edit" class="edit-btn">
           <span class="material-icons"> mode_edit </span>
         </button>
-      </p>
+      </h4>
       <form #nameForm="ngForm">
-        <label>First Name</label><br />
+        <label> {{ "AccountInfo.First Name" | translate }} </label><br />
         <input
           type="text"
           name="firstname"
@@ -43,7 +43,8 @@
           [(ngModel)]="user.firstName"
           required
         /><br />
-        <label>Last Name</label><br />
+        <label>{{ "AccountInfo.Last Name" | translate }}</label
+        ><br />
         <input
           type="text"
           name="lastname"
@@ -59,7 +60,8 @@
           [(ngModel)]="user.email"
           required
         /><br />
-        <label>Username</label><br />
+        <label>{{ "AccountInfo.Username" | translate }}</label
+        ><br />
         <input
           type="text"
           name="username"
@@ -79,22 +81,21 @@
               : 'submit-details-btn'
           "
         >
-          Submit
+          {{ "AccountInfo.Submit" | translate }}
         </button>
       </form>
     </div>
     <div class="user-account-password">
       <div>
-        <p>
-          Change password
+        <h4>
+          {{ "AccountInfo.Change password" | translate }}
           <button title="edit" class="edit-btn" (click)="enablePasswordForm()">
             <span class="material-icons"> mode_edit </span>
           </button>
-        </p>
-        <label>New Password</label><br />
+        </h4>
+        <label> {{ "AccountInfo.New Password" | translate }} </label><br />
         <div *ngIf="!validPassword" class="validation-text">
-          Password must be 8 or more characters. Must have upper and lower case
-          letters. Must contain at least one number and on symbol.
+          {{ "AccountInfo.Validation" | translate }}
         </div>
         <div>
           <input
@@ -108,7 +109,7 @@
           }}</mat-icon>
         </div>
         <br />
-        <label>Repeat Password</label><br />
+        <label>{{ "AccountInfo.Repeat Password" | translate }} </label><br />
         <input
           [type]="hide ? 'password' : 'text'"
           type="password"
@@ -116,21 +117,22 @@
           [disabled]="accountPassword"
         /><br />
         <p class="password-error" *ngIf="!passwordMatch">
-          *invalid or passwords don't match
+          {{ "AccountInfo.InvalidPass" | translate }}
         </p>
         <button
           (click)="submitPassword()"
           [disabled]="accountPassword"
           [ngClass]="accountPassword ? 'submit-details' : 'submit-details-btn'"
         >
-          Submit
+          {{ "AccountInfo.Submit" | translate }}
         </button>
       </div>
     </div>
   </div>
   <div class="details-address" *ngIf="detailsOption == 2">
     <form #addressForm="ngForm">
-      <label for="phone">Phone Number</label><br />
+      <label for="phone"> {{ "AccountInfo.Phone Number" | translate }} </label
+      ><br />
       <input
         type="number"
         name="phone"
@@ -138,7 +140,8 @@
         [disabled]="accountAddress"
         required
       /><br />
-      <label for="address">Address</label><br />
+      <label for="address"> {{ "AccountInfo.Address" | translate }} </label
+      ><br />
       <input
         type="text"
         name="address"
@@ -146,7 +149,7 @@
         [disabled]="accountAddress"
         required
       /><br />
-      <label for="city">City</label><br />
+      <label for="city"> {{ "AccountInfo.City" | translate }} </label><br />
       <input
         type="text"
         name="city"
@@ -154,7 +157,7 @@
         [disabled]="accountAddress"
         required
       /><br />
-      <label for="county">County</label><br />
+      <label for="county"> {{ "AccountInfo.County" | translate }} </label><br />
       <input
         type="text"
         name="county"
@@ -162,7 +165,8 @@
         [disabled]="accountAddress"
         required
       /><br />
-      <label for="postal">Postal Code</label><br />
+      <label for="postal"> {{ "AccountInfo.Postal Code" | translate }} </label
+      ><br />
       <input
         type="text"
         name="postal"
@@ -181,21 +185,26 @@
             : 'submit-details-btn'
         "
       >
-        Submit
+        {{ "AccountInfo.Submit" | translate }}
       </button>
     </form>
     <button title="edit" class="edit-btn" (click)="enableAddressForm()">
       <span class="material-icons"> mode_edit </span>
     </button>
   </div>
-  <div *ngIf='detailsOption===3' class="details-address">
-    <app-my-orders (sectionEvent)='receiveSectionChangeFromMyOrder($event)'></app-my-orders>
+  <div *ngIf="detailsOption === 3" class="details-address">
+    <app-my-orders
+      (sectionEvent)="receiveSectionChangeFromMyOrder($event)"
+    ></app-my-orders>
   </div>
-  <div *ngIf='detailsOption==4'>
-    <app-order-item [order]="order" (sectionEvent)='receiveSectionChangeFromOrderItem($event)'></app-order-item>
+  <div *ngIf="detailsOption == 4">
+    <app-order-item
+      [order]="order"
+      (sectionEvent)="receiveSectionChangeFromOrderItem($event)"
+    ></app-order-item>
   </div>
   <div class="confirm" *ngIf="confirm">
     <mat-icon>check_circle_outline</mat-icon>
-    <h2>User updated successfuly</h2>
+    <h2>{{ "AccountInfo.Succes" | translate }}</h2>
   </div>
 </div>

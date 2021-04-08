@@ -1,7 +1,8 @@
-<!-- <button (click)='changeSection3()' > < Back to orders</button> -->
-<span (click)="changeSection3()" class="active">My orders» </span
-><span class="inactive">Order details</span>
-<h1>Order nb: {{ order.id }}</h1>
+<span (click)="changeSection3()" class="active">{{
+  "OrderItem.My orders" | translate
+}}</span
+><span class="inactive">{{ "OrderItem.Order details" | translate }}</span>
+<h1>{{ "OrderItem.Order nb" | translate }} {{ order.id }}</h1>
 
 <div *ngFor="let product of products" class="product line">
   <div><img src="{{ product.image }}" alt="" class="product-image" /></div>
@@ -22,17 +23,17 @@
   </div>
   <div class="product-wraper">
     <div class="product-data">
-      <p>Quantity:</p>
+      <p>{{ "OrderItem.Quantity" | translate }}</p>
       <h2>{{ product.qty }}</h2>
     </div>
     <div class="product-data">
-      <p>Price:</p>
+      <p>{{ "OrderItem.Price" | translate }}</p>
       <h2>{{ product.price }} lei</h2>
     </div>
     <div class="product-data">
-      <p>Value:</p>
+      <p>{{ "OrderItem.Value" | translate }}</p>
       <h2>{{ (product.price * product.qty).toFixed(2) }} lei</h2>
     </div>
   </div>
 </div>
-<h2 class="total">Total: {{ order.orderValue }}</h2>
+<h2 class="total">{{ "OrderItem.Total" | translate }}{{ order.orderValue }}</h2>

@@ -8,6 +8,38 @@
         "SignOut": "Paraseste contul",
         "Cart": "Cosul meu"
     },
+    "AccountInfo": {
+        "Account Info": "Informatii cont",
+        "Address": "Adresa",
+        "My Orders": "Comenzile mele",
+        "First Name": "Prenume",
+        "Last Name": "Nume",
+        "Username": "Nume utilizator",
+        "Submit": "Finalizeaza",
+        "Change password": "Schimba parola",
+        "New Password": "Parola noua",
+        "Validation": "Parola trebuie să aibă 8 sau mai multe caractere. Trebuie să aibă caractere majuscule și minuscule. Trebuie să conțină cel puțin un număr și un simbol.",
+        "Repeat Password": "Repeta parola",
+        "InvalidPass": "*parola invalida sau nu se potrivesc",
+        "Phone Number": "Numarul de telefon",
+        "City": "Oras",
+        "County": "Judet",
+        "Postal Code": "Cod postal",
+        "Succes": "Reactualizare s-a efectuat cu succes",
+        "Order nb": "Comanda numarul:",
+        "Placed on": "Data comenzii",
+        "Details": "Detalii",
+        "Value": "Valoare:"
+    },
+    "OrderItem": {
+        "My orders": "Comenzile mele» ",
+        "Order details": "Detalii comanda",
+        "Order nb": "Comanda numarul:",
+        "Quantity": "Cantitate:",
+        "Price": "Pret:",
+        "Value": "Valoare:",
+        "Total": "Total: "
+    },
     "ProductList": {
         "Sort": "Sorteaza dupa:",
         "Descending": "Descrescator",

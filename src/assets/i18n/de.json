@@ -8,6 +8,38 @@
         "SignOut": "Ausloggen",
         "Cart": "Einkaufswagen"
     },
+    "AccountInfo": {
+        "Account Info": "Kontoinformationen",
+        "Address": "Adresse",
+        "My Orders": "Meine Bestellungen",
+        "First Name": "Vorname",
+        "Last Name": "Nachname",
+        "Username": "Nutzername",
+        "Submit": "Einreichen",
+        "Change password": "Passwort ändern",
+        "New Password": "Neues Kennwort",
+        "Validation": "Das Passwort muss aus 8 oder mehr Zeichen bestehen. Muss Groß- und Kleinschreibung haben Briefe. Muss mindestens eine Nummer und ein Symbol enthalten.",
+        "Repeat Password": "Wiederhole das Passwort",
+        "InvalidPass": "* ungültig oder Passwörter stimmen nicht überein",
+        "Phone Number": "Telefonnummer",
+        "City": "Stadt",
+        "County": "Bezirk",
+        "Postal Code": "Postleitzahl",
+        "Succes": "Benutzer erfolgreich aktualisiert",
+        "Order nb": "Bestellnummer:",
+        "Placed on": "Platziert auf",
+        "Details": "Einzelheiten",
+        "Value": "Wert:"
+    },
+    "OrderItem": {
+        "My orders": "Meine Bestellungen» ",
+        "Order details": "Bestelldetails",
+        "Order nb": "Bestellnummer:",
+        "Quantity": "Quantität:",
+        "Price": "Preis:",
+        "Value": "Wert:",
+        "Total": "Gesamt: "
+    },
     "ProductList": {
         "Sort": "Sortiere nach:",
         "Descending": "Absteigend",
