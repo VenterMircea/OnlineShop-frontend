@@ -59,5 +59,49 @@
         "Success": "Produsul a fost adaugat in cos ",
         "ContinueShopping": "Continua cumparaturile ",
         "GoToCart": "Finalizare comanda"
+    },
+    "Login": {
+        "Authentication": "Autentificare",
+        "Username": "*Nume utilizator",
+        "Password": "*Parola",
+        "UsernameRequired":"Numele de utilizator e obligatoriu",
+        "PasswordLength":"Parola trebuie sa aiba minim 8 caractere, " ,
+        "Case":"trebuie sa aiba cel putin o litera mica si una mare, ",
+        "Number": "trebuie sa contina un numar si un caracter special.",
+        "PasswordRequired":"Parola este obligatorie",
+        "Fields": "Campuri obligatorii",
+        "Login": "Conectare",
+        "Or": "sau",
+        "Create": "Creare Cont"
+    },
+    "Register":  {
+        "Register": "Inregistrare",
+        "FirstName":"Prenume",
+        "LastName":"Nume",
+        "Email": "E-mail",
+        "EmailInvalid": "Email invalid.",
+        "EmailUsed": "Acest email exista este folosit deja.",
+        "Username": "Nume utilizator",
+        "UsernameInvalid": "Acest nume exista este folosit deja.",
+        "Password": "Parola",
+        "PasswordLength":"Parola trebuie sa aiba minim 8 caractere, " ,
+        "Case":"trebuie sa aiba cel putin o litera mica si una mare, ",
+        "Number": "trebuie sa contina un numar si un caracter special.",
+        "PasswordRepeat": "Repeta parola",
+        "PasswordInvalid": "Cele doua parole nu sunt identice",
+        "Phone":"Numar telefon",
+        "PhoneInvalid":"Nuamrul introdus nu este valid.",
+        "Address": "Adresa",
+        "County": "Judet",
+        "City": "Oras",
+        "PostalCode":"Cod postal",
+        "Gender":"Gen",
+        "Other": "Altul",
+        "Fields": "Campuri obligatorii",
+        "Success": "Utilizator creat cu succes",
+        "Confirmation": "Verificati e-mailul pentru confirmare"
+    },
+    "Layout": {
+        "Language": "Limba"
     }
 }
