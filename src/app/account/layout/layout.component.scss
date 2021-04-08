@@ -1,7 +1,10 @@
 .container {
   background-color: "#fafbfc";
-  p{
-    float: right;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  .language{
+    align-self:flex-end;
     margin: 2rem;
   }
 }
