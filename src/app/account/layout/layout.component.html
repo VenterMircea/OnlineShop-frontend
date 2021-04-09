@@ -1,7 +1,7 @@
 <div class='container'>
 <div class="language">
   <p> {{ "Layout.Language" | translate }}
-    <select #langSelect (change)="translate.use(langSelect.value)">
+    <select #langSelect (change)="translate.use(langSelect.value); setLanguage(langSelect.value)">
       <option
         *ngFor="let lang of translate.getLangs()"
         [value]="lang"

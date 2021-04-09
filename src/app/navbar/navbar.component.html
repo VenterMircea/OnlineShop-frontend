@@ -69,7 +69,7 @@
     <div class="language-selector">
       <p>
         {{ "Navbar.Language" | translate }}
-        <select #langSelect (change)="translate.use(langSelect.value)">
+        <select #langSelect (change)="translate.use(langSelect.value); setLanguage(langSelect.value)">
           <option
             *ngFor="let lang of translate.getLangs()"
             [value]="lang"
