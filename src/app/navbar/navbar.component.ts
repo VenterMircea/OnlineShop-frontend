@@ -18,6 +18,7 @@ export class NavbarComponent implements OnInit {
   qtyEmitter$ = new BehaviorSubject<number>(this.qty);
   userLogged!: boolean;
   user!: User;
+  userLanguage='';
   userOptions = false;
   constructor(
     private cartService: CartService,
@@ -26,7 +27,11 @@ export class NavbarComponent implements OnInit {
     public translate: TranslateService
   ) {
     translate.addLangs(['ro', 'en', 'de']);
-    const browserLang = translate.getBrowserLang();
+    if(localStorage.hasOwnProperty('lang'))
+      this.userLanguage=JSON.parse(localStorage.getItem('lang') || 'null');
+    let browserLang:string;
+    if(this.userLanguage!='') browserLang=this.userLanguage;
+    else browserLang = translate.getBrowserLang();
     translate.setDefaultLang(browserLang);
     translate.use(browserLang.match(/ro|en|de/) ? browserLang : 'en');
   }
@@ -35,6 +40,11 @@ export class NavbarComponent implements OnInit {
     this.searchTerm = event.target.value;
     this.searchService.changeTerm(this.searchTerm);
   }
+
+  setLanguage(lang: string) {
+    localStorage.setItem('lang', JSON.stringify(lang));
+  }
+
   signout() {
     localStorage.removeItem('user');
     localStorage.removeItem('cart');

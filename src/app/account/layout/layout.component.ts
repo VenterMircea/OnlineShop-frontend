@@ -8,6 +8,7 @@ import { AccountService } from '../../../services/account.service';
   styleUrls: ['./layout.component.scss'],
 })
 export class LayoutComponent implements AfterViewInit {
+  userLanguage='';
   constructor(
     private router: Router,
     private accountService: AccountService,
@@ -15,9 +16,16 @@ export class LayoutComponent implements AfterViewInit {
     public translate: TranslateService
   ) {
     translate.addLangs(['ro', 'en', 'de']);
-    const browserLang = translate.getBrowserLang();
+    if(localStorage.hasOwnProperty('lang'))
+    this.userLanguage=JSON.parse(localStorage.getItem('lang') || 'null');
+    let browserLang:string;
+    if(this.userLanguage!='') browserLang=this.userLanguage;
+    else browserLang = translate.getBrowserLang();
     translate.setDefaultLang(browserLang);
     translate.use(browserLang.match(/ro|en|de/) ? browserLang : 'ro');
+  }
+  setLanguage(lang: string) {
+    localStorage.setItem('lang', JSON.stringify(lang));
   }
   ngAfterViewInit() {
     this.elementRef.nativeElement.ownerDocument.body.style.backgroundColor =
