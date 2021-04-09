@@ -6,14 +6,16 @@
       [ngClass]="{ current: section === 1 }"
       (click)="section = 1"
     >
-      <h2>Order review</h2>
+      <h2>{{ "Order.Order review" | translate }}</h2>
       <div *ngFor="let product of products" class="space-between">
         <div class="image-detail">
           <img src="{{ product.image }}" />
           <p>{{ product.name.slice(0, 40) | titlecase }}</p>
         </div>
         <div>
-          <span class="price"> {{ product.qty }} piece </span>
+          <span class="price">
+            {{ product.qty }} {{ "Order.piece" | translate }}
+          </span>
           <span class="price">
             {{ (product.price * product.qty).toFixed(2) }} lei
           </span>
@@ -22,7 +24,7 @@
       <div></div>
       <div class="actions distance-top">
         <mat-icon></mat-icon>
-        <button [routerLink]="'/cart'">Modify</button>
+        <button [routerLink]="'/cart'">{{ "Order.Modify" | translate }}</button>
         <mat-icon
           (click)="changeSection(2, $event)"
           [style.visibility]="section == 1 ? 'visible' : 'hidden'"
@@ -35,12 +37,14 @@
       [ngClass]="{ current: section === 2 }"
       (click)="section = 2"
     >
-      <h2>Shipping and billing</h2>
+      <h2>{{ "Order.Shipping and billing" | translate }}</h2>
       <div class="flex-container">
         <div>
-          <div class="price">Name:</div>
-          <div class="price">Shipping address:</div>
-          <div class="price">Contact phone:</div>
+          <div class="price">{{ "Order.Name" | translate }}</div>
+          <div class="price">
+            {{ "Order.Shipping address" | translate }}
+          </div>
+          <div class="price">{{ "Order.Contact phone" | translate }}</div>
         </div>
         <div>
           <div>{{ user.firstName }} {{ user.lastName }}</div>
@@ -58,7 +62,9 @@
           [style.visibility]="section == 2 ? 'visible' : 'hidden'"
           >forward</mat-icon
         >
-        <button [routerLink]="'/account/details'">Modify</button>
+        <button [routerLink]="'/account/details'">
+          {{ "Order.Modify" | translate }}
+        </button>
         <mat-icon
           (click)="changeSection(3, $event)"
           [style.visibility]="section == 2 ? 'visible' : 'hidden'"
@@ -71,18 +77,19 @@
       [ngClass]="{ current: section === 3 }"
       (click)="section = 3"
     >
-      <h2>Confirm order</h2>
+      <h2>{{ "Order.Confirm order" | translate }}</h2>
       <div class="space-between">
-        <span class="price distance">Products: </span>
+        <span class="price distance">{{ "Order.Products" | translate }} </span>
         <p>{{ orderValue }} lei</p>
       </div>
       <div class="space-between">
-        <span class="price distance">Shipping: </span
+        <span class="price distance">{{ "Order.Shipping" | translate }} </span
         ><span>{{ transportFee }} lei</span>
       </div>
       <h2></h2>
       <div class="space-between">
-        <span class="price distance bigger">Total value: </span
+        <span class="price distance bigger">
+          {{ "Order.Total value" | translate }}</span
         ><span class="bigger">{{ orderValue }} lei</span>
       </div>
       <div class="actions">
@@ -92,17 +99,19 @@
           [style.visibility]="section == 3 ? 'visible' : 'hidden'"
           >forward</mat-icon
         >
-        <button (click)="placeOrder(); confirm = true">Send Order</button>
+        <button (click)="placeOrder(); confirm = true">
+          {{ "Order.Send Order" | translate }}
+        </button>
         <mat-icon></mat-icon>
       </div>
     </div>
   </div>
   <div class="confirm" *ngIf="confirm == true">
     <mat-icon>check_circle_outline</mat-icon>
-    <h3>Your order was sucessfully registered.</h3>
-    <h2>Thank you.</h2>
+    <h3>{{ "Order.Succes Order" | translate }}</h3>
+    <h2>{{ "Order.Thank you" | translate }}</h2>
   </div>
 </div>
 <div class="main container" *ngIf="products.length == 0">
-  No products in cart
+  {{ "Order.Empty cart" | translate }}
 </div>
