@@ -137,5 +137,18 @@
         "Succes Order": "Comanda a fost inregistrata cu succes. ",
         "Thank you": "Multumim. ",
         "Empty cart": "Nu sunt produse in cos  "
+    },
+    "PaymentSuccess": {
+        "Pending":"In curs de procesare",
+        "Succes Order": "Comanda a fost inregistrata cu succes. ",
+        "Thank you": "Multumim. ", 
+        "Wrong": "Comanda a esuat",
+        "BackTo": "Inapoi la pagina de comenzi", 
+        "back": "Comenzi"
+    },
+    "PaymentFailure": {
+        "Wrong": "Comanda a esuat",
+        "BackTo": "Inapoi la pagina de comenzi", 
+        "back": "Comenzi"
     }
 }

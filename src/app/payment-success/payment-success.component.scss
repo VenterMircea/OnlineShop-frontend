@@ -1,0 +1,41 @@
+@import "~@angular/material/theming";
+.confirm {
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 100;
+    padding: 3rem;
+    min-width: 40%;
+    text-align: center;
+    background-color: white;
+    border-radius: 2%;
+    border: 2px solid #56c465;
+    .mat-icon {
+      font-size: 3rem;
+      color: #56c465;
+    }
+  }
+  .red{
+    border: 2px solid red;
+    .mat-icon {
+        color: red;
+      }
+  }
+  button {
+    height: 2rem;
+    font-size: 1rem;
+    background-image: linear-gradient(to right, #5fd4d2, #634fbd 40%);
+    border: none;
+    min-width: 7rem;
+    color: white;
+    border-radius: 2%;
+  }
+  button:hover {
+    cursor: pointer;
+    border: none;
+    @include mat-elevation(3);
+  }
+  button:active:focus {
+    outline: none;
+  }
