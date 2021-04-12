@@ -48,7 +48,11 @@
         "Previous": "Previous page",
         "Page": "Page: ",
         "of": "of",
-        "Next": "Next page"
+        "Next": "Next page",
+        "Price": "Price",
+        "Rating": "Rating",
+        "Name": "Name",
+        "Brand": "Brand"
     },
     "ProductDetails": {
         "Rating": "Rating: ",
