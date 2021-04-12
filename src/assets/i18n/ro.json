@@ -48,7 +48,11 @@
         "Previous": "Pagina anterioara",
         "Page": "Pagina: ",
         "of": "din",
-        "Next": "Pagina urmatoare"
+        "Next": "Pagina urmatoare",
+        "Price": "Pret",
+        "Rating": "Rating",
+        "Name": "Nume",
+        "Brand": "Marca"
     },
     "ProductDetails": {
         "Rating": "Evaluare: ",

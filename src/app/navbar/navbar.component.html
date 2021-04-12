@@ -69,7 +69,12 @@
     <div class="language-selector">
       <p class="language-selector-p">
         {{ "Navbar.Language" | translate }}
-        <select #langSelect (change)="translate.use(langSelect.value); setLanguage(langSelect.value)">
+        <select
+          #langSelect
+          (change)="
+            translate.use(langSelect.value); setLanguage(langSelect.value)
+          "
+        >
           <option
             *ngFor="let lang of translate.getLangs()"
             [value]="lang"
@@ -78,6 +83,21 @@
             {{ lang }}
           </option>
         </select>
+        <img
+          *ngIf="translate.currentLang == 'ro'"
+          src="../../assets/flags/RO.png"
+          id="flag"
+        />
+        <img
+          *ngIf="translate.currentLang == 'en'"
+          src="../../assets/flags/GB.png"
+          id="flag"
+        />
+        <img
+          *ngIf="translate.currentLang == 'de'"
+          src="../../assets/flags/DE.png"
+          id="flag"
+        />
       </p>
     </div>
   </nav>

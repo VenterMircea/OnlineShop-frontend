@@ -48,7 +48,11 @@
         "Previous": "Vorherige Seite",
         "Page": "Seite: ",
         "of": "von",
-        "Next": "Nächste Seite"
+        "Next": "Nächste Seite",
+        "Price": "Preis",
+        "Rating": "Bewertung",
+        "Name": "Name",
+        "Brand": "Marke"
     },
     "ProductDetails": {
         "Rating": "Bewertung: ",

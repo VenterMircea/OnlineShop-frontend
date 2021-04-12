@@ -121,6 +121,14 @@
 .language-selector-p {
   margin: 0;
 }
+#flag {
+  object-fit: contain;
+  width: auto;
+  height: auto;
+  vertical-align: middle;
+  margin-left: 5px;
+  margin-bottom: 1px;
+}
 
 @media only screen and (max-width: 592px) {
   .navbar {
