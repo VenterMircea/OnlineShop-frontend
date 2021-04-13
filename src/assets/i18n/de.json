@@ -133,13 +133,15 @@
         "Products": "Produkte: ",
         "Shipping": "Versand:",
         "Total value": "Gesamtwert:",
-        "Send Order": "Bestellung senden",
+        "Send Order": "Barzahlung bei Lieferung",
         "Succes Order": "Ihre Bestellung wurde erfolgreich registriert. ",
         "Thank you": "Danke. ",
-        "Empty cart": "Keine Produkte im Warenkorb  "
+        "Empty cart": "Keine Produkte im Warenkorb  ",
+        "Currency": "Währung wählen",
+        "Payment methode": "Zahlungsmethode"
     },
     "PaymentSuccess": {
-        "Pending":"Steht aus",
+        "Pending": "Steht aus",
         "Succes Order": "Ihre Bestellung wurde erfolgreich registriert. ",
         "Thank you": "Danke. ",
         "Wrong": "Bestellung fehlgeschlagen",
