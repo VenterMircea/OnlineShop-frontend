@@ -133,22 +133,24 @@
         "Products": "Produse: ",
         "Shipping": "Livrare:",
         "Total value": "Valoare totala:",
-        "Send Order": "Trimite comanda",
+        "Send Order": "Plata ramburs",
         "Succes Order": "Comanda a fost inregistrata cu succes. ",
         "Thank you": "Multumim. ",
-        "Empty cart": "Nu sunt produse in cos  "
+        "Empty cart": "Nu sunt produse in cos  ",
+        "Currency": "Alege moneda",
+        "Payment methode": "Modalitate de plata"
     },
     "PaymentSuccess": {
-        "Pending":"In curs de procesare",
+        "Pending": "In curs de procesare",
         "Succes Order": "Comanda a fost inregistrata cu succes. ",
-        "Thank you": "Multumim. ", 
+        "Thank you": "Multumim. ",
         "Wrong": "Comanda a esuat",
-        "BackTo": "Inapoi la pagina de comenzi", 
+        "BackTo": "Inapoi la pagina de comenzi",
         "back": "Comenzi"
     },
     "PaymentFailure": {
         "Wrong": "Comanda a esuat",
-        "BackTo": "Inapoi la pagina de comenzi", 
+        "BackTo": "Inapoi la pagina de comenzi",
         "back": "Comenzi"
     }
 }
