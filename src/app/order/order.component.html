@@ -59,7 +59,7 @@
         <mat-icon
           class="reverse"
           (click)="changeSection(1, $event)"
-          [style.visibility]="section == 2 ? 'visible' : 'hidden'"
+          [style.display]="section == 2 ? 'block' : 'none'"
           >forward</mat-icon
         >
         <button [routerLink]="'/account/details'">
@@ -67,7 +67,7 @@
         </button>
         <mat-icon
           (click)="changeSection(3, $event)"
-          [style.visibility]="section == 2 ? 'visible' : 'hidden'"
+          [style.display]="section == 2 ? 'block' : 'none'"
           >forward</mat-icon
         >
       </div>
@@ -92,17 +92,38 @@
           {{ "Order.Total value" | translate }}</span
         ><span class="bigger">{{ orderValue }} lei</span>
       </div>
+      <p class="payment-methode-title">
+        {{ "Order.Currency" | translate }}
+      </p>
+      <div class="currency-container">
+        <span class="currency" *ngFor="let currency of currencies">
+          <input
+            input
+            type="radio"
+            id="{{ currency }}"
+            name="currency"
+            value="{{ currency }}"
+            (click)="hidePaypal(currency)"
+            [checked]="currency === 'EUR' ? true : false"
+          />
+          <label for="{{ currency }}">{{ currency }}</label>
+        </span>
+      </div>
+      <h3 class="payment-methode-title">
+        {{ "Order.Payment methode" | translate }}
+      </h3>
       <div class="actions">
         <mat-icon
           class="reverse"
           (click)="changeSection(2, $event)"
-          [style.visibility]="section == 3 ? 'visible' : 'hidden'"
+          [style.display]="section == 3 ? 'block' : 'none'"
           >forward</mat-icon
         >
         <button (click)="placeOrder(); confirm = true">
           {{ "Order.Send Order" | translate }}
         </button>
         <mat-icon></mat-icon>
+        <button (click)="payPall()" class="paypal" *ngIf="!isHidden"></button>
       </div>
     </div>
   </div>

@@ -3,9 +3,10 @@ import { Product } from './../models/product';
 import { User } from 'src/app/models/user';
 import { CartService } from './../../services/cart.service';
 import { OrderService } from './../../services/order.service';
-import { Component, ElementRef, OnInit, AfterViewInit } from '@angular/core';
+import { Component, ElementRef, OnInit, AfterViewInit, Inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { environment } from '../../environments/environment';
+import { DOCUMENT } from '@angular/common';
 
 @Component({
   selector: 'app-order',
@@ -18,6 +19,12 @@ export class OrderComponent implements OnInit, AfterViewInit {
   cart!: any;
   orderValue = 0;
   orderObject = Object();
+  currencies = ['EUR', 'USD', 'RON']
+  pay = Object();
+  payCurrency = 'EUR';
+  payPrice = 564;
+  paypalLogin = Object();
+  isHidden = false;
   section = 1;
   confirm = false;
   transportFee = environment.transportFee;
@@ -26,8 +33,9 @@ export class OrderComponent implements OnInit, AfterViewInit {
     private router: Router,
     private elementRef: ElementRef,
     private cartService: CartService,
-    private productService: ProductService
-  ) {}
+    private productService: ProductService,
+    @Inject(DOCUMENT) private document: Document
+  ) { }
 
   ngOnInit(): void {
     this.user = JSON.parse(localStorage.getItem('user') || '{}');
@@ -66,6 +74,20 @@ export class OrderComponent implements OnInit, AfterViewInit {
       }
     );
   }
+  payPall() {
+    let pay = Object();
+    pay['currency'] = this.payCurrency;
+    pay['price'] = this.orderValue;
+    this.orderService.postPayPal(pay).subscribe(
+      (response: Response) => {
+        this.paypalLogin = response;
+        window.location.href = this.paypalLogin.link;
+      },
+      (error) => {
+        console.error(error);
+      }
+    )
+  }
   ngAfterViewInit() {
     this.elementRef.nativeElement.ownerDocument.body.style.backgroundColor =
       '#fafbfc';
@@ -73,5 +95,9 @@ export class OrderComponent implements OnInit, AfterViewInit {
   changeSection(sect: any, event: any) {
     this.section = sect;
     event.stopPropagation();
+  }
+  hidePaypal(currency: string) {
+    currency === "RON" ? this.isHidden = true : this.isHidden = false;
+    this.payCurrency = currency;
   }
 }

@@ -9,7 +9,7 @@ import { Observable } from 'rxjs';
 
 @Injectable()
 export class AppInterceptorInterceptor implements HttpInterceptor {
-  constructor() {}
+  constructor() { }
 
   intercept(
     request: HttpRequest<unknown>,
@@ -17,6 +17,7 @@ export class AppInterceptorInterceptor implements HttpInterceptor {
   ): Observable<HttpEvent<unknown>> {
     if (
       request.url.includes('/orders') ||
+      request.url.includes('/payments') ||
       request.url.includes('/users') ||
       request.url.includes('/carts')
     ) {

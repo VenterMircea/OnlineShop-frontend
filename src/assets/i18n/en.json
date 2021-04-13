@@ -133,13 +133,15 @@
         "Products": "Products:",
         "Shipping": "Shipping:",
         "Total value": "Total value:",
-        "Send Order": "Send Order",
+        "Send Order": "Cash on delivery",
         "Succes Order": "Your order was sucessfully registered. ",
         "Thank you": "Thank you. ",
-        "Empty cart": "No products in cart  "
+        "Empty cart": "No products in cart  ",
+        "Currency": "Choose currency",
+        "Payment methode": "Payment methode"
     },
     "PaymentSuccess": {
-        "Pending":"Pending",
+        "Pending": "Pending",
         "Succes Order": "Your order was sucessfully registered. ",
         "Thank you": "Thank you. ",
         "Wrong": "Something went wrong",
