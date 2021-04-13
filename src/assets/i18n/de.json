@@ -137,5 +137,18 @@
         "Succes Order": "Ihre Bestellung wurde erfolgreich registriert. ",
         "Thank you": "Danke. ",
         "Empty cart": "Keine Produkte im Warenkorb  "
+    },
+    "PaymentSuccess": {
+        "Pending":"Steht aus",
+        "Succes Order": "Ihre Bestellung wurde erfolgreich registriert. ",
+        "Thank you": "Danke. ",
+        "Wrong": "Bestellung fehlgeschlagen",
+        "BackTo": "Zurück zu Bestellungen",
+        "back": "Bestellungen"
+    },
+    "PaymentFailure": {
+        "Wrong": "Bestellung fehlgeschlagen",
+        "BackTo": "Zurück zu Bestellungen",
+        "back": "Bestellungen"
     }
 }

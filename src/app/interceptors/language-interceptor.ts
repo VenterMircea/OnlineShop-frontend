@@ -8,24 +8,19 @@ import {
 import { Observable } from 'rxjs';
 
 @Injectable()
-export class AppInterceptorInterceptor implements HttpInterceptor {
+export class LanguageInterceptor implements HttpInterceptor {
   constructor() {}
 
   intercept(
     request: HttpRequest<unknown>,
     next: HttpHandler
   ): Observable<HttpEvent<unknown>> {
-    if (
-      request.url.includes('/orders') ||
-      request.url.includes('/users') ||
-      request.url.includes('/carts')
-    ) {
-      const token = JSON.parse(localStorage.getItem('user') || '{}').token;
+     {
+      const lang = JSON.parse(localStorage.getItem('lang') || ' ');
       const req = request.clone({
-       headers: request.headers.set('Authorization', `Bearer ${token}`),
+        headers: request.headers.append('Accept-Language', `${lang}`),
       });
       return next.handle(req);
     }
-    return next.handle(request);
   }
 }

@@ -24,6 +24,9 @@ import { MyOrdersComponent } from './user-details/my-orders/my-orders.component'
 import { OrderItemComponent } from './user-details/order-item/order-item.component';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { PaymentSuccessComponent } from './payment-success/payment-success.component';
+import { LanguageInterceptor } from './interceptors/language-interceptor';
+import { PaymentFailureComponent } from './payment-failure/payment-failure.component';
 export function HttpLoaderFactory(httpClient: HttpClient) {
   return new TranslateHttpLoader(httpClient);
 }
@@ -42,6 +45,8 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
     ConfirmAccountComponent,
     MyOrdersComponent,
     OrderItemComponent,
+    PaymentSuccessComponent,
+    PaymentFailureComponent,
   ],
   entryComponents: [ProductDetailsDialogComponent],
   imports: [
@@ -66,6 +71,11 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AppInterceptorInterceptor,
+      multi: true,
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: LanguageInterceptor,
       multi: true,
     },
     { provide: LocationStrategy, useClass: HashLocationStrategy },

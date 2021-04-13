@@ -137,5 +137,18 @@
         "Succes Order": "Your order was sucessfully registered. ",
         "Thank you": "Thank you. ",
         "Empty cart": "No products in cart  "
+    },
+    "PaymentSuccess": {
+        "Pending":"Pending",
+        "Succes Order": "Your order was sucessfully registered. ",
+        "Thank you": "Thank you. ",
+        "Wrong": "Something went wrong",
+        "BackTo": "Go back to orders",
+        "back": "Orders"
+    },
+    "PaymentFailure": {
+        "Wrong": "Something went wrong",
+        "BackTo": "Go back to orders",
+        "back": "Orders"
     }
 }

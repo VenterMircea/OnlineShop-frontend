@@ -19,10 +19,8 @@ export class MyOrdersComponent implements OnInit {
 
   ngOnInit(): void {
     this.userID = JSON.parse(localStorage.getItem('user') || '{}').id;
-    console.log('user in my oder', this.userID);
     this.orderService.getOrderByUserId(this.userID).subscribe((order) => {
       this.myOrders = order.reverse();
-      console.log('my orders: ', this.myOrders);
     });
   }
 }
