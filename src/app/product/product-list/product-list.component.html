@@ -2,7 +2,7 @@
 <div class="sort-container">
   <div class="sort-item">
     <label for="order">{{ "ProductList.Sort" | translate }}</label>
-    <select name="order" (change)="selectSortCriteria($event)">
+    <select name="order" (change)="selectSortCriteria($event)" [(ngModel)]='sortBy'>
       <option value="-">-</option>
       <option value="Price">{{ "ProductList.Price" | translate }}</option>
       <option value="Rating">{{ "ProductList.Rating" | translate }}</option>
