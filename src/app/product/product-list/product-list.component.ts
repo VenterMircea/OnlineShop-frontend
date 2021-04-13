@@ -41,7 +41,7 @@ export class ProductListComponent implements OnInit, AfterViewInit, OnDestroy {
       .getProducts(
         this.pageNumber,
         this.pageSize,
-        this.sortBy.toLowerCase(),
+        (this.orderOptions.includes(this.sortBy)) ? this.sortBy.toLowerCase() : '',
         this.descending ? 'DESC' : 'ASC'
       )
       .subscribe((products) => {
@@ -120,8 +120,14 @@ export class ProductListComponent implements OnInit, AfterViewInit, OnDestroy {
 
   ngOnInit() {
     this.pageSize = parseInt(JSON.parse(sessionStorage.getItem('pageSize') || '10'));
+    this.sortBy = JSON.parse(sessionStorage.getItem('sortBy') || '{}');
+    this.descending = JSON.parse(sessionStorage.getItem('descending') || 'true');
     this.productServ
-      .getProducts(this.pageNumber, this.pageSize, '', '')
+      .getProducts(
+        this.pageNumber, 
+        this.pageSize,  
+        (this.orderOptions.includes(this.sortBy)) ? this.sortBy.toLowerCase() : '',
+        this.descending ? 'DESC' : 'ASC')
       .subscribe((products) => {
         this.products = products.content;
         this.totalPages = products.totalPages;
@@ -146,10 +152,12 @@ export class ProductListComponent implements OnInit, AfterViewInit, OnDestroy {
   changeSortDirection() {
     if (this.sortBy != '' && this.sortBy != '-')
       this.descending = !this.descending;
+    sessionStorage.setItem('descending', JSON.stringify(this.descending));
     this.callForProducts();
   }
   selectSortCriteria(event: any) {
     this.sortBy = event.target.value;
+    sessionStorage.setItem('sortBy', JSON.stringify(this.sortBy));
     this.callForProducts();
   }
 }
