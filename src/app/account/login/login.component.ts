@@ -14,6 +14,7 @@ import { of } from 'rxjs';
 export class LoginComponent implements OnInit {
   form!: FormGroup;
   emailForm!: FormGroup;
+  exist=true;
   sent=false;
   loading = false;
   submitted = false;
@@ -107,15 +108,22 @@ export class LoginComponent implements OnInit {
   }
 
   sendEmail(){
-      this.accountService.sendEmailForResetPassword(this.emailForm.controls.email.value).subscribe(
-        res=> this.sent=true,
-        err=> {
-          if(err.status==200){
-            this.sent=true;
-            this.email=false;
+    this.accountService.checkEmailNotTaken(this.emailForm.controls.email.value).subscribe(res=>{
+      if(res){
+        this.accountService.sendEmailForResetPassword(this.emailForm.controls.email.value).subscribe(
+          res=> this.sent=true,
+          err=> {
+            if(err.status==200){
+              this.sent=true;
+              this.email=false;
+              this.exist=true;
+            }
           }
-        }
-      )
+        )
+      }
+      else this.exist=false;
+    });
+    
   }
 
   ngAfterViewInit() {

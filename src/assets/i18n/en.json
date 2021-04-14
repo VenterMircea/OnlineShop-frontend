@@ -82,7 +82,8 @@
         "Fill":"Fill email address",
         "Send":"Send",
         "EmailInvalid": "Email doesn't look right.",
-        "CheckInbox": "Check yout inbox"
+        "CheckInbox": "Check yout inbox",
+        "DoesntExist":"Email not registered"
     },
     "Register": {
         "Register": "Register",
