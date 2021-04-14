@@ -19,7 +19,9 @@ describe('LoginComponent', () => {
     await TestBed.configureTestingModule({
       imports: [
         ReactiveFormsModule,
-        RouterTestingModule,
+        RouterTestingModule.withRoutes([
+          { path: 'account/login', component: LoginComponent }
+        ]),
         HttpClientTestingModule,
         MatIconModule, TranslateModule.forRoot({
           loader: {

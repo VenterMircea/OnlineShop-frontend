@@ -9,6 +9,7 @@ import { AccountRoutingModule } from './account-routing.module';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { HttpClient } from '@angular/common/http';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { NewPasswordComponent } from './new-password/new-password.component';
 export function HttpLoaderFactory(httpClient: HttpClient) {
   return new TranslateHttpLoader(httpClient);
 }
@@ -27,7 +28,7 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
       }
     })
   ],
-  declarations: [LayoutComponent, LoginComponent, RegisterComponent],
+  declarations: [LayoutComponent, LoginComponent, RegisterComponent, NewPasswordComponent],
   exports: [TranslateModule],
 })
-export class AccountModule {}
+export class AccountModule { }

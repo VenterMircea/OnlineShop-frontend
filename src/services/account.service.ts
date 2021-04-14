@@ -2,7 +2,7 @@ import { environment } from './../environments/environment';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { map} from 'rxjs/operators';
+import { map } from 'rxjs/operators';
 
 import { User } from '../app/models/user';
 
@@ -105,12 +105,18 @@ export class AccountService {
     );
   }
 
-  checkEmailNotTaken(email: string){
+  checkEmailNotTaken(email: string) {
     return this.http.get<boolean>(`${environment.apiUrl}/users/existsByEmail?email=${email}`);
   }
 
   checkUsernameNotTaken(username: any): Observable<boolean> {
     return this.http.get<boolean>(`${environment.apiUrl}/users/existsByUsername?username=${username}`);
   }
- 
+
+  resetPassword(newPassword: string, token: any): Observable<any> {
+    return this.http.put(
+      `${environment.apiUrl}/account/new-password?token=${token}`,
+      newPassword
+    );
+  }
 }
