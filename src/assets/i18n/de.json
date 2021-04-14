@@ -82,7 +82,8 @@
         "Fill":"Geben Sie die E-Mail-Adresse ",
         "Send":"Senden",
         "EmailInvalid": "Ungültige E-Mail-Adresse.",
-        "CheckInbox": "E-Mail überprüfen"
+        "CheckInbox": "E-Mail überprüfen",
+        "DoesntExist":"E-Mail nicht registriert"
     },
     "Register": {
         "Register": "Konto erstellen",

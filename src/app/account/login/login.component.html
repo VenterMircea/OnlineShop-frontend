@@ -97,6 +97,9 @@
       <p *ngIf="sent" class='forgot'>
         {{"Login.CheckInbox" | translate}}
       </p>
+      <p *ngIf="!exist" class='invalid-feedback'>
+        {{"Login.DoesntExist" | translate}}
+      </p>
     <div class="confirm" *ngIf="popup">
       <h3 class="confirm-header">{{ serverMessage }}</h3>
     </div>
