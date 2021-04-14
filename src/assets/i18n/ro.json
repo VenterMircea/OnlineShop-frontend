@@ -76,7 +76,13 @@
         "Fields": "Campuri obligatorii",
         "Login": "Conectare",
         "Or": "sau",
-        "Create": "Creare Cont"
+        "Create": "Creare Cont",
+        "Email": "Email",
+        "Forgot":"Ai uitat parola?",
+        "Fill":"Introdu adresa de email pentru resetare",
+        "Send":"Trimite",
+        "EmailInvalid": "Email invalid.",
+        "CheckInbox": "Verifica adresa de email"
     },
     "Register": {
         "Register": "Inregistrare",

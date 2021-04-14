@@ -13,6 +13,8 @@ import { of } from 'rxjs';
 })
 export class LoginComponent implements OnInit {
   form!: FormGroup;
+  emailForm!: FormGroup;
+  sent=false;
   loading = false;
   submitted = false;
   returnUrl!: string;
@@ -20,6 +22,7 @@ export class LoginComponent implements OnInit {
   serverMessage = '';
   errorFromServer = false;
   popup = false;
+  email=false;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -42,6 +45,9 @@ export class LoginComponent implements OnInit {
         ],
       ],
     });
+    this.emailForm=this.formBuilder.group({
+      email: ['', [Validators.required, Validators.email]]
+    })
   }
 
   get formControls() {
@@ -98,6 +104,18 @@ export class LoginComponent implements OnInit {
     setTimeout(() => {
       this.popup = false;
     }, 5000);
+  }
+
+  sendEmail(){
+      this.accountService.sendEmailForResetPassword(this.emailForm.controls.email.value).subscribe(
+        res=> this.sent=true,
+        err=> {
+          if(err.status==200){
+            this.sent=true;
+            this.email=false;
+          }
+        }
+      )
   }
 
   ngAfterViewInit() {
