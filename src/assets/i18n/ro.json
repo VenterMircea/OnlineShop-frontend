@@ -85,6 +85,20 @@
         "CheckInbox": "Verifica adresa de email",
         "DoesntExist":"Emailul nu exista in baza de date"
     },
+    "New password": {
+        "New password": "Schimbare parola",
+        "Insert new password": "Introduceti parola noua",
+        "Password Required": "Parola este obligatorie.",
+        "PasswordLength": "Parola trebuie sa aiba minim 8 caractere, ",
+        "Case": "trebuie sa aiba cel putin o litera mica si una mare, ",
+        "Number": "trebuie sa contina un numar si un caracter special.",
+        "Repeat password": "Repeta parola",
+        "Password doesn't match": "Cele doua parole nu sunt identice",
+        "Fields are mandatory": "Campuri obligatorii",
+        "Submit": "Confirma",
+        "Success": "Parola a fost schimbata cu succes",
+        "Redirect": "Va redirectionam catre login..."
+    },
     "Register": {
         "Register": "Inregistrare",
         "FirstName": "Prenume",

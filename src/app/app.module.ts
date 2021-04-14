@@ -27,6 +27,7 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { PaymentSuccessComponent } from './payment-success/payment-success.component';
 import { LanguageInterceptor } from './interceptors/language-interceptor';
 import { PaymentFailureComponent } from './payment-failure/payment-failure.component';
+import { AccountModule } from './account/account.module';
 export function HttpLoaderFactory(httpClient: HttpClient) {
   return new TranslateHttpLoader(httpClient);
 }
@@ -40,18 +41,17 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
     ProductDetailsDialogComponent,
     FilterProductPipe,
     OrderComponent,
-    NavbarComponent,
     UserDetailsComponent,
     ConfirmAccountComponent,
     MyOrdersComponent,
     OrderItemComponent,
     PaymentSuccessComponent,
     PaymentFailureComponent,
+    NavbarComponent
   ],
   entryComponents: [ProductDetailsDialogComponent],
   imports: [
     BrowserModule,
-    AppRoutingModule,
     BrowserAnimationsModule,
     MaterialModule,
     FormsModule,
@@ -65,7 +65,8 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
         useFactory: HttpLoaderFactory,
         deps: [HttpClient]
       }
-    })
+    }),
+    AppRoutingModule,
   ],
   providers: [
     {
@@ -81,6 +82,6 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
     { provide: LocationStrategy, useClass: HashLocationStrategy },
   ],
   bootstrap: [AppComponent],
-  exports: [NavbarComponent, TranslateModule],
+  exports: [NavbarComponent, TranslateModule, AccountModule],
 })
 export class AppModule { }

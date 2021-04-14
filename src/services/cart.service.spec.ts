@@ -17,8 +17,8 @@ describe('Service: Cart', () => {
     expect(service).toBeTruthy();
   }));
   it('should update cart', inject([CartService], (service: CartService) => {
-    spyOn(service, 'update').and.callThrough;
-    service.update();
+    spyOn(service, 'getCart').and.callThrough;
+    service.getCart();
     expect(service.update).toHaveBeenCalled();
   }));
 });

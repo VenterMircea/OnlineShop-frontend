@@ -85,6 +85,20 @@
         "CheckInbox": "Check yout inbox",
         "DoesntExist":"Email not registered"
     },
+    "New password": {
+        "New password": "New password",
+        "Insert new password": "Please insert your new password",
+        "Password Required": "Password is required.",
+        "PasswordLength": "Password must be 8 or more characters long.",
+        "Case": "Must have upper and lower case letters.",
+        "Number": "Must contain at least one number and and symbol.",
+        "Repeat password": "Repeat password",
+        "Password doesn't match": "Password doesn't match.",
+        "Fields are mandatory": "Fields are mandatory.",
+        "Submit": "Submit",
+        "Success": "Password was sucesfully changed",
+        "Redirect": "We are redirecting you to login..."
+    },
     "Register": {
         "Register": "Register",
         "FirstName": "First Name",
