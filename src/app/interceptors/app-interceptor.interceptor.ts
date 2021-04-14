@@ -23,7 +23,7 @@ export class AppInterceptorInterceptor implements HttpInterceptor {
     ) {
       const token = JSON.parse(localStorage.getItem('user') || '{}').token;
       const req = request.clone({
-       headers: request.headers.set('Authorization', `Bearer ${token}`),
+        headers: request.headers.set('Authorization', `Bearer ${token}`),
       });
       return next.handle(req);
     }

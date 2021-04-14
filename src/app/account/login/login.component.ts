@@ -5,7 +5,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { catchError, first } from 'rxjs/operators';
 
 import { AccountService } from '../../../services/account.service';
-import { of } from 'rxjs';
+import { from, of } from 'rxjs';
 
 @Component({
   templateUrl: 'login.component.html',
@@ -31,7 +31,7 @@ export class LoginComponent implements OnInit {
     public accountService: AccountService,
     private elementRef: ElementRef,
     private cartService: CartService
-  ) {}
+  ) { }
 
   ngOnInit() {
     this.form = this.formBuilder.group({
@@ -71,11 +71,11 @@ export class LoginComponent implements OnInit {
             .getCart()
             .pipe(catchError((err) => of([])))
             .subscribe(
-              (res) => this.cartService.mergeCarts(res),
+              (res) => { this.cartService.mergeCarts(res); console.log(res) },
               (err) => console.log('HTTP Error', err),
               () => console.log('HTTP request completed.')
             );
-
+          console.log(this.formControls.username.value, this.formControls.password.value)
           this.backToPreviousPage();
         },
         (error) => {
@@ -134,5 +134,10 @@ export class LoginComponent implements OnInit {
     const { redirect } = window.history.state;
     if (redirect == '/cart') this.router.navigateByUrl('/order');
     else this.router.navigateByUrl(redirect || '/');
+  }
+  goToNewPage() {
+    this.router.navigate(['/account/new-password'], {
+      state: { redirect: this.router.url },
+    });
   }
 }
