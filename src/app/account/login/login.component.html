@@ -61,7 +61,7 @@
       <span class="spacer"></span>
       <p><span style="color: #ff0000">*</span>{{ "Login.Fields" | translate }}</p>
       <div class="form-group">
-        <button [disabled]="loading" class="btn btn-primary">
+        <button [disabled]="loading" class="btn btn-primary buttons">
           <span
             *ngIf="loading"
             class="spinner-border spinner-border-sm mr-1"
@@ -69,11 +69,34 @@
           {{ "Login.Login" | translate }}
         </button>
         <h4>{{ "Login.Or" | translate }}</h4>
-        <button routerLink="../register" class="btn btn-link">
+        <button routerLink="../register" class="btn btn-link buttons">
           {{ "Login.Create" | translate }}
         </button>
       </div>
     </form>
+    <p class='forgot' (click)="email=!email">
+      {{'Login.Forgot' | translate }}
+      <span *ngIf="email">▲</span>
+      <span *ngIf="!email">▼</span>
+    </p>
+      <form [formGroup]="emailForm" *ngIf="email">
+        <p>{{'Login.Fill' | translate }}</p>
+        <div class="form-group inputs forgot-section">
+          <input
+            type="text"
+            placeholder="{{ 'Login.Email' | translate }}"
+            formControlName="email"
+          />
+          <button class='send-email' (click)="sendEmail()" [disabled]="!emailForm.valid">{{'Login.Send' | translate }}</button>           
+        </div>
+        <div *ngIf="emailForm.controls.email.errors?.email && !emailForm.controls.email.pristine" class='invalid-feedback'>
+          {{"Login.EmailInvalid" | translate}}
+        </div>
+        <span class="spacer"></span>
+      </form>
+      <p *ngIf="sent" class='forgot'>
+        {{"Login.CheckInbox" | translate}}
+      </p>
     <div class="confirm" *ngIf="popup">
       <h3 class="confirm-header">{{ serverMessage }}</h3>
     </div>

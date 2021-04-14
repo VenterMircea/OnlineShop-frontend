@@ -112,5 +112,9 @@ export class AccountService {
   checkUsernameNotTaken(username: any): Observable<boolean> {
     return this.http.get<boolean>(`${environment.apiUrl}/users/existsByUsername?username=${username}`);
   }
+
+  sendEmailForResetPassword(email: string){
+    return this.http.post(`${environment.apiUrl}/users/forgot-password?email=${email}`, email);
+  }
  
 }

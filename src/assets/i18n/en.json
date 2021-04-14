@@ -76,7 +76,13 @@
         "Fields": "Fields are mandatory",
         "Login": "Login",
         "Or": "or",
-        "Create": "Create Acount"
+        "Create": "Create Acount",
+        "Email": "E-mail",
+        "Forgot":"Forgot password?",
+        "Fill":"Fill email address",
+        "Send":"Send",
+        "EmailInvalid": "Email doesn't look right.",
+        "CheckInbox": "Check yout inbox"
     },
     "Register": {
         "Register": "Register",

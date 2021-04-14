@@ -76,7 +76,13 @@
         "Fields": "Pflichtfelder",
         "Login": "Anmelden",
         "Or": "oder",
-        "Create": "Konto erstellen"
+        "Create": "Konto erstellen",
+        "Email": "E-mail",
+        "Forgot":"Passwort vergessen",
+        "Fill":"Geben Sie die E-Mail-Adresse ",
+        "Send":"Senden",
+        "EmailInvalid": "Ungültige E-Mail-Adresse.",
+        "CheckInbox": "E-Mail überprüfen"
     },
     "Register": {
         "Register": "Konto erstellen",
