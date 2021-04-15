@@ -18,7 +18,45 @@
     cursor: pointer;
   }
 }
-
+.moving-bike-img {
+  margin-top: 3px;
+  object-fit: cover;
+  background-color: transparent;
+  image-rendering: optimizeQuality;
+  width: 50px;
+  position: relative;
+  animation: move 4s ease-in-out 2s;
+  left: -200px;
+  border-radius: 35%;
+}
+@keyframes move {
+  0% {
+    left: 0;
+    top: 0px;
+    display: none;
+  }
+  23% {
+    left: 33%;
+    transform: rotate(20deg);
+  }
+  40% {
+    left: 30%;
+    transform: rotate(0deg);
+  }
+  60% {
+    left: 66%;
+    transform: rotate(0deg);
+  }
+  80% {
+    left: 100%;
+    top: 0px;
+    transform: rotate(-20deg);
+  }
+  100% {
+    left: 110%;
+    display: none;
+  }
+}
 i {
   width: 200px;
   margin: 16px;

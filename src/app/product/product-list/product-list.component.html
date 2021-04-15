@@ -1,8 +1,13 @@
 <app-navbar></app-navbar>
+
 <div class="sort-container">
   <div class="sort-item">
     <label for="order">{{ "ProductList.Sort" | translate }}</label>
-    <select name="order" (change)="selectSortCriteria($event)" [(ngModel)]='sortBy'>
+    <select
+      name="order"
+      (change)="selectSortCriteria($event)"
+      [(ngModel)]="sortBy"
+    >
       <option value="-">-</option>
       <option value="Price">{{ "ProductList.Price" | translate }}</option>
       <option value="Rating">{{ "ProductList.Rating" | translate }}</option>
@@ -24,6 +29,7 @@
     >{{ "ProductList.Ascending" | translate }}
   </div>
 </div>
+<img src="../../../assets/Bike.jpg" class="moving-bike-img" alt="" />
 <div class="product-list">
   <app-product-item
     class="child"
