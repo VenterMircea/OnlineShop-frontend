@@ -14,8 +14,8 @@ import { from, of } from 'rxjs';
 export class LoginComponent implements OnInit {
   form!: FormGroup;
   emailForm!: FormGroup;
-  exist=true;
-  sent=false;
+  exist = true;
+  sent = false;
   loading = false;
   submitted = false;
   returnUrl!: string;
@@ -23,7 +23,7 @@ export class LoginComponent implements OnInit {
   serverMessage = '';
   errorFromServer = false;
   popup = false;
-  email=false;
+  email = false;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -46,7 +46,7 @@ export class LoginComponent implements OnInit {
         ],
       ],
     });
-    this.emailForm=this.formBuilder.group({
+    this.emailForm = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]]
     })
   }
@@ -71,11 +71,10 @@ export class LoginComponent implements OnInit {
             .getCart()
             .pipe(catchError((err) => of([])))
             .subscribe(
-              (res) => { this.cartService.mergeCarts(res); console.log(res) },
+              (res) => { this.cartService.mergeCarts(res) },
               (err) => console.log('HTTP Error', err),
               () => console.log('HTTP request completed.')
             );
-          console.log(this.formControls.username.value, this.formControls.password.value)
           this.backToPreviousPage();
         },
         (error) => {
@@ -107,23 +106,23 @@ export class LoginComponent implements OnInit {
     }, 5000);
   }
 
-  sendEmail(){
-    this.accountService.checkEmailNotTaken(this.emailForm.controls.email.value).subscribe(res=>{
-      if(res){
+  sendEmail() {
+    this.accountService.checkEmailNotTaken(this.emailForm.controls.email.value).subscribe(res => {
+      if (res) {
         this.accountService.sendEmailForResetPassword(this.emailForm.controls.email.value).subscribe(
-          res=> this.sent=true,
-          err=> {
-            if(err.status==200){
-              this.sent=true;
-              this.email=false;
-              this.exist=true;
+          res => this.sent = true,
+          err => {
+            if (err.status == 200) {
+              this.sent = true;
+              this.email = false;
+              this.exist = true;
             }
           }
         )
       }
-      else this.exist=false;
+      else this.exist = false;
     });
-    
+
   }
 
   ngAfterViewInit() {
@@ -134,10 +133,5 @@ export class LoginComponent implements OnInit {
     const { redirect } = window.history.state;
     if (redirect == '/cart') this.router.navigateByUrl('/order');
     else this.router.navigateByUrl(redirect || '/');
-  }
-  goToNewPage() {
-    this.router.navigate(['/account/new-password'], {
-      state: { redirect: this.router.url },
-    });
   }
 }
