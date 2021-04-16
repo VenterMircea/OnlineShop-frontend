@@ -18,7 +18,7 @@ module.exports = function (config) {
       clearContext: false // leave Jasmine Spec Runner output visible in browser
     },
     coverageReporter: {
-      outputDir: 'coverage/online-store/',
+      dir: '/var/lib/jenkins/jobs/online-store-frontend/workspace/coverage/online-store/',
       reporters: [
         {type: 'html'},
         {type: 'text-summary'},
