@@ -49,7 +49,7 @@ module.exports = function (config) {
       },
       Chrome_headless: {
         base: 'ChromeHeadless',
-        flags: '--no-sandbox'
+        flags: ['--no-sandbox']
       }
     }
   });
