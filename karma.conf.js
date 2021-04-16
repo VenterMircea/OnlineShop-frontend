@@ -45,10 +45,11 @@ module.exports = function (config) {
     customLaunchers: {
       Chrome_without_security: {
         base: 'Chrome',
-        flags: ['--disable-web-security', '--disable-site-isolation-trials']
+        flags: ['--disable-web-security', '--disable-site-isolation-trials', '--no-sandbox']
       },
       Chrome_headless: {
-        base: 'ChromeHeadless'
+        base: 'ChromeHeadless',
+        flags: '--no-sandbox'
       }
     }
   });
