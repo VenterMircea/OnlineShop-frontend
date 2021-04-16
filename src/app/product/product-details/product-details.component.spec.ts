@@ -78,14 +78,21 @@ describe('ProductDetailsComponent', () => {
     expect(component.history).toEqual([product]);
   });
 
-  it('should update the cart when the product is added', () => {
+  
+
+  it('should update the cart when the product is added',  () => {
     component.id = product.id;
-    component.cart = product;
+    component.cart.products = 
+    {
+      '6040d6ba1e240556a8b76e8f': 1,
+      '6040d6ba1e240556a8b76ea4': 1
+    };
     component.product = product;
     const cartService = fixture.debugElement.injector.get(CartService);
     const mySpy = spyOn(cartService, 'update').and.callThrough();
     component.addToCart();
     fixture.detectChanges();
     expect(mySpy).toHaveBeenCalledTimes(1);
+    
   });
 });
