@@ -32,6 +32,22 @@ describe('CartComponent', () => {
     fixture = TestBed.createComponent(CartComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
+    // component.cart=
+    // {
+    //   "userId": "606d80af5d5c555fe62bd7aa",
+    //   "products": {
+    //     '6040d6ba1e240556a8b76e8f': 1,
+    //     '6040d6ba1e240556a8b76ea4': 1
+    //   },
+    //   "id": "60757137a6cf6e573c07dc23"
+    // };
+
+    component.cart.products=
+    {
+      '6040d6ba1e240556a8b76e8f': 1,
+      '6040d6ba1e240556a8b76ea4': 1
+    }
+    
     component.products = [
       {
         name: 'BICICLETĂ MTB E-ST 900 27,5 PLUS PORTOCALIU ROCKRIDER',
@@ -67,7 +83,7 @@ describe('CartComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should increses the number of first item in cart when + is clicked', () => {
+  it('should increase the number items in cart when + is clicked', () => {
     component.modifyQuantity('6040d6ba1e240556a8b76e8f', 1);
     expect(component.products[0].qty).toBe(2);
   });
@@ -80,8 +96,8 @@ describe('CartComponent', () => {
 
   it('should call modifyQuantity with correct args', () => {
     spyOn(component, 'modifyQuantity').and.callThrough();
-    component.modifyQuantity('6040d6ba1e240556a8b76ea4', -1);
-    expect(component.modifyQuantity).toHaveBeenCalledWith('6040d6ba1e240556a8b76ea4', -1);
+    component.modifyQuantity('6040d6ba1e240556a8b76ea4', 2);
+    expect(component.modifyQuantity).toHaveBeenCalledWith('6040d6ba1e240556a8b76ea4', 2);
   });
 
   it('should compute cart total', () => {

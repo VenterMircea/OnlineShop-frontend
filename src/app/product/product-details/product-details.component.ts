@@ -5,7 +5,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ProductService } from 'src/services/product.service';
 import { MatDialog } from '@angular/material/dialog';
-import { cartBE } from 'src/app/models/cartBE';
+import { cartBE } from './../../models/cartBE';
 import { first } from 'rxjs/operators';
 
 @Component({
