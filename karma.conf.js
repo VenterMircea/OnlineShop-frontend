@@ -18,8 +18,7 @@ module.exports = function (config) {
       clearContext: false // leave Jasmine Spec Runner output visible in browser
     },
     coverageReporter: {
-      dir: 'coverage/online-store',
-      subdir: '.',
+      dir: 'coverage/online-store/',
       reporters: [
         {type: 'html'},
         {type: 'text-summary'},
