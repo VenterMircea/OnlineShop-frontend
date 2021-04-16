@@ -16,7 +16,8 @@ export class LayoutComponent implements AfterViewInit {
     public translate: TranslateService
   ) {
     translate.addLangs(['ro', 'en', 'de']);
-    if(localStorage.hasOwnProperty('lang'))
+    if(!localStorage.hasOwnProperty('lang'))
+      localStorage.setItem('lang', JSON.stringify('en'));
     this.userLanguage=JSON.parse(localStorage.getItem('lang') || 'null');
     let browserLang:string;
     if(this.userLanguage!='') browserLang=this.userLanguage;
