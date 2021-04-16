@@ -19,9 +19,9 @@ module.exports = function (config) {
       dir: require('path').join(__dirname, './coverage/online-store'),
       subdir: '.',
       reporters: [
-        { type: 'html' },
-        { type: 'text-summary' },
-        { type: 'lcovonly'}
+        {type: 'html'},
+        {type: 'text-summary'},
+        {type: 'lcovonly'}
       ],
       check: {
         global: {
@@ -37,13 +37,14 @@ module.exports = function (config) {
     colors: true,
     logLevel: config.LOG_INFO,
     autoWatch: true,
-    browsers: ['Chromium','Chrome_without_security'],
+    browsers: ['Chrome_headless', 'Chrome_without_security'],
     singleRun: false,
     restartOnFileChange: true,
     customLaunchers: {
-    Chromium: {
-      base: 'ChromiumHeadless'
-    },
+      Chrome_headless: {
+        base: 'Chrome',
+        flags: ['--no-sandbox', '--headless', '--disable-gpu', '--remote-debugging-port=9222']
+      },
       Chrome_without_security: {
         base: 'Chrome',
         flags: ['--disable-web-security', '--disable-site-isolation-trials']
