@@ -46,8 +46,7 @@ module.exports = function (config) {
         flags: ['--disable-web-security', '--disable-site-isolation-trials']
       },
       Chrome_headless: {
-        base: 'ChromeHeadless',
-        flags: '--no-sandbox'
+        base: 'ChromeHeadless'
       }
     }
   });
