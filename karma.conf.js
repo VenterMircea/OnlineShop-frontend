@@ -18,14 +18,12 @@ module.exports = function (config) {
       clearContext: false // leave Jasmine Spec Runner output visible in browser
     },
     coverageReporter: {
-      dir: '/var/lib/jenkins/jobs/online-store-frontend/workspace/coverage/online-store/',
+      dir: 'coverage/online-store/',
       reporters: [
         {type: 'html'},
         {type: 'text-summary'},
-        {
-          type: 'lcov',
-          dir: 'coverage/online-store'
-        }],
+        {type: 'lcov'}
+      ],
       check: {
         global: {
           statements: 65,
@@ -35,7 +33,7 @@ module.exports = function (config) {
         }
       }
     },
-    reporters: ['progress', 'kjhtml'],
+    reporters: ['progress', 'kjhtml', 'coverage'],
     port: 9876,
     colors: true,
     logLevel: config.LOG_INFO,
