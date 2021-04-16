@@ -39,23 +39,23 @@ module.exports = function (config) {
     colors: true,
     logLevel: config.LOG_INFO,
     autoWatch: true,
-    browsers: ['Chrome_headless','Chrome_without_security'],
+    browsers: ['Chrome_headless', 'Chrome_without_security'],
     singleRun: false,
     restartOnFileChange: true,
     customLaunchers: {
       Chrome_headless: {
         base: 'ChromeHeadless',
         flags: [
-          '--headless',
-          '--remote-debugging-port=9222',
           '--no-sandbox',
-          '--proxy-server=\'direct://\'',
-          '--proxy-bypass-list=*'
+          '--headless',
+          '--disable-gpu',
+          '--disable-translate',
+          '--disable-extensions'
         ]
       },
       Chrome_without_security: {
         base: 'Chrome',
-        flags: ['--disable-web-security', '--disable-site-isolation-trials', '--no-sandbox']
+        flags: ['--disable-web-security', '--disable-site-isolation-trials']
       }
     }
   });
