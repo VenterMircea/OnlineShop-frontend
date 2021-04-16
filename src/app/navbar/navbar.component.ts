@@ -27,8 +27,9 @@ export class NavbarComponent implements OnInit {
     public translate: TranslateService
   ) {
     translate.addLangs(['ro', 'en', 'de']);
-    if(localStorage.hasOwnProperty('lang'))
-      this.userLanguage=JSON.parse(localStorage.getItem('lang') || 'null');
+    if(!localStorage.hasOwnProperty('lang'))
+      localStorage.setItem('lang', JSON.stringify('en'));
+    this.userLanguage=JSON.parse(localStorage.getItem('lang') || 'null');
     let browserLang:string;
     if(this.userLanguage!='') browserLang=this.userLanguage;
     else browserLang = translate.getBrowserLang();
