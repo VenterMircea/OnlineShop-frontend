@@ -43,13 +43,19 @@ module.exports = function (config) {
     singleRun: false,
     restartOnFileChange: true,
     customLaunchers: {
+      Chrome_headless: {
+        base: 'ChromeHeadless',
+        flags: [
+          '--headless',
+          '--remote-debugging-port=9222',
+          '--no-sandbox',
+          '--proxy-server=\'direct://\'',
+          '--proxy-bypass-list=*'
+        ]
+      },
       Chrome_without_security: {
         base: 'Chrome',
         flags: ['--disable-web-security', '--disable-site-isolation-trials', '--no-sandbox']
-      },
-      Chrome_headless: {
-        base: 'ChromeHeadless',
-        flags: ['--no-sandbox']
       }
     }
   });
