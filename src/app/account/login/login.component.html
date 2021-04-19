@@ -88,6 +88,7 @@
             type="text"
             placeholder="{{ 'Login.Email' | translate }}"
             formControlName="email"
+            (keyup)="removeDoesntExist()"
           />
           <button class='send-email' (click)="sendEmail()" [disabled]="!emailForm.valid" [ngClass]="{'send-email-disabled': !emailForm.valid}">{{'Login.Send' | translate }}</button>           
         </div>
