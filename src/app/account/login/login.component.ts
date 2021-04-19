@@ -15,6 +15,7 @@ export class LoginComponent implements OnInit {
   form!: FormGroup;
   emailForm!: FormGroup;
   exist = true;
+  inexistentEmail!: string;
   sent = false;
   loading = false;
   submitted = false;
@@ -117,13 +118,19 @@ export class LoginComponent implements OnInit {
           this.sent = true;
           this.email = false;
           this.exist = true;
-          console.log('did on response');
         },
         (err) => {
           if(err.status=404) this.exist=false;
+          this.inexistentEmail=this.emailForm.controls.email.value;
           console.log(err);
         }
       );
+  }
+
+  removeDoesntExist(){
+    if(this.emailForm.controls.email.value!==this.inexistentEmail)
+      this.exist=true;
+    else this.exist=false;
   }
 
   ngAfterViewInit() {
