@@ -31,7 +31,7 @@ export class LoginComponent implements OnInit {
     public accountService: AccountService,
     private elementRef: ElementRef,
     private cartService: CartService
-  ) { }
+  ) {}
 
   ngOnInit() {
     this.form = this.formBuilder.group({
@@ -47,8 +47,8 @@ export class LoginComponent implements OnInit {
       ],
     });
     this.emailForm = this.formBuilder.group({
-      email: ['', [Validators.required, Validators.email]]
-    })
+      email: ['', [Validators.required, Validators.email]],
+    });
   }
 
   get formControls() {
@@ -71,7 +71,9 @@ export class LoginComponent implements OnInit {
             .getCart()
             .pipe(catchError((err) => of([])))
             .subscribe(
-              (res) => { this.cartService.mergeCarts(res) },
+              (res) => {
+                this.cartService.mergeCarts(res);
+              },
               (err) => console.log('HTTP Error', err),
               () => console.log('HTTP request completed.')
             );
@@ -107,22 +109,21 @@ export class LoginComponent implements OnInit {
   }
 
   sendEmail() {
-    this.accountService.checkEmailNotTaken(this.emailForm.controls.email.value).subscribe(res => {
-      if (res) {
-        this.accountService.sendEmailForResetPassword(this.emailForm.controls.email.value).subscribe(
-          res => this.sent = true,
-          err => {
-            if (err.status == 200) {
-              this.sent = true;
-              this.email = false;
-              this.exist = true;
-            }
-          }
-        )
-      }
-      else this.exist = false;
-    });
-
+    this.accountService
+      .sendEmailForResetPassword(this.emailForm.controls.email.value)
+      .subscribe(
+        (res) => {
+          this.sent = true;
+          this.sent = true;
+          this.email = false;
+          this.exist = true;
+          console.log('did on response');
+        },
+        (err) => {
+          if(err.status=404) this.exist=false;
+          console.log(err);
+        }
+      );
   }
 
   ngAfterViewInit() {

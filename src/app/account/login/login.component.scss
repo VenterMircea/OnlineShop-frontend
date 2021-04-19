@@ -81,6 +81,9 @@
     margin: 0;
     cursor: pointer;
   }
+  .send-email-disabled{
+    background-image: linear-gradient(to right, #5fd4d270, #634fbd77 40%);
+  }
   .forgot-section{
     display: flex;
     flex-direction: row;
